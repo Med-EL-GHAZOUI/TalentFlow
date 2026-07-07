@@ -1,1 +1,44 @@
-<p>skill-list works!</p>
+<h2>Liste des compétences</h2>
+
+<table>
+
+  <thead>
+
+  <tr>
+
+    <th>ID</th>
+    <th>Compétence</th>
+    <th>Catégorie</th>
+    <th>Niveau</th>
+    <th>Actions</th>
+
+  </tr>
+
+  </thead>
+
+  <tbody>
+
+  @for(skill of skills; track skill.id){
+
+    <tr>
+
+      <td>{{skill.id}}</td>
+      <td>{{skill.name}}</td>
+      <td>{{skill.category}}</td>
+      <td>{{skill.level}} / 5</td>
+
+      <td>
+
+        <button>Modifier</button>
+
+        <button>Supprimer</button>
+
+      </td>
+
+    </tr>
+
+  }
+
+  </tbody>
+
+</table>

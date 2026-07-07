@@ -1,1 +1,50 @@
-<p>training-list works!</p>
+<h2>Liste des formations</h2>
+
+<table>
+
+  <thead>
+
+  <tr>
+
+    <th>ID</th>
+    <th>Formation</th>
+    <th>Organisme</th>
+    <th>Durée</th>
+    <th>Date</th>
+    <th>Actions</th>
+
+  </tr>
+
+  </thead>
+
+  <tbody>
+
+  @for(training of trainings; track training.id){
+
+    <tr>
+
+      <td>{{training.id}}</td>
+
+      <td>{{training.title}}</td>
+
+      <td>{{training.provider}}</td>
+
+      <td>{{training.duration}} h</td>
+
+      <td>{{training.startDate}}</td>
+
+      <td>
+
+        <button>Modifier</button>
+
+        <button>Supprimer</button>
+
+      </td>
+
+    </tr>
+
+  }
+
+  </tbody>
+
+</table>

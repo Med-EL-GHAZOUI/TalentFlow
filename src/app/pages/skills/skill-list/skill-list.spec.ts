@@ -1,22 +1,28 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SkillList } from './skill-list';
+import { SkillListComponent } from './skill-list';
 
-describe('SkillList', () => {
-  let component: SkillList;
-  let fixture: ComponentFixture<SkillList>;
+describe('SkillListComponent', () => {
+
+  let component: SkillListComponent;
+  let fixture: ComponentFixture<SkillListComponent>;
 
   beforeEach(async () => {
+
     await TestBed.configureTestingModule({
-      imports: [SkillList],
+      imports:[SkillListComponent]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SkillList);
-    component = fixture.componentInstance;
-    await fixture.whenStable();
+    fixture=TestBed.createComponent(SkillListComponent);
+    component=fixture.componentInstance;
+    fixture.detectChanges();
+
   });
 
   it('should create', () => {
+
     expect(component).toBeTruthy();
+
   });
+
 });

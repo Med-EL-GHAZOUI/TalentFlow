@@ -2,8 +2,27 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-training-list',
-  imports: [],
+  standalone: true,
   templateUrl: './training-list.html',
-  styleUrl: './training-list.scss',
+  styleUrl: './training-list.scss'
 })
-export class TrainingList {}
+export class TrainingListComponent {
+
+  trainings = [
+    {
+      id: 1,
+      title: 'Angular Avancé',
+      provider: 'OpenClassrooms',
+      duration: 40,
+      startDate: '2026-07-15'
+    },
+    {
+      id: 2,
+      title: 'Spring Boot Expert',
+      provider: 'Udemy',
+      duration: 30,
+      startDate: '2026-08-01'
+    }
+  ];
+
+}

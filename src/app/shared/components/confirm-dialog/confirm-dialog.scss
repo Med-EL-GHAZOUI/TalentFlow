@@ -1,0 +1,53 @@
+.overlay{
+
+  position:fixed;
+
+  inset:0;
+
+  background:rgba(0,0,0,.5);
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+}
+
+.dialog{
+
+  width:400px;
+
+  background:white;
+
+  padding:25px;
+
+  border-radius:10px;
+
+}
+
+.actions{
+
+  display:flex;
+
+  justify-content:flex-end;
+
+  gap:10px;
+
+  margin-top:20px;
+
+}
+
+.confirm{
+
+  background:#1976d2;
+
+  color:white;
+
+}
+
+.cancel{
+
+  background:#ddd;
+
+}

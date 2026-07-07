@@ -1,8 +1,20 @@
 import { TruncatePipe } from './truncate-pipe';
 
 describe('TruncatePipe', () => {
-  it('create an instance', () => {
-    const pipe = new TruncatePipe();
+
+  let pipe: TruncatePipe;
+
+  beforeEach(() => {
+    pipe = new TruncatePipe();
+  });
+
+  it('should create', () => {
     expect(pipe).toBeTruthy();
   });
+
+  it('should truncate text', () => {
+    expect(pipe.transform('Hello Angular World', 5))
+      .toBe('Hello...');
+  });
+
 });

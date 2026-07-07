@@ -1,1 +1,47 @@
-<p>user-list works!</p>
+<h2>Liste des utilisateurs</h2>
+
+<table>
+
+  <thead>
+
+  <tr>
+
+    <th>ID</th>
+    <th>Nom</th>
+    <th>Email</th>
+    <th>Rôle</th>
+    <th>Actions</th>
+
+  </tr>
+
+  </thead>
+
+  <tbody>
+
+  @for(user of users; track user.id){
+
+    <tr>
+
+      <td>{{user.id}}</td>
+
+      <td>{{user.firstname}} {{user.lastname}}</td>
+
+      <td>{{user.email}}</td>
+
+      <td>{{user.role}}</td>
+
+      <td>
+
+        <button>Modifier</button>
+
+        <button>Supprimer</button>
+
+      </td>
+
+    </tr>
+
+  }
+
+  </tbody>
+
+</table>

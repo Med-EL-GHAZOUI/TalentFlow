@@ -1,1 +1,46 @@
-<p>training-form works!</p>
+<h2>Nouvelle formation</h2>
+
+<form (ngSubmit)="save()">
+
+  <label>Titre</label>
+
+  <input
+    type="text"
+    [(ngModel)]="training.title"
+    name="title">
+
+  <label>Organisme</label>
+
+  <input
+    type="text"
+    [(ngModel)]="training.provider"
+    name="provider">
+
+  <label>Date début</label>
+
+  <input
+    type="date"
+    [(ngModel)]="training.startDate"
+    name="startDate">
+
+  <label>Date fin</label>
+
+  <input
+    type="date"
+    [(ngModel)]="training.endDate"
+    name="endDate">
+
+  <label>Durée (heures)</label>
+
+  <input
+    type="number"
+    [(ngModel)]="training.duration"
+    name="duration">
+
+  <button type="submit">
+
+    Enregistrer
+
+  </button>
+
+</form>

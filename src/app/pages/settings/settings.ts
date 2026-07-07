@@ -19,9 +19,7 @@ export class SettingsComponent {
     language: 'Français'
 
   };
-
   save(): void {
-
     console.log(this.settings);
 
   }

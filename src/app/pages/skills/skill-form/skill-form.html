@@ -1,1 +1,42 @@
-<p>skill-form works!</p>
+<h2>Nouvelle compétence</h2>
+
+<form (ngSubmit)="save()">
+
+  <label>Nom</label>
+  <input
+    type="text"
+    [(ngModel)]="skill.name"
+    name="name">
+
+  <label>Catégorie</label>
+  <input
+    type="text"
+    [(ngModel)]="skill.category"
+    name="category">
+
+  <label>Niveau</label>
+
+  <select
+    [(ngModel)]="skill.level"
+    name="level">
+
+    <option [value]="1">1</option>
+    <option [value]="2">2</option>
+    <option [value]="3">3</option>
+    <option [value]="4">4</option>
+    <option [value]="5">5</option>
+
+  </select>
+
+  <label>Description</label>
+
+  <textarea
+    [(ngModel)]="skill.description"
+    name="description">
+    </textarea>
+
+  <button type="submit">
+    Enregistrer
+  </button>
+
+</form>

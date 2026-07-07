@@ -1,8 +1,15 @@
 import { FilterPipe } from './filter-pipe';
 
 describe('FilterPipe', () => {
-  it('create an instance', () => {
-    const pipe = new FilterPipe();
+
+  let pipe: FilterPipe;
+
+  beforeEach(() => {
+    pipe = new FilterPipe();
+  });
+
+  it('should create', () => {
     expect(pipe).toBeTruthy();
   });
+
 });

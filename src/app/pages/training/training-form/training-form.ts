@@ -1,9 +1,33 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-training-form',
-  imports: [],
+  standalone: true,
+  imports: [FormsModule],
   templateUrl: './training-form.html',
-  styleUrl: './training-form.scss',
+  styleUrl: './training-form.scss'
 })
-export class TrainingForm {}
+export class TrainingFormComponent {
+
+  training = {
+
+    title: '',
+
+    provider: '',
+
+    startDate: '',
+
+    endDate: '',
+
+    duration: 0
+
+  };
+
+  save(): void {
+
+    console.log(this.training);
+
+  }
+
+}

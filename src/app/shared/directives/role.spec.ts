@@ -1,8 +1,13 @@
-import { Role } from './role';
+import { RoleDirective } from './role';
 
-describe('Role', () => {
+describe('RoleDirective', () => {
+
   it('should create an instance', () => {
-    const directive = new Role();
+
+    const directive = new RoleDirective({} as any, {} as any);
+
     expect(directive).toBeTruthy();
+
   });
+
 });

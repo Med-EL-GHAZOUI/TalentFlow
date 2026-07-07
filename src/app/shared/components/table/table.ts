@@ -1,9 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-table',
-  imports: [],
+  standalone: true,
   templateUrl: './table.html',
-  styleUrl: './table.scss',
+  styleUrl: './table.scss'
 })
-export class Table {}
+export class TableComponent {
+
+  @Input() headers: string[] = [];
+
+  @Input() rows: any[] = [];
+
+}

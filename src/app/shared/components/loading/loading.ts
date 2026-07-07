@@ -1,9 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-loading',
-  imports: [],
+  standalone: true,
   templateUrl: './loading.html',
-  styleUrl: './loading.scss',
+  styleUrl: './loading.scss'
 })
-export class Loading {}
+export class LoadingComponent {
+
+  @Input() loading = true;
+
+}

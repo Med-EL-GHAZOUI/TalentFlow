@@ -1,1 +1,45 @@
-<p>user-form works!</p>
+<h2>Nouvel utilisateur</h2>
+
+<form (ngSubmit)="save()">
+
+  <label>Prénom</label>
+
+  <input
+    type="text"
+    [(ngModel)]="user.firstname"
+    name="firstname">
+
+  <label>Nom</label>
+
+  <input
+    type="text"
+    [(ngModel)]="user.lastname"
+    name="lastname">
+
+  <label>Email</label>
+
+  <input
+    type="email"
+    [(ngModel)]="user.email"
+    name="email">
+
+  <label>Rôle</label>
+
+  <select
+    [(ngModel)]="user.role"
+    name="role">
+
+    <option value="ADMIN">ADMIN</option>
+    <option value="HR">HR</option>
+    <option value="MANAGER">MANAGER</option>
+    <option value="EMPLOYEE">EMPLOYEE</option>
+
+  </select>
+
+  <button type="submit">
+
+    Enregistrer
+
+  </button>
+
+</form>

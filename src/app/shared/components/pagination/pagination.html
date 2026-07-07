@@ -1,1 +1,25 @@
-<p>pagination works!</p>
+<div class="pagination">
+
+  <button
+    (click)="previous()"
+    [disabled]="page === 1">
+
+    ◀
+
+  </button>
+
+  <span>
+
+        Page {{ page }} / {{ totalPages }}
+
+    </span>
+
+  <button
+    (click)="next()"
+    [disabled]="page === totalPages">
+
+    ▶
+
+  </button>
+
+</div>

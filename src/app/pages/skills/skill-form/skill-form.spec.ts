@@ -1,22 +1,27 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { SkillFormComponent } from './skill-form';
 
-import { SkillForm } from './skill-form';
+describe('SkillFormComponent', () => {
 
-describe('SkillForm', () => {
-  let component: SkillForm;
-  let fixture: ComponentFixture<SkillForm>;
+  let component: SkillFormComponent;
+  let fixture: ComponentFixture<SkillFormComponent>;
 
   beforeEach(async () => {
+
     await TestBed.configureTestingModule({
-      imports: [SkillForm],
+      imports: [SkillFormComponent]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SkillForm);
+    fixture = TestBed.createComponent(SkillFormComponent);
     component = fixture.componentInstance;
-    await fixture.whenStable();
+    fixture.detectChanges();
+
   });
 
   it('should create', () => {
+
     expect(component).toBeTruthy();
+
   });
+
 });

@@ -1,9 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-empty-state',
-  imports: [],
+  standalone: true,
   templateUrl: './empty-state.html',
-  styleUrl: './empty-state.scss',
+  styleUrl: './empty-state.scss'
 })
-export class EmptyState {}
+export class EmptyStateComponent {
+
+  @Input() title = 'Aucune donnée';
+
+  @Input() message = 'Aucun élément disponible.';
+
+}
