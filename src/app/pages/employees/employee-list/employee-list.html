@@ -1,1 +1,52 @@
-<p>employee-list works!</p>
+<h2>Liste des employés</h2>
+
+<table>
+
+  <thead>
+
+  <tr>
+
+    <th>ID</th>
+    <th>Nom</th>
+    <th>Email</th>
+    <th>Département</th>
+    <th>Poste</th>
+    <th>Actions</th>
+
+  </tr>
+
+  </thead>
+
+  <tbody>
+
+  @for(employee of employees; track employee.id){
+
+    <tr>
+
+      <td>{{employee.id}}</td>
+
+      <td>{{employee.firstname}} {{employee.lastname}}</td>
+
+      <td>{{employee.email}}</td>
+
+      <td>{{employee.department}}</td>
+
+      <td>{{employee.job}}</td>
+
+      <td>
+
+        <button>Détails</button>
+
+        <button>Modifier</button>
+
+        <button>Supprimer</button>
+
+      </td>
+
+    </tr>
+
+  }
+
+  </tbody>
+
+</table>

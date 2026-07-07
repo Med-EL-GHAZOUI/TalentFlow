@@ -1,1 +1,53 @@
-<p>employee-form works!</p>
+<h2>Ajouter un employé</h2>
+
+<form (ngSubmit)="save()">
+
+  <label>Prénom</label>
+
+  <input
+    type="text"
+    [(ngModel)]="employee.firstname"
+    name="firstname">
+
+  <label>Nom</label>
+
+  <input
+    type="text"
+    [(ngModel)]="employee.lastname"
+    name="lastname">
+
+  <label>Email</label>
+
+  <input
+    type="email"
+    [(ngModel)]="employee.email"
+    name="email">
+
+  <label>Téléphone</label>
+
+  <input
+    type="text"
+    [(ngModel)]="employee.phone"
+    name="phone">
+
+  <label>Département</label>
+
+  <input
+    type="text"
+    [(ngModel)]="employee.department"
+    name="department">
+
+  <label>Poste</label>
+
+  <input
+    type="text"
+    [(ngModel)]="employee.job"
+    name="job">
+
+  <button type="submit">
+
+    Enregistrer
+
+  </button>
+
+</form>

@@ -1,1 +1,32 @@
-<p>department-form works!</p>
+<h2>Nouveau département</h2>
+
+<form (ngSubmit)="save()">
+
+  <label>Nom</label>
+
+  <input
+    type="text"
+    [(ngModel)]="department.name"
+    name="name">
+
+  <label>Description</label>
+
+  <textarea
+    [(ngModel)]="department.description"
+    name="description">
+    </textarea>
+
+  <label>Responsable</label>
+
+  <input
+    type="text"
+    [(ngModel)]="department.manager"
+    name="manager">
+
+  <button type="submit">
+
+    Enregistrer
+
+  </button>
+
+</form>

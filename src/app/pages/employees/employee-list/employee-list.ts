@@ -2,8 +2,32 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-employee-list',
-  imports: [],
+  standalone: true,
   templateUrl: './employee-list.html',
-  styleUrl: './employee-list.scss',
+  styleUrl: './employee-list.scss'
 })
-export class EmployeeList {}
+export class EmployeeListComponent {
+
+  employees = [
+
+    {
+      id:1,
+      firstname:'Mohamed',
+      lastname:'EL GHAZOUI',
+      email:'mohamed@gmail.com',
+      department:'IT',
+      job:'Developer'
+    },
+
+    {
+      id:2,
+      firstname:'Ahmed',
+      lastname:'Alaoui',
+      email:'ahmed@gmail.com',
+      department:'HR',
+      job:'Manager'
+    }
+
+  ];
+
+}
