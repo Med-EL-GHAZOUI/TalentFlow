@@ -1,6 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class Api {}
+export class ApiService {
+
+  protected http = inject(HttpClient);
+
+  protected api = environment.apiUrl;
+
+}
+
+export class Api {
+}

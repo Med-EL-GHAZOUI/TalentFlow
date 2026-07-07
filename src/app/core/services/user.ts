@@ -1,6 +1,16 @@
 import { Injectable } from '@angular/core';
+import { ApiService } from './api';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class User {}
+export class UserService extends ApiService {
+
+  getAll() {
+    return this.http.get(`${this.api}/users`);
+  }
+
+}
+
+export class User {
+}
