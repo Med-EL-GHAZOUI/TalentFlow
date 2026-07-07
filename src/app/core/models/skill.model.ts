@@ -1,0 +1,11 @@
+export interface Skill {
+  id: number;
+
+  name: string;
+
+  description: string;
+
+  level: number;
+
+  category: string;
+}
