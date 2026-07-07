@@ -1,1 +1,41 @@
-<p>competency-gap works!</p>
+<h2>Écarts de compétences</h2>
+
+<table>
+
+  <thead>
+
+  <tr>
+
+    <th>Employé</th>
+
+    <th>Compétence</th>
+
+    <th>Niveau actuel</th>
+
+    <th>Niveau requis</th>
+
+  </tr>
+
+  </thead>
+
+  <tbody>
+
+  @for(gap of gaps; track gap.employee){
+
+    <tr>
+
+      <td>{{gap.employee}}</td>
+
+      <td>{{gap.skill}}</td>
+
+      <td>{{gap.current}}</td>
+
+      <td>{{gap.required}}</td>
+
+    </tr>
+
+  }
+
+  </tbody>
+
+</table>

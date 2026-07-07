@@ -1,1 +1,27 @@
-<p>job-form works!</p>
+<h2>Nouveau poste</h2>
+
+<form (ngSubmit)="save()">
+
+  <label>Titre</label>
+  <input
+    type="text"
+    [(ngModel)]="job.title"
+    name="title">
+
+  <label>Description</label>
+  <textarea
+    [(ngModel)]="job.description"
+    name="description">
+  </textarea>
+
+  <label>Département</label>
+  <input
+    type="text"
+    [(ngModel)]="job.department"
+    name="department">
+
+  <button type="submit">
+    Enregistrer
+  </button>
+
+</form>

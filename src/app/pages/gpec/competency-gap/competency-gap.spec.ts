@@ -1,22 +1,27 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CompetencyGapComponent } from './competency-gap';
 
-import { CompetencyGap } from './competency-gap';
+describe('CompetencyGapComponent',()=>{
 
-describe('CompetencyGap', () => {
-  let component: CompetencyGap;
-  let fixture: ComponentFixture<CompetencyGap>;
+  let component:CompetencyGapComponent;
+  let fixture:ComponentFixture<CompetencyGapComponent>;
 
-  beforeEach(async () => {
+  beforeEach(async()=>{
+
     await TestBed.configureTestingModule({
-      imports: [CompetencyGap],
+      imports:[CompetencyGapComponent]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CompetencyGap);
-    component = fixture.componentInstance;
-    await fixture.whenStable();
+    fixture=TestBed.createComponent(CompetencyGapComponent);
+    component=fixture.componentInstance;
+    fixture.detectChanges();
+
   });
 
-  it('should create', () => {
+  it('should create',()=>{
+
     expect(component).toBeTruthy();
+
   });
+
 });

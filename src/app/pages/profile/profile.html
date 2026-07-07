@@ -1,1 +1,25 @@
-<p>profile works!</p>
+<h2>Mon Profil</h2>
+
+<div class="profile-card">
+
+  <div class="avatar">
+
+    {{ profile.firstname[0] }}{{ profile.lastname[0] }}
+
+  </div>
+
+  <div class="info">
+
+    <p><strong>Prénom :</strong> {{ profile.firstname }}</p>
+
+    <p><strong>Nom :</strong> {{ profile.lastname }}</p>
+
+    <p><strong>Email :</strong> {{ profile.email }}</p>
+
+    <p><strong>Téléphone :</strong> {{ profile.phone }}</p>
+
+    <p><strong>Rôle :</strong> {{ profile.role }}</p>
+
+  </div>
+
+</div>

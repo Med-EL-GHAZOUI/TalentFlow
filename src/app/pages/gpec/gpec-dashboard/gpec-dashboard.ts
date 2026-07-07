@@ -2,8 +2,15 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-gpec-dashboard',
-  imports: [],
+  standalone: true,
   templateUrl: './gpec-dashboard.html',
-  styleUrl: './gpec-dashboard.scss',
+  styleUrl: './gpec-dashboard.scss'
 })
-export class GpecDashboard {}
+export class GpecDashboardComponent {
+
+  employees = 125;
+  competencyGaps = 28;
+  trainings = 16;
+  recommendations = 42;
+
+}

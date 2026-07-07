@@ -1,1 +1,41 @@
-<p>job-list works!</p>
+<h2>Liste des postes</h2>
+
+<table>
+
+  <thead>
+
+  <tr>
+
+    <th>ID</th>
+    <th>Poste</th>
+    <th>Département</th>
+    <th>Actions</th>
+
+  </tr>
+
+  </thead>
+
+  <tbody>
+
+  @for(job of jobs; track job.id){
+
+    <tr>
+
+      <td>{{job.id}}</td>
+      <td>{{job.title}}</td>
+      <td>{{job.department}}</td>
+
+      <td>
+
+        <button>Modifier</button>
+        <button>Supprimer</button>
+
+      </td>
+
+    </tr>
+
+  }
+
+  </tbody>
+
+</table>

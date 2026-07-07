@@ -1,0 +1,49 @@
+:host{
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  height:100vh;
+
+}
+
+.login-card{
+
+  width:380px;
+
+  padding:30px;
+
+  background:white;
+
+  border-radius:10px;
+
+  box-shadow:0 4px 12px rgba(0,0,0,.15);
+
+}
+
+form{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:15px;
+
+}
+
+input{
+
+  padding:12px;
+
+}
+
+button{
+
+  padding:12px;
+
+  cursor:pointer;
+
+}

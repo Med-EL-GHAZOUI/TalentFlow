@@ -1,22 +1,25 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { GpecDashboardComponent } from './gpec-dashboard';
 
-import { GpecDashboard } from './gpec-dashboard';
+describe('GpecDashboardComponent', () => {
 
-describe('GpecDashboard', () => {
-  let component: GpecDashboard;
-  let fixture: ComponentFixture<GpecDashboard>;
+  let component: GpecDashboardComponent;
+  let fixture: ComponentFixture<GpecDashboardComponent>;
 
   beforeEach(async () => {
+
     await TestBed.configureTestingModule({
-      imports: [GpecDashboard],
+      imports:[GpecDashboardComponent]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(GpecDashboard);
-    component = fixture.componentInstance;
-    await fixture.whenStable();
+    fixture=TestBed.createComponent(GpecDashboardComponent);
+    component=fixture.componentInstance;
+    fixture.detectChanges();
+
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

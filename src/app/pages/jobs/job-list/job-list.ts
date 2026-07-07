@@ -2,8 +2,26 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-job-list',
-  imports: [],
+  standalone: true,
   templateUrl: './job-list.html',
-  styleUrl: './job-list.scss',
+  styleUrl: './job-list.scss'
 })
-export class JobList {}
+export class JobListComponent {
+
+  jobs = [
+
+    {
+      id: 1,
+      title: 'Développeur Full Stack',
+      department: 'IT'
+    },
+
+    {
+      id: 2,
+      title: 'Responsable RH',
+      department: 'RH'
+    }
+
+  ];
+
+}

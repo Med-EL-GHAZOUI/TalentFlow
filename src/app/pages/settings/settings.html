@@ -1,1 +1,51 @@
-<p>settings works!</p>
+<h2>Paramètres</h2>
+
+<form (ngSubmit)="save()">
+
+  <label>
+
+    <input
+      type="checkbox"
+      [(ngModel)]="settings.darkMode"
+      name="darkMode">
+
+    Mode sombre
+
+  </label>
+
+  <label>
+
+    <input
+      type="checkbox"
+      [(ngModel)]="settings.notifications"
+      name="notifications">
+
+    Notifications
+
+  </label>
+
+  <label>
+
+    Langue
+
+  </label>
+
+  <select
+    [(ngModel)]="settings.language"
+    name="language">
+
+    <option>Français</option>
+
+    <option>English</option>
+
+    <option>العربية</option>
+
+  </select>
+
+  <button type="submit">
+
+    Enregistrer
+
+  </button>
+
+</form>

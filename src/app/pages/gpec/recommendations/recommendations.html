@@ -1,1 +1,37 @@
-<p>recommendations works!</p>
+<h2>Recommandations de formation</h2>
+
+<table>
+
+  <thead>
+
+  <tr>
+
+    <th>Employé</th>
+
+    <th>Formation</th>
+
+    <th>Priorité</th>
+
+  </tr>
+
+  </thead>
+
+  <tbody>
+
+  @for(item of recommendations; track item.employee){
+
+    <tr>
+
+      <td>{{item.employee}}</td>
+
+      <td>{{item.training}}</td>
+
+      <td>{{item.priority}}</td>
+
+    </tr>
+
+  }
+
+  </tbody>
+
+</table>

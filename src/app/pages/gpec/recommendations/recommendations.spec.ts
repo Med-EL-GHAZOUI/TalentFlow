@@ -1,22 +1,27 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RecommendationsComponent } from './recommendations';
 
-import { Recommendations } from './recommendations';
+describe('RecommendationsComponent',()=>{
 
-describe('Recommendations', () => {
-  let component: Recommendations;
-  let fixture: ComponentFixture<Recommendations>;
+  let component:RecommendationsComponent;
+  let fixture:ComponentFixture<RecommendationsComponent>;
 
-  beforeEach(async () => {
+  beforeEach(async()=>{
+
     await TestBed.configureTestingModule({
-      imports: [Recommendations],
+      imports:[RecommendationsComponent]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Recommendations);
-    component = fixture.componentInstance;
-    await fixture.whenStable();
+    fixture=TestBed.createComponent(RecommendationsComponent);
+    component=fixture.componentInstance;
+    fixture.detectChanges();
+
   });
 
-  it('should create', () => {
+  it('should create',()=>{
+
     expect(component).toBeTruthy();
+
   });
+
 });
