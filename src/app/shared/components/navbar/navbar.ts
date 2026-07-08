@@ -10,6 +10,6 @@ import { RouterLink } from '@angular/router';
 })
 export class NavbarComponent {
 
-  username = 'Mohamed';
+  username = 'Mohamed EL GHAZOUI';
 
 }

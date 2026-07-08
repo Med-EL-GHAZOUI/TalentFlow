@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-training-list',
   standalone: true,
+  imports: [RouterLink, DatePipe],
   templateUrl: './training-list.html',
   styleUrl: './training-list.scss'
 })

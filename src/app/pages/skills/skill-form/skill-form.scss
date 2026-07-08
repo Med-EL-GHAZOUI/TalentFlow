@@ -1,17 +1,93 @@
-form{
-  display:flex;
-  flex-direction:column;
-  gap:15px;
-  max-width:500px;
+@import '../../employees/employee-form/employee-form.scss';
+
+.level-selector {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background-color: var(--slate-50);
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--slate-200);
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
 
-input,
-textarea,
-select{
-  padding:10px;
+.range-wrapper {
+  flex: 1;
 }
 
-button{
-  width:180px;
-  padding:10px;
+.range-slider {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: var(--slate-300);
+  outline: none;
+  margin-bottom: 1rem;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--primary-500);
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    border: 3px solid white;
+    transition: transform var(--transition-fast);
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--primary-500);
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    border: 3px solid white;
+    transition: transform var(--transition-fast);
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 8px; /* Align with thumb center */
+
+  span {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--slate-500);
+  }
+}
+
+.level-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  background-color: white;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--primary-200);
+  color: var(--primary-700);
+  font-size: 0.875rem;
+  box-shadow: var(--shadow-sm);
+  
+  strong {
+    font-size: 1.25rem;
+    margin-left: 0.5rem;
+  }
 }

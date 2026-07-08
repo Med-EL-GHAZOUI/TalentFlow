@@ -1,23 +1,65 @@
-table{
+@import '../../employees/employee-list/employee-list.scss';
 
-  width:100%;
+.item-cell {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 
-  border-collapse:collapse;
+  .icon-sm {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
 
+    &.bg-violet { background-color: #8b5cf6; }
+  }
+
+  .item-info {
+    display: flex;
+    flex-direction: column;
+
+    .item-name {
+      font-weight: 600;
+      color: var(--slate-900);
+    }
+
+    .item-desc {
+      font-size: 0.75rem;
+      color: var(--slate-500);
+    }
+  }
 }
 
-th,td{
+.level-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 
-  border:1px solid #ddd;
+  .level-text {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--slate-700);
+    width: 30px;
+  }
 
-  padding:12px;
+  .level-bar-container {
+    width: 80px;
+    height: 6px;
+    background-color: var(--slate-200);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+  }
 
-}
-
-th{
-
-  background:#1976d2;
-
-  color:white;
-
+  .level-bar {
+    height: 100%;
+    border-radius: var(--radius-full);
+    
+    &.low { background-color: var(--warning); }
+    &.medium { background-color: var(--info); }
+    &.high { background-color: var(--success); }
+  }
 }

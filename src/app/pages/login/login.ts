@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+export let Login = undefined;
+
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -25,3 +28,5 @@ export class LoginComponent {
   }
 
 }
+
+

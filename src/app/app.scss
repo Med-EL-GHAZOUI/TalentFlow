@@ -1,0 +1,35 @@
+.layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--slate-100);
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Prevent scrolling here to let main scroll */
+}
+
+main {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  
+  /* Smooth scrolling */
+  scroll-behavior: smooth;
+  
+  /* Add subtle background pattern for premium feel */
+  background-image: radial-gradient(var(--slate-200) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  main {
+    padding: 1rem;
+  }
+}

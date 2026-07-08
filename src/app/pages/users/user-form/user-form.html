@@ -1,45 +1,127 @@
-<h2>Nouvel utilisateur</h2>
+<div class="page-header animate-fade-in">
+  <div>
+    <h1 class="page-title">Nouvel Utilisateur</h1>
+    <p class="page-subtitle">Ajouter un accès et définir les permissions</p>
+  </div>
+  <div class="header-actions">
+    <button class="btn btn-secondary" routerLink="/users">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      Retour
+    </button>
+  </div>
+</div>
 
-<form (ngSubmit)="save()">
+<div class="card animate-slide-up">
+  <form (ngSubmit)="save()" class="form-layout">
+    
+    <div class="form-section">
+      <h3 class="section-title">Profil Utilisateur</h3>
+      
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label">Prénom</label>
+          <input type="text" class="form-control" [(ngModel)]="user.firstname" name="firstname" placeholder="Ex: Jean">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Nom</label>
+          <input type="text" class="form-control" [(ngModel)]="user.lastname" name="lastname" placeholder="Ex: Dupont">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Email professionnel</label>
+          <input type="email" class="form-control" [(ngModel)]="user.email" name="email" placeholder="jean.dupont@entreprise.com">
+        </div>
+      </div>
+    </div>
+    
+    <hr class="section-divider">
+    
+    <div class="form-section">
+      <h3 class="section-title">Accès & Permissions</h3>
+      
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label">Rôle système</label>
+          <div class="role-cards">
+            
+            <label class="role-card" [class.active]="user.role === 'ADMIN'">
+              <input type="radio" [(ngModel)]="user.role" name="role" value="ADMIN" class="sr-only">
+              <div class="role-icon bg-indigo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+              </div>
+              <div class="role-info">
+                <span class="role-name">Admin</span>
+                <span class="role-desc">Accès total au système</span>
+              </div>
+            </label>
+            
+            <label class="role-card" [class.active]="user.role === 'HR'">
+              <input type="radio" [(ngModel)]="user.role" name="role" value="HR" class="sr-only">
+              <div class="role-icon bg-emerald">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <div class="role-info">
+                <span class="role-name">RH</span>
+                <span class="role-desc">Gestion des employés et carrières</span>
+              </div>
+            </label>
+            
+            <label class="role-card" [class.active]="user.role === 'MANAGER'">
+              <input type="radio" [(ngModel)]="user.role" name="role" value="MANAGER" class="sr-only">
+              <div class="role-icon bg-cyan">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                  <polyline points="2 17 12 22 22 17"></polyline>
+                  <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+              </div>
+              <div class="role-info">
+                <span class="role-name">Manager</span>
+                <span class="role-desc">Évaluation de son équipe</span>
+              </div>
+            </label>
+            
+            <label class="role-card" [class.active]="user.role === 'EMPLOYEE'">
+              <input type="radio" [(ngModel)]="user.role" name="role" value="EMPLOYEE" class="sr-only">
+              <div class="role-icon bg-slate">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <div class="role-info">
+                <span class="role-name">Employé</span>
+                <span class="role-desc">Accès à son profil uniquement</span>
+              </div>
+            </label>
+            
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <label>Prénom</label>
-
-  <input
-    type="text"
-    [(ngModel)]="user.firstname"
-    name="firstname">
-
-  <label>Nom</label>
-
-  <input
-    type="text"
-    [(ngModel)]="user.lastname"
-    name="lastname">
-
-  <label>Email</label>
-
-  <input
-    type="email"
-    [(ngModel)]="user.email"
-    name="email">
-
-  <label>Rôle</label>
-
-  <select
-    [(ngModel)]="user.role"
-    name="role">
-
-    <option value="ADMIN">ADMIN</option>
-    <option value="HR">HR</option>
-    <option value="MANAGER">MANAGER</option>
-    <option value="EMPLOYEE">EMPLOYEE</option>
-
-  </select>
-
-  <button type="submit">
-
-    Enregistrer
-
-  </button>
-
-</form>
+    <div class="form-actions">
+      <button type="button" class="btn btn-secondary" routerLink="/users">Annuler</button>
+      <button type="submit" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+          <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+          <polyline points="17 21 17 13 7 13 7 21"></polyline>
+          <polyline points="7 3 7 8 15 8"></polyline>
+        </svg>
+        Enregistrer l'utilisateur
+      </button>
+    </div>
+    
+  </form>
+</div>

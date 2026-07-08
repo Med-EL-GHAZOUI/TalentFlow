@@ -1,15 +1,35 @@
-table{
-  width:100%;
-  border-collapse:collapse;
-}
+@import '../../employees/employee-list/employee-list.scss';
 
-th,
-td{
-  border:1px solid #ddd;
-  padding:12px;
-}
+.item-cell {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 
-th{
-  background:#1976d2;
-  color:white;
+  .icon-sm {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+
+    &.bg-amber { background-color: #f59e0b; }
+  }
+
+  .item-info {
+    display: flex;
+    flex-direction: column;
+
+    .item-name {
+      font-weight: 600;
+      color: var(--slate-900);
+    }
+
+    .item-desc {
+      font-size: 0.75rem;
+      color: var(--slate-500);
+    }
+  }
 }

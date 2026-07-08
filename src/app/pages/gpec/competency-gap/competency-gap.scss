@@ -1,23 +1,85 @@
-table{
+@import '../../employees/employee-list/employee-list.scss';
 
-  width:100%;
-
-  border-collapse:collapse;
-
+.item-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
-th,td{
+.avatar-xs {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 0.75rem;
 
-  border:1px solid #ddd;
-
-  padding:12px;
-
+  &.bg-slate { background-color: var(--slate-500); }
 }
 
-th{
+.skill-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--slate-800);
+  font-weight: 500;
+  
+  .text-violet-500 {
+    color: #8b5cf6;
+  }
+}
 
-  background:#1976d2;
+.level-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  
+  .dots {
+    display: flex;
+    gap: 0.25rem;
+    
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      
+      &.active { background-color: var(--primary-500); }
+      &.inactive { background-color: var(--slate-200); }
+    }
+    
+    &.required {
+      .dot.active { background-color: var(--slate-800); }
+    }
+  }
+  
+  .level-text {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--slate-600);
+  }
+}
 
-  color:white;
+.gap-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  background-color: #fef3c7; /* amber-100 */
+  color: #d97706; /* amber-600 */
+  font-weight: 700;
+  font-size: 0.875rem;
+  
+  &.critical {
+    background-color: #fee2e2; /* red-100 */
+    color: #dc2626; /* red-600 */
+  }
+}
 
+.btn-sm {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.75rem;
 }

@@ -1,49 +1,165 @@
-<h2>Paramètres</h2>
+<div class="page-header animate-fade-in">
+  <div>
+    <h1 class="page-title">Paramètres</h1>
+    <p class="page-subtitle">Gérez vos préférences et paramètres de compte</p>
+  </div>
+</div>
 
-<form (ngSubmit)="save()">
+<div class="settings-layout animate-slide-up">
+  
+  <!-- Menu latéral des paramètres -->
+  <aside class="settings-sidebar card">
+    <nav class="settings-nav">
+      <a href="javascript:void(0)" class="nav-item" [class.active]="activeTab === 'apparence'" (click)="setTab('apparence')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+          <line x1="8" y1="21" x2="16" y2="21"></line>
+          <line x1="12" y1="17" x2="12" y2="21"></line>
+        </svg>
+        Apparence
+      </a>
+      <a href="javascript:void(0)" class="nav-item" [class.active]="activeTab === 'notifications'" (click)="setTab('notifications')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+        </svg>
+        Notifications
+      </a>
+      <a href="javascript:void(0)" class="nav-item" [class.active]="activeTab === 'securite'" (click)="setTab('securite')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+        Sécurité
+      </a>
+      <a href="javascript:void(0)" class="nav-item" [class.active]="activeTab === 'langue'" (click)="setTab('langue')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="2" y1="12" x2="22" y2="12"></line>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </svg>
+        Langue & Région
+      </a>
+    </nav>
+  </aside>
 
-  <label>
+  <!-- Contenu principal des paramètres -->
+  <main class="settings-content card">
+    <form (ngSubmit)="save()">
+      
+      <div class="settings-section">
+        <div class="section-header">
+          <h2 class="section-title">Personnalisation de l'interface</h2>
+          <p class="section-desc">Choisissez l'apparence qui vous convient le mieux.</p>
+        </div>
 
-    <input
-      type="checkbox"
-      [(ngModel)]="settings.darkMode"
-      name="darkMode">
+        <div class="theme-selector">
+          <label class="theme-option" [class.selected]="!settings.darkMode">
+            <input type="radio" name="theme" [value]="false" [(ngModel)]="settings.darkMode" class="sr-only">
+            <div class="theme-preview light-theme">
+              <div class="mock-header"></div>
+              <div class="mock-sidebar"></div>
+              <div class="mock-content">
+                <div class="mock-card"></div>
+                <div class="mock-card"></div>
+              </div>
+            </div>
+            <span class="theme-label">Mode Clair</span>
+          </label>
 
-    Mode sombre
+          <label class="theme-option" [class.selected]="settings.darkMode">
+            <input type="radio" name="theme" [value]="true" [(ngModel)]="settings.darkMode" class="sr-only">
+            <div class="theme-preview dark-theme">
+              <div class="mock-header"></div>
+              <div class="mock-sidebar"></div>
+              <div class="mock-content">
+                <div class="mock-card"></div>
+                <div class="mock-card"></div>
+              </div>
+            </div>
+            <span class="theme-label">Mode Sombre</span>
+          </label>
+        </div>
+      </div>
 
-  </label>
+      <hr class="divider">
 
-  <label>
+      <div class="settings-section">
+        <h3 class="subsection-title">Accessibilité & Langue</h3>
+        
+        <div class="form-group">
+          <label>Langue de l'application</label>
+          <div class="select-wrapper">
+            <select class="form-control" [(ngModel)]="settings.language" name="language">
+              <option value="Français">🇫🇷 Français (France)</option>
+              <option value="English">🇬🇧 English (UK)</option>
+              <option value="العربية">🇲🇦 العربية (Maroc)</option>
+            </select>
+            <svg class="select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+          <span class="help-text">La langue sélectionnée s'appliquera au prochain rechargement.</span>
+        </div>
+      </div>
 
-    <input
-      type="checkbox"
-      [(ngModel)]="settings.notifications"
-      name="notifications">
+      <hr class="divider">
 
-    Notifications
+      <div class="settings-section">
+        <div class="setting-row">
+          <div class="setting-info">
+            <h4>Animations de l'interface</h4>
+            <p>Activer les animations fluides et les transitions lors de la navigation.</p>
+          </div>
+          <div class="setting-action">
+            <label class="toggle-switch">
+              <input type="checkbox" name="animations" [(ngModel)]="settings.animations">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
 
-  </label>
+        <div class="setting-row">
+          <div class="setting-info">
+            <h4>Densité d'affichage</h4>
+            <p>Réduire les marges pour afficher plus d'informations à l'écran.</p>
+          </div>
+          <div class="setting-action">
+            <label class="toggle-switch">
+              <input type="checkbox" name="density" [(ngModel)]="settings.density">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
 
-  <label>
+      <div class="form-actions-sticky">
+        <button type="button" class="btn btn-outline" (click)="cancel()">Annuler</button>
+        <button type="submit" class="btn btn-primary" [disabled]="isSaving">
+          <ng-container *ngIf="!isSaving">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+              <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+              <polyline points="17 21 17 13 7 13 7 21"></polyline>
+              <polyline points="7 3 7 8 15 8"></polyline>
+            </svg>
+            Sauvegarder les modifications
+          </ng-container>
+          <ng-container *ngIf="isSaving">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" class="spin-animation">
+              <line x1="12" y1="2" x2="12" y2="6"></line>
+              <line x1="12" y1="18" x2="12" y2="22"></line>
+              <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line>
+              <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line>
+              <line x1="2" y1="12" x2="6" y2="12"></line>
+              <line x1="18" y1="12" x2="22" y2="12"></line>
+              <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line>
+              <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line>
+            </svg>
+            Sauvegarde...
+          </ng-container>
+        </button>
+      </div>
 
-    Langue
-
-  </label>
-
-  <select
-    [(ngModel)]="settings.language"
-    name="language">
-
-    <option>Français</option>
-
-    <option>English</option>
-
-    <option>العربية</option>
-
-  </select>
-
-  <button type="submit">
-    Enregistrer
-  </button>
-
-</form>
+    </form>
+  </main>
+</div>

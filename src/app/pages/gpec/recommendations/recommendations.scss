@@ -1,23 +1,71 @@
-table{
+@import '../../employees/employee-list/employee-list.scss';
 
-  width:100%;
-
-  border-collapse:collapse;
-
+.item-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
-th,td{
+.avatar-xs {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 0.75rem;
 
-  padding:12px;
-
-  border:1px solid #ddd;
-
+  &.bg-slate { background-color: var(--slate-500); }
 }
 
-th{
+.training-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--slate-800);
+  font-weight: 500;
+  
+  .text-indigo-500 {
+    color: var(--primary-500);
+  }
+}
 
-  background:#4CAF50;
+.score-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  
+  .score-bar-bg {
+    width: 60px;
+    height: 6px;
+    background-color: var(--slate-100);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+  }
+  
+  .score-bar-fill {
+    height: 100%;
+    border-radius: var(--radius-full);
+    
+    &.bg-success { background-color: var(--success); }
+    &.bg-warning { background-color: var(--warning); }
+  }
+  
+  .score-text {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--slate-700);
+  }
+}
 
-  color:white;
+.btn-sm {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.75rem;
+}
 
+.badge-error {
+  background-color: #fee2e2;
+  color: #ef4444;
 }

@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+export let CompetencyGap = undefined;
+
+
 @Component({
   selector:'app-competency-gap',
   standalone:true,

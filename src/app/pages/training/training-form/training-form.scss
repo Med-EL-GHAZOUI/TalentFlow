@@ -1,25 +1,19 @@
-form{
+@import '../../employees/employee-form/employee-form.scss';
 
-  display:flex;
-
-  flex-direction:column;
-
-  gap:15px;
-
-  max-width:500px;
-
-}
-
-input{
-
-  padding:10px;
-
-}
-
-button{
-
-  width:180px;
-
-  padding:10px;
-
+.input-with-suffix {
+  position: relative;
+  display: flex;
+  align-items: center;
+  
+  .form-control {
+    padding-right: 4.5rem;
+  }
+  
+  .suffix {
+    position: absolute;
+    right: 1rem;
+    color: var(--slate-400);
+    font-size: 0.875rem;
+    pointer-events: none;
+  }
 }

@@ -1,29 +1,72 @@
-table{
+@import '../../employees/employee-list/employee-list.scss';
 
-  width:100%;
+.item-cell {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 
-  border-collapse:collapse;
+  .icon-sm {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
 
+    &.bg-rose { background-color: #f43f5e; }
+  }
+
+  .item-info {
+    display: flex;
+    flex-direction: column;
+
+    .item-name {
+      font-weight: 600;
+      color: var(--slate-900);
+    }
+
+    .item-desc {
+      font-size: 0.75rem;
+      color: var(--slate-500);
+    }
+  }
 }
 
-th,td{
-
-  border:1px solid #ddd;
-
-  padding:12px;
-
+.provider-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--slate-700);
+  font-weight: 500;
+  
+  svg {
+    color: var(--slate-400);
+  }
 }
 
-th{
+.datetime-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 
-  background:#1976d2;
+  .date-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--slate-600);
+    
+    svg {
+      color: var(--slate-400);
+    }
+  }
 
-  color:white;
-
-}
-
-button{
-
-  margin-right:5px;
-
+  .duration-info {
+    .badge {
+      font-size: 0.7rem;
+      padding: 0.1rem 0.4rem;
+    }
+  }
 }

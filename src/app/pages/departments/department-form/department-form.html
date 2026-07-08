@@ -1,32 +1,54 @@
-<h2>Nouveau département</h2>
+<div class="page-header animate-fade-in">
+  <div>
+    <h1 class="page-title">Nouveau Département</h1>
+    <p class="page-subtitle">Ajouter une nouvelle structure organisationnelle</p>
+  </div>
+  <div class="header-actions">
+    <button class="btn btn-secondary" routerLink="/departments">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      Retour
+    </button>
+  </div>
+</div>
 
-<form (ngSubmit)="save()">
+<div class="card animate-slide-up">
+  <form (ngSubmit)="save()" class="form-layout">
+    
+    <div class="form-section">
+      <h3 class="section-title">Informations du Département</h3>
+      
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label">Nom du département</label>
+          <input type="text" class="form-control" [(ngModel)]="department.name" name="name" placeholder="Ex: Marketing & Communication">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Responsable (Manager)</label>
+          <input type="text" class="form-control" [(ngModel)]="department.manager" name="manager" placeholder="Ex: Ahmed Alaoui">
+        </div>
+      </div>
+      
+      <div class="form-group" style="margin-top: 1.5rem;">
+        <label class="form-label">Description</label>
+        <textarea class="form-control" rows="4" [(ngModel)]="department.description" name="description" placeholder="Description des missions et objectifs du département..."></textarea>
+      </div>
+    </div>
 
-  <label>Nom</label>
-
-  <input
-    type="text"
-    [(ngModel)]="department.name"
-    name="name">
-
-  <label>Description</label>
-
-  <textarea
-    [(ngModel)]="department.description"
-    name="description">
-    </textarea>
-
-  <label>Responsable</label>
-
-  <input
-    type="text"
-    [(ngModel)]="department.manager"
-    name="manager">
-
-  <button type="submit">
-
-    Enregistrer
-
-  </button>
-
-</form>
+    <div class="form-actions">
+      <button type="button" class="btn btn-secondary" routerLink="/departments">Annuler</button>
+      <button type="submit" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+          <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+          <polyline points="17 21 17 13 7 13 7 21"></polyline>
+          <polyline points="7 3 7 8 15 8"></polyline>
+        </svg>
+        Enregistrer le département
+      </button>
+    </div>
+    
+  </form>
+</div>

@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+export let Recommendations = undefined;
+
+
 @Component({
   selector:'app-recommendations',
   standalone:true,

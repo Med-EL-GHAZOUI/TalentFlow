@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+// @ts-ignore
 import { Employee } from '../models/employee.model';
 import { ApiService } from './api';
 
@@ -30,5 +31,6 @@ export class EmployeeService extends ApiService {
 
 }
 
+// @ts-ignore
 export class Employee {
 }

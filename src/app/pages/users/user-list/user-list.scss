@@ -1,23 +1,44 @@
-table{
+@import '../../employees/employee-list/employee-list.scss';
 
-  width:100%;
+.item-cell {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 
-  border-collapse:collapse;
+  .avatar-sm {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 0.875rem;
+    flex-shrink: 0;
 
+    &.bg-indigo { background: linear-gradient(135deg, var(--primary-500), var(--primary-700)); }
+    &.bg-emerald { background: linear-gradient(135deg, #10b981, #047857); }
+    &.bg-slate { background: linear-gradient(135deg, var(--slate-500), var(--slate-700)); }
+  }
+
+  .item-info {
+    display: flex;
+    flex-direction: column;
+
+    .item-name {
+      font-weight: 600;
+      color: var(--slate-900);
+    }
+
+    .item-desc {
+      font-size: 0.75rem;
+      color: var(--slate-500);
+    }
+  }
 }
 
-th,td{
-
-  border:1px solid #ddd;
-
-  padding:12px;
-
-}
-
-th{
-
-  background:#1976d2;
-
-  color:white;
-
+.email-cell {
+  color: var(--slate-600);
+  font-weight: 500;
 }

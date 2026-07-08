@@ -1,25 +1,65 @@
-<h2>Mon Profil</h2>
-
-<div class="profile-card">
-
-  <div class="avatar">
-
-    {{ profile.firstname[0] }}{{ profile.lastname[0] }}
-
+<div class="page-header animate-fade-in">
+  <div>
+    <h1 class="page-title">Mon Profil</h1>
+    <p class="page-subtitle">Gérez vos informations personnelles et vos préférences</p>
   </div>
+</div>
 
-  <div class="info">
-
-    <p><strong>Prénom :</strong> {{ profile.firstname }}</p>
-
-    <p><strong>Nom :</strong> {{ profile.lastname }}</p>
-
-    <p><strong>Email :</strong> {{ profile.email }}</p>
-
-    <p><strong>Téléphone :</strong> {{ profile.phone }}</p>
-
-    <p><strong>Rôle :</strong> {{ profile.role }}</p>
-
+<div class="profile-container animate-slide-up">
+  <div class="profile-card card">
+    <div class="profile-header">
+      <div class="avatar-xl bg-primary">
+        {{ profile.firstname.charAt(0) }}{{ profile.lastname.charAt(0) }}
+        <button class="avatar-edit-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+            <circle cx="12" cy="13" r="4"></circle>
+          </svg>
+        </button>
+      </div>
+      <div class="profile-title">
+        <h2>{{ profile.firstname }} {{ profile.lastname }}</h2>
+        <span class="badge badge-primary">{{ profile.role }}</span>
+      </div>
+    </div>
+    
+    <hr class="divider">
+    
+    <div class="profile-info-grid">
+      <div class="info-group">
+        <label>Prénom</label>
+        <p>{{ profile.firstname }}</p>
+      </div>
+      
+      <div class="info-group">
+        <label>Nom</label>
+        <p>{{ profile.lastname }}</p>
+      </div>
+      
+      <div class="info-group">
+        <label>Adresse Email</label>
+        <p class="text-primary">{{ profile.email }}</p>
+      </div>
+      
+      <div class="info-group">
+        <label>Téléphone</label>
+        <p>{{ profile.phone }}</p>
+      </div>
+      
+      <div class="info-group">
+        <label>Statut du compte</label>
+        <p><span class="badge badge-success">Actif</span></p>
+      </div>
+      
+      <div class="info-group">
+        <label>Dernière connexion</label>
+        <p>Aujourd'hui, 09:41</p>
+      </div>
+    </div>
+    
+    <div class="profile-actions">
+      <button class="btn btn-outline">Changer le mot de passe</button>
+      <button class="btn btn-primary">Modifier les informations</button>
+    </div>
   </div>
-
 </div>

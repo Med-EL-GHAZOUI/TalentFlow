@@ -1,25 +1,149 @@
-<h2>Dashboard GPEC</h2>
+<div class="page-header animate-fade-in">
+  <div>
+    <h1 class="page-title">Dashboard GPEC</h1>
+    <p class="page-subtitle">Aperçu général des ressources et compétences de l'entreprise</p>
+  </div>
+  <button class="btn btn-primary" routerLink="/gpec-dashboard">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+      <line x1="12" y1="5" x2="12" y2="19"></line>
+      <line x1="5" y1="12" x2="19" y2="12"></line>
+    </svg>
+    Nouveau Rapport
+  </button>
+</div>
 
-<div class="cards">
-
-  <div class="card">
-    <h3>Employés</h3>
-    <span>{{ totalEmployees }}</span>
+<div class="kpi-grid animate-slide-up">
+  <!-- Employés Card -->
+  <div class="kpi-card kpi-employees">
+    <div class="kpi-icon-wrapper">
+      <svg class="kpi-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+        <circle cx="9" cy="7" r="4"></circle>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+      </svg>
+    </div>
+    <div class="kpi-content">
+      <span class="kpi-label">Employés</span>
+      <h3 class="kpi-value">{{ totalEmployees }}</h3>
+    </div>
+    <div class="kpi-trend positive">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+      <span>+12%</span>
+    </div>
   </div>
 
-  <div class="card">
-    <h3>Départements</h3>
-    <span>{{ totalDepartments }}</span>
+  <!-- Départements Card -->
+  <div class="kpi-card kpi-departments">
+    <div class="kpi-icon-wrapper">
+      <svg class="kpi-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+        <rect x="9" y="9" width="6" height="6"></rect>
+        <line x1="9" y1="1" x2="9" y2="4"></line>
+        <line x1="15" y1="1" x2="15" y2="4"></line>
+        <line x1="9" y1="20" x2="9" y2="23"></line>
+        <line x1="15" y1="20" x2="15" y2="23"></line>
+        <line x1="20" y1="9" x2="23" y2="9"></line>
+        <line x1="20" y1="14" x2="23" y2="14"></line>
+        <line x1="1" y1="9" x2="4" y2="9"></line>
+        <line x1="1" y1="14" x2="4" y2="14"></line>
+      </svg>
+    </div>
+    <div class="kpi-content">
+      <span class="kpi-label">Départements</span>
+      <h3 class="kpi-value">{{ totalDepartments }}</h3>
+    </div>
   </div>
 
-  <div class="card">
-    <h3>Postes</h3>
-    <span>{{ totalJobs }}</span>
+  <!-- Postes Card -->
+  <div class="kpi-card kpi-jobs">
+    <div class="kpi-icon-wrapper">
+      <svg class="kpi-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+      </svg>
+    </div>
+    <div class="kpi-content">
+      <span class="kpi-label">Postes Ouverts</span>
+      <h3 class="kpi-value">{{ totalJobs }}</h3>
+    </div>
+    <div class="kpi-trend positive">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+      <span>+3</span>
+    </div>
   </div>
 
-  <div class="card">
-    <h3>Formations</h3>
-    <span>{{ totalTrainings }}</span>
+  <!-- Formations Card -->
+  <div class="kpi-card kpi-training">
+    <div class="kpi-icon-wrapper">
+      <svg class="kpi-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+      </svg>
+    </div>
+    <div class="kpi-content">
+      <span class="kpi-label">Formations en cours</span>
+      <h3 class="kpi-value">{{ totalTrainings }}</h3>
+    </div>
+    <div class="kpi-trend neutral">
+      <span>Actives</span>
+    </div>
+  </div>
+</div>
+
+<div class="dashboard-widgets animate-slide-up" style="animation-delay: 0.1s;">
+  <div class="card widget-chart">
+    <div class="widget-header">
+      <h3>Évolution des Effectifs</h3>
+      <button class="icon-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+      </button>
+    </div>
+    <div class="chart-placeholder">
+      <!-- Placeholder for a real chart library like Chart.js or ECharts -->
+      <svg viewBox="0 0 400 200" class="placeholder-svg">
+        <path d="M0 150 Q 50 120 100 140 T 200 100 T 300 80 T 400 50" fill="none" stroke="var(--primary-500)" stroke-width="4" stroke-linecap="round"></path>
+        <path d="M0 150 Q 50 120 100 140 T 200 100 T 300 80 T 400 50 L 400 200 L 0 200 Z" fill="url(#gradient)" opacity="0.2"></path>
+        <defs>
+          <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="var(--primary-500)"></stop>
+            <stop offset="100%" stop-color="transparent"></stop>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
   </div>
 
+  <div class="card widget-list">
+    <div class="widget-header">
+      <h3>Recrutements Récents</h3>
+      <a routerLink="/employees" class="widget-link">Voir tout</a>
+    </div>
+    <div class="list-items">
+      <div class="list-item">
+        <div class="avatar bg-indigo">ME</div>
+        <div class="item-info">
+          <h4>Mohamed EL GHAZOUI</h4>
+          <p>Développeur Fullstack • IT</p>
+        </div>
+        <span class="badge badge-success">Nouveau</span>
+      </div>
+      <div class="list-item">
+        <div class="avatar bg-emerald">AA</div>
+        <div class="item-info">
+          <h4>Ahmed Alaoui</h4>
+          <p>Manager RH • HR</p>
+        </div>
+        <span class="badge badge-success">Nouveau</span>
+      </div>
+      <div class="list-item">
+        <div class="avatar bg-rose">SB</div>
+        <div class="item-info">
+          <h4>Sara Benali</h4>
+          <p>Data Analyst • Data</p>
+        </div>
+        <span class="badge badge-success">Nouveau</span>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,27 +1,70 @@
-<div class="login-card">
+<div class="login-container">
+  <!-- Decorative background elements -->
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  
+  <div class="login-card animate-slide-up">
+    <div class="login-header">
+      <div class="logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+          <path d="M2 17l10 5 10-5"></path>
+          <path d="M2 12l10 5 10-5"></path>
+        </svg>
+      </div>
+      <h2>Bienvenue</h2>
+      <p>Connectez-vous à TalentFlow GPEC</p>
+    </div>
 
-  <h2>Connexion</h2>
+    <form (ngSubmit)="login()" class="login-form">
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <div class="input-icon-wrapper">
+          <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          <input 
+            type="email" 
+            class="form-control with-icon" 
+            placeholder="votre@email.com" 
+            [(ngModel)]="credentials.email" 
+            name="email"
+            required>
+        </div>
+      </div>
 
-  <form (ngSubmit)="login()">
+      <div class="form-group">
+        <div class="label-row">
+          <label class="form-label">Mot de passe</label>
+          <a href="#" class="forgot-link">Mot de passe oublié ?</a>
+        </div>
+        <div class="input-icon-wrapper">
+          <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          <input 
+            type="password" 
+            class="form-control with-icon" 
+            placeholder="••••••••" 
+            [(ngModel)]="credentials.password" 
+            name="password"
+            required>
+        </div>
+      </div>
 
-    <input
-      type="email"
-      placeholder="Email"
-      [(ngModel)]="credentials.email"
-      name="email">
-
-    <input
-      type="password"
-      placeholder="Mot de passe"
-      [(ngModel)]="credentials.password"
-      name="password">
-
-    <button type="submit">
-
-      Se connecter
-
-    </button>
-
-  </form>
-
+      <button type="submit" class="btn btn-primary login-btn">
+        <span>Se connecter</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </button>
+    </form>
+    
+    <div class="login-footer">
+      <p>Pas encore de compte ? <a href="#">Contacter l'administrateur</a></p>
+    </div>
+  </div>
 </div>
