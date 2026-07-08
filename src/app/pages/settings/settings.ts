@@ -23,6 +23,7 @@ export class SettingsComponent {
 
   originalSettings = { ...this.settings };
   isSaving = false;
+  showSuccess = false;
 
   setTab(tab: string) {
     this.activeTab = tab;
@@ -30,15 +31,17 @@ export class SettingsComponent {
 
   save(): void {
     this.isSaving = true;
-    console.log('Saving settings...', this.settings);
+    this.showSuccess = false;
     setTimeout(() => {
       this.isSaving = false;
+      this.showSuccess = true;
       this.originalSettings = { ...this.settings };
-      alert('Modifications sauvegardées avec succès !');
+      setTimeout(() => this.showSuccess = false, 3000);
     }, 800);
   }
 
   cancel(): void {
     this.settings = { ...this.originalSettings };
+    this.showSuccess = false;
   }
 }

@@ -1,96 +1,115 @@
-<div class="page-header animate-fade-in">
-  <div>
-    <h1 class="page-title">Compétences</h1>
-    <p class="page-subtitle">Gérez le référentiel de compétences de l'entreprise ({{ skills.length }} au total)</p>
-  </div>
-  <div class="header-actions">
-    <button class="btn btn-primary" routerLink="/skills/new">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
-        <line x1="12" y1="5" x2="12" y2="19"></line>
-        <line x1="5" y1="12" x2="19" y2="12"></line>
-      </svg>
-      Nouvelle compétence
-    </button>
-  </div>
-</div>
+<div class="pro-max-page-wrapper">
+  
+  <!-- Premium Background Blobs -->
+  <div class="blob-bg blob-1"></div>
+  <div class="blob-bg blob-2"></div>
+  <div class="blob-bg blob-3"></div>
 
-<div class="card table-card animate-slide-up">
-  <div class="table-toolbar">
-    <div class="search-box">
-      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
-      <input type="text" class="form-control" placeholder="Rechercher une compétence...">
+  <div class="page-content">
+    <div class="page-header animate-fade-in-down">
+      <div>
+        <h1 class="page-title gradient-text">Référentiel de Compétences</h1>
+        <p class="page-subtitle">Cartographie globale des savoir-faire de COPAG ({{ skills.length }} au total)</p>
+      </div>
+      <div class="header-actions">
+        <button class="btn-premium" routerLink="/skills/new">
+          <span class="btn-glow"></span>
+          <span class="btn-content">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Nouvelle compétence
+          </span>
+        </button>
+      </div>
     </div>
-  </div>
 
-  <div class="table-responsive">
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>Compétence</th>
-          <th>Catégorie</th>
-          <th>Niveau Requis</th>
-          <th class="actions-col">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for(skill of skills; track skill.id){
-          <tr>
-            <td>
-              <div class="item-cell">
-                <div class="icon-sm bg-violet">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                  </svg>
-                </div>
-                <div class="item-info">
-                  <span class="item-name">{{ skill.name }}</span>
-                  <span class="item-desc">ID: SKL-{{ skill.id.toString().padStart(3, '0') }}</span>
-                </div>
-              </div>
-            </td>
-            <td>
-              <span class="badge" 
-                    [class.badge-primary]="skill.category === 'Frontend'"
-                    [class.badge-success]="skill.category === 'Backend'"
-                    [class.badge-info]="skill.category === 'DevOps'">
-                {{ skill.category }}
-              </span>
-            </td>
-            <td>
-              <div class="level-indicator">
-                <span class="level-text">{{ skill.level }} / 5</span>
-                <div class="level-bar-container">
-                  <div class="level-bar" [style.width]="(skill.level / 5) * 100 + '%'"
-                       [class.low]="skill.level <= 2"
-                       [class.medium]="skill.level === 3"
-                       [class.high]="skill.level >= 4"></div>
-                </div>
-              </div>
-            </td>
-            <td class="actions-cell">
-              <div class="action-buttons">
-                <button class="action-btn edit" title="Modifier">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                  </svg>
-                </button>
-                <button class="action-btn delete" title="Supprimer">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="3 6 5 6 21 6"></polyline>
-                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                    <line x1="10" y1="11" x2="10" y2="17"></line>
-                    <line x1="14" y1="11" x2="14" y2="17"></line>
-                  </svg>
-                </button>
-              </div>
-            </td>
-          </tr>
-        }
-      </tbody>
-    </table>
+    <div class="glass-card animate-fade-in-up" style="animation-delay: 0.1s;">
+      <div class="table-toolbar">
+        <div class="search-box glass-input-wrapper" style="width: 300px;">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" class="glass-form-control" placeholder="Rechercher une compétence..." (input)="filter($event)">
+        </div>
+        <div class="filter-actions">
+          <button class="glass-icon-btn" title="Filtrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="data-table pro-max-table">
+          <thead>
+            <tr>
+              <th>Compétence</th>
+              <th>Catégorie</th>
+              <th>Niveau Requis</th>
+              <th class="actions-col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for(skill of skills; track skill.id){
+              <tr class="glass-tr">
+                <td>
+                  <div class="item-cell">
+                    <div class="icon-sm bg-cyan-glow avatar-glow">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                      </svg>
+                    </div>
+                    <div class="item-info">
+                      <span class="item-name">{{ skill.name }}</span>
+                      <span class="item-desc">ID: SKL-{{ skill.id.toString().padStart(3, '0') }}</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span class="badge" 
+                        [class.badge-primary]="skill.category === 'Agricole'"
+                        [class.badge-success]="skill.category === 'Qualité'"
+                        [class.badge-warning]="skill.category === 'Maintenance'"
+                        [class.badge-info]="skill.category === 'Management'"
+                        [class.badge-secondary]="skill.category === 'Soft Skills'">
+                    {{ skill.category }}
+                  </span>
+                </td>
+                <td style="min-width: 180px;">
+                  <div class="level-cell">
+                    <div class="level-bar-container glass-progress-bg">
+                      <div class="level-bar glass-progress-fill" [style.width.%]="skill.level * 20"></div>
+                    </div>
+                    <span class="level-text">{{ skill.level }}/5</span>
+                  </div>
+                </td>
+                <td class="actions-cell">
+                  <div class="action-buttons">
+                    <button class="glass-icon-btn action-btn edit" title="Modifier" [routerLink]="['/skills', skill.id, 'edit']">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                      </svg>
+                    </button>
+                    <button class="glass-icon-btn action-btn delete" title="Supprimer" (click)="delete(skill.id)">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                        <line x1="10" y1="11" x2="10" y2="17"></line>
+                        <line x1="14" y1="11" x2="14" y2="17"></line>
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,65 +1,86 @@
-<div class="page-header animate-fade-in">
-  <div>
-    <h1 class="page-title">Nouveau Poste</h1>
-    <p class="page-subtitle">Créer une nouvelle fiche de poste au catalogue</p>
-  </div>
-  <div class="header-actions">
-    <button class="btn btn-secondary" routerLink="/jobs">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
-        <line x1="19" y1="12" x2="5" y2="12"></line>
-        <polyline points="12 19 5 12 12 5"></polyline>
-      </svg>
-      Retour
-    </button>
-  </div>
-</div>
+<div class="pro-max-page-wrapper">
+  
+  <!-- Premium Background Blobs -->
+  <div class="blob-bg blob-1"></div>
+  <div class="blob-bg blob-2"></div>
+  <div class="blob-bg blob-3"></div>
 
-<div class="card animate-slide-up">
-  <form (ngSubmit)="save()" class="form-layout">
-    
-    <div class="form-section">
-      <h3 class="section-title">Informations du Poste</h3>
-      
-      <div class="form-grid">
-        <div class="form-group">
-          <label class="form-label">Titre du poste</label>
-          <input type="text" class="form-control" [(ngModel)]="job.title" name="title" placeholder="Ex: Lead Développeur Angular">
-        </div>
+  <div class="page-content" style="max-width: 800px; margin: 0 auto;">
+    <div class="page-header animate-fade-in-down" style="margin-bottom: 2.5rem;">
+      <div>
+        <h1 class="page-title gradient-text">{{ isEditMode ? 'Modifier le Poste' : 'Nouveau Poste' }}</h1>
+        <p class="page-subtitle">{{ isEditMode ? 'Mettre à jour cette fiche de poste' : 'Créer une nouvelle fiche de poste au catalogue' }}</p>
+      </div>
+      <div class="header-actions">
+        <button class="glass-icon-btn" routerLink="/jobs" style="width: auto; padding: 0 1rem; font-weight: 600;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="margin-right: 0.5rem;">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          Retour
+        </button>
+      </div>
+    </div>
+
+    <div class="glass-card animate-slide-up" style="padding: 2.5rem;">
+      <form (ngSubmit)="save()" class="form-layout">
         
-        <div class="form-group">
-          <label class="form-label">Département de rattachement</label>
-          <div class="select-wrapper">
-            <select class="form-control" [(ngModel)]="job.department" name="department">
-              <option value="" disabled selected>Sélectionner un département</option>
-              <option value="IT">Informatique (IT)</option>
-              <option value="HR">Ressources Humaines</option>
-              <option value="Marketing">Marketing</option>
-              <option value="Sales">Ventes</option>
-            </select>
-            <svg class="select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
+        <div class="form-section" style="margin-bottom: 3rem;">
+          <h3 class="section-title" style="font-size: 1.2rem; font-weight: 800; color: var(--slate-800); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+            <div class="icon-sm bg-amber-glow" style="width: 32px; height: 32px; border-radius: 8px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+            </div>
+            Informations du Poste
+          </h3>
+          
+          <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+            <div class="form-group glass-input-wrapper" style="grid-column: span 2;">
+              <label class="form-label" style="font-weight: 600; color: var(--slate-700); margin-bottom: 0.5rem; display: block;">Titre du poste</label>
+              <input type="text" class="glass-form-control" [(ngModel)]="job.title" name="title" placeholder="Ex: Lead Développeur Angular">
+            </div>
+            
+            <div class="form-group glass-input-wrapper" style="grid-column: span 2;">
+              <label class="form-label" style="font-weight: 600; color: var(--slate-700); margin-bottom: 0.5rem; display: block;">Département de rattachement</label>
+              <div class="select-wrapper">
+                <select class="glass-form-control" [(ngModel)]="job.department" name="department" style="appearance: none; width: 100%;">
+                  <option value="" disabled selected>Sélectionner un département</option>
+                  <option value="IT">Informatique (IT)</option>
+                  <option value="HR">Ressources Humaines</option>
+                  <option value="Marketing">Marketing</option>
+                  <option value="Sales">Ventes</option>
+                </select>
+                <svg class="select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="right: 1rem; left: auto;">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group glass-input-wrapper" style="margin-top: 1.5rem;">
+            <label class="form-label" style="font-weight: 600; color: var(--slate-700); margin-bottom: 0.5rem; display: block;">Description des missions</label>
+            <textarea class="glass-form-control" rows="6" [(ngModel)]="job.description" name="description" placeholder="Décrivez les principales missions, responsabilités et activités du poste..."></textarea>
           </div>
         </div>
-      </div>
-      
-      <div class="form-group" style="margin-top: 1.5rem;">
-        <label class="form-label">Description des missions</label>
-        <textarea class="form-control" rows="6" [(ngModel)]="job.description" name="description" placeholder="Décrivez les principales missions, responsabilités et activités du poste..."></textarea>
-      </div>
-    </div>
 
-    <div class="form-actions">
-      <button type="button" class="btn btn-secondary" routerLink="/jobs">Annuler</button>
-      <button type="submit" class="btn btn-primary">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
-          <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
-          <polyline points="17 21 17 13 7 13 7 21"></polyline>
-          <polyline points="7 3 7 8 15 8"></polyline>
-        </svg>
-        Enregistrer le poste
-      </button>
+        <div class="form-actions" style="display: flex; justify-content: flex-end; gap: 1rem; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 2rem;">
+          <button type="button" class="glass-icon-btn" routerLink="/jobs" style="width: auto; padding: 0 1.5rem; font-weight: 600;">Annuler</button>
+          <button type="submit" class="btn-premium">
+            <span class="btn-glow"></span>
+            <span class="btn-content">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                <polyline points="7 3 7 8 15 8"></polyline>
+              </svg>
+              Enregistrer
+            </span>
+          </button>
+        </div>
+        
+      </form>
     </div>
-    
-  </form>
+  </div>
 </div>

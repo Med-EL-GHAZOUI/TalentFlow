@@ -1,85 +1,105 @@
-<div class="page-header animate-fade-in">
-  <div>
-    <h1 class="page-title">Nouvelle Compétence</h1>
-    <p class="page-subtitle">Ajouter une compétence au référentiel de l'entreprise</p>
-  </div>
-  <div class="header-actions">
-    <button class="btn btn-secondary" routerLink="/skills">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
-        <line x1="19" y1="12" x2="5" y2="12"></line>
-        <polyline points="12 19 5 12 12 5"></polyline>
-      </svg>
-      Retour
-    </button>
-  </div>
-</div>
+<div class="pro-max-page-wrapper">
+  
+  <!-- Premium Background Blobs -->
+  <div class="blob-bg blob-1"></div>
+  <div class="blob-bg blob-2"></div>
+  <div class="blob-bg blob-3"></div>
 
-<div class="card animate-slide-up">
-  <form (ngSubmit)="save()" class="form-layout">
-    
-    <div class="form-section">
-      <h3 class="section-title">Informations de la Compétence</h3>
-      
-      <div class="form-grid">
-        <div class="form-group">
-          <label class="form-label">Nom de la compétence</label>
-          <input type="text" class="form-control" [(ngModel)]="skill.name" name="name" placeholder="Ex: React.js">
-        </div>
-        
-        <div class="form-group">
-          <label class="form-label">Catégorie</label>
-          <div class="select-wrapper">
-            <select class="form-control" [(ngModel)]="skill.category" name="category">
-              <option value="" disabled selected>Sélectionner une catégorie</option>
-              <option value="Frontend">Frontend</option>
-              <option value="Backend">Backend</option>
-              <option value="DevOps">DevOps</option>
-              <option value="Design">Design</option>
-              <option value="Management">Management</option>
-            </select>
-            <svg class="select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </div>
-        </div>
+  <div class="page-content" style="max-width: 800px; margin: 0 auto;">
+    <div class="page-header animate-fade-in-down" style="margin-bottom: 2.5rem;">
+      <div>
+        <h1 class="page-title gradient-text">{{ isEditMode ? 'Modifier la Compétence' : 'Nouvelle Compétence' }}</h1>
+        <p class="page-subtitle">{{ isEditMode ? 'Mettre à jour les détails de cette compétence' : 'Ajouter une compétence au référentiel de l\'entreprise' }}</p>
       </div>
-      
-      <div class="form-group" style="margin-top: 1.5rem;">
-        <label class="form-label">Niveau d'expertise cible</label>
-        <div class="level-selector">
-          <div class="range-wrapper">
-            <input type="range" min="1" max="5" [(ngModel)]="skill.level" name="level" class="range-slider">
-            <div class="range-labels">
-              <span>1</span>
-              <span>2</span>
-              <span>3</span>
-              <span>4</span>
-              <span>5</span>
+      <div class="header-actions">
+        <button class="glass-icon-btn" routerLink="/skills" style="width: auto; padding: 0 1rem; font-weight: 600;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="margin-right: 0.5rem;">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          Retour
+        </button>
+      </div>
+    </div>
+
+    <div class="glass-card animate-slide-up" style="padding: 2.5rem;">
+      <form (ngSubmit)="save()" class="form-layout">
+        
+        <div class="form-section" style="margin-bottom: 3rem;">
+          <h3 class="section-title" style="font-size: 1.2rem; font-weight: 800; color: var(--slate-800); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+            <div class="icon-sm bg-purple-glow" style="width: 32px; height: 32px; border-radius: 8px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+            </div>
+            Informations de la Compétence
+          </h3>
+          
+          <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+            <div class="form-group glass-input-wrapper">
+              <label class="form-label" style="font-weight: 600; color: var(--slate-700); margin-bottom: 0.5rem; display: block;">Nom de la compétence</label>
+              <input type="text" class="glass-form-control" [(ngModel)]="skill.name" name="name" placeholder="Ex: React.js">
+            </div>
+            
+            <div class="form-group glass-input-wrapper">
+              <label class="form-label" style="font-weight: 600; color: var(--slate-700); margin-bottom: 0.5rem; display: block;">Catégorie</label>
+              <div class="select-wrapper">
+                <select class="glass-form-control" [(ngModel)]="skill.category" name="category" style="appearance: none; width: 100%;">
+                  <option value="" disabled selected>Sélectionner une catégorie</option>
+                  <option value="Frontend">Frontend</option>
+                  <option value="Backend">Backend</option>
+                  <option value="DevOps">DevOps</option>
+                  <option value="Design">Design</option>
+                  <option value="Management">Management</option>
+                  <option value="Agricole">Agricole</option>
+                  <option value="Qualité">Qualité</option>
+                  <option value="Maintenance">Maintenance</option>
+                  <option value="Soft Skills">Soft Skills</option>
+                </select>
+                <svg class="select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="right: 1rem; left: auto;">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
             </div>
           </div>
-          <div class="level-display">
-            Niveau <strong>{{ skill.level }}</strong>
+          
+          <div class="form-group glass-input-wrapper" style="margin-top: 1.5rem;">
+            <label class="form-label" style="font-weight: 600; color: var(--slate-700); margin-bottom: 0.5rem; display: block;">Niveau d'expertise cible</label>
+            <div class="level-selector" style="display: flex; align-items: center; gap: 1.5rem;">
+              <div class="range-wrapper" style="flex: 1;">
+                <input type="range" min="1" max="5" [(ngModel)]="skill.level" name="level" style="width: 100%;">
+                <div class="range-labels" style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--slate-500); margin-top: 0.5rem; font-weight: 600;">
+                  <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                </div>
+              </div>
+              <div class="level-display glass-card" style="padding: 0.5rem 1rem; background: rgba(255,255,255,0.8); font-weight: 600; color: var(--slate-700);">
+                Niveau <strong style="color: var(--primary-600); font-size: 1.2rem;">{{ skill.level }}</strong>
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group glass-input-wrapper" style="margin-top: 1.5rem;">
+            <label class="form-label" style="font-weight: 600; color: var(--slate-700); margin-bottom: 0.5rem; display: block;">Description et critères d'évaluation</label>
+            <textarea class="glass-form-control" rows="4" [(ngModel)]="skill.description" name="description" placeholder="Détaillez ce qui est attendu pour cette compétence..."></textarea>
           </div>
         </div>
-      </div>
-      
-      <div class="form-group" style="margin-top: 1.5rem;">
-        <label class="form-label">Description et critères d'évaluation</label>
-        <textarea class="form-control" rows="4" [(ngModel)]="skill.description" name="description" placeholder="Détaillez ce qui est attendu pour cette compétence..."></textarea>
-      </div>
-    </div>
 
-    <div class="form-actions">
-      <button type="button" class="btn btn-secondary" routerLink="/skills">Annuler</button>
-      <button type="submit" class="btn btn-primary">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
-          <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
-          <polyline points="17 21 17 13 7 13 7 21"></polyline>
-          <polyline points="7 3 7 8 15 8"></polyline>
-        </svg>
-        Enregistrer la compétence
-      </button>
+        <div class="form-actions" style="display: flex; justify-content: flex-end; gap: 1rem; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 2rem;">
+          <button type="button" class="glass-icon-btn" routerLink="/skills" style="width: auto; padding: 0 1.5rem; font-weight: 600;">Annuler</button>
+          <button type="submit" class="btn-premium">
+            <span class="btn-glow"></span>
+            <span class="btn-content">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                <polyline points="7 3 7 8 15 8"></polyline>
+              </svg>
+              Enregistrer
+            </span>
+          </button>
+        </div>
+        
+      </form>
     </div>
-    
-  </form>
+  </div>
 </div>

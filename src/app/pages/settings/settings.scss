@@ -345,3 +345,19 @@
 .spin-animation {
   animation: spin 1s linear infinite;
 }
+
+.success-msg {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--emerald-600);
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-right: auto;
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}

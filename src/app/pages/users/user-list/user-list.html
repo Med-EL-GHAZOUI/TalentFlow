@@ -1,95 +1,108 @@
-<div class="page-header animate-fade-in">
-  <div>
-    <h1 class="page-title">Utilisateurs</h1>
-    <p class="page-subtitle">Gérez les accès et les rôles de la plateforme ({{ users.length }} au total)</p>
-  </div>
-  <div class="header-actions">
-    <button class="btn btn-primary" routerLink="/users/new">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
-        <line x1="12" y1="5" x2="12" y2="19"></line>
-        <line x1="5" y1="12" x2="19" y2="12"></line>
-      </svg>
-      Nouvel utilisateur
-    </button>
-  </div>
-</div>
+<div class="pro-max-page-wrapper">
+  
+  <!-- Premium Background Blobs -->
+  <div class="blob-bg blob-1"></div>
+  <div class="blob-bg blob-2"></div>
+  <div class="blob-bg blob-3"></div>
 
-<div class="card table-card animate-slide-up">
-  <div class="table-toolbar">
-    <div class="search-box">
-      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
-      <input type="text" class="form-control" placeholder="Rechercher un utilisateur...">
+  <div class="page-content">
+    <div class="page-header animate-fade-in-down">
+      <div>
+        <h1 class="page-title gradient-text">Utilisateurs</h1>
+        <p class="page-subtitle">Gérez les accès et les rôles de la plateforme ({{ users.length }} au total)</p>
+      </div>
+      <div class="header-actions">
+        <button class="btn-premium" routerLink="/users/new">
+          <span class="btn-glow"></span>
+          <span class="btn-content">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Nouvel utilisateur
+          </span>
+        </button>
+      </div>
     </div>
-  </div>
 
-  <div class="table-responsive">
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>Utilisateur</th>
-          <th>Email</th>
-          <th>Rôle</th>
-          <th>Statut</th>
-          <th class="actions-col">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for(user of users; track user.id){
-          <tr>
-            <td>
-              <div class="item-cell">
-                <div class="avatar-sm"
-                     [class.bg-indigo]="user.role === 'ADMIN'"
-                     [class.bg-emerald]="user.role === 'HR'"
-                     [class.bg-slate]="user.role !== 'ADMIN' && user.role !== 'HR'">
-                  {{ user.firstname.charAt(0) }}{{ user.lastname.charAt(0) }}
-                </div>
-                <div class="item-info">
-                  <span class="item-name">{{ user.firstname }} {{ user.lastname }}</span>
-                  <span class="item-desc">ID: USR-{{ user.id.toString().padStart(3, '0') }}</span>
-                </div>
-              </div>
-            </td>
-            <td>
-              <div class="email-cell">
-                <span>{{ user.email }}</span>
-              </div>
-            </td>
-            <td>
-              <span class="badge"
-                    [class.badge-primary]="user.role === 'ADMIN'"
-                    [class.badge-success]="user.role === 'HR'"
-                    [class.badge-info]="user.role === 'MANAGER'"
-                    [class.badge-warning]="user.role === 'EMPLOYEE'">
-                {{ user.role }}
-              </span>
-            </td>
-            <td>
-              <span class="badge badge-success">Actif</span>
-            </td>
-            <td class="actions-cell">
-              <div class="action-buttons">
-                <button class="action-btn edit" title="Modifier">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                  </svg>
-                </button>
-                <button class="action-btn delete" title="Désactiver">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                    <line x1="9" y1="9" x2="15" y2="15"></line>
-                    <line x1="15" y1="9" x2="9" y2="15"></line>
-                  </svg>
-                </button>
-              </div>
-            </td>
-          </tr>
-        }
-      </tbody>
-    </table>
+    <div class="glass-card animate-fade-in-up" style="animation-delay: 0.1s;">
+      <div class="table-toolbar" style="margin-bottom: 1.5rem;">
+        <div class="search-box glass-input-wrapper" style="max-width: 400px;">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" class="glass-form-control" placeholder="Rechercher un utilisateur..." (input)="filter($event)">
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="data-table pro-max-table">
+          <thead>
+            <tr>
+              <th>Utilisateur</th>
+              <th>Email</th>
+              <th>Rôle</th>
+              <th>Statut</th>
+              <th class="actions-col" style="width: 120px; text-align: right;">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for(user of users; track user.id){
+              <tr class="glass-tr">
+                <td>
+                  <div class="item-cell">
+                    <div class="avatar-glow"
+                         [class.bg-purple-glow]="user.role === 'ADMIN'"
+                         [class.bg-cyan-glow]="user.role === 'HR'"
+                         [class.bg-blue-glow]="user.role !== 'ADMIN' && user.role !== 'HR'">
+                      {{ user.firstname.charAt(0) }}{{ user.lastname.charAt(0) }}
+                    </div>
+                    <div class="item-info">
+                      <span class="item-name">{{ user.firstname }} {{ user.lastname }}</span>
+                      <span class="item-desc">ID: USR-{{ user.id.toString().padStart(3, '0') }}</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="email-cell" style="font-weight: 500; color: var(--slate-600);">
+                    <span>{{ user.email }}</span>
+                  </div>
+                </td>
+                <td>
+                  <span class="badge"
+                        [class.badge-primary]="user.role === 'ADMIN'"
+                        [class.badge-success]="user.role === 'HR'"
+                        [class.badge-info]="user.role === 'MANAGER'"
+                        [class.badge-warning]="user.role === 'EMPLOYEE'">
+                    {{ user.role }}
+                  </span>
+                </td>
+                <td>
+                  <span class="trend-pill positive" style="padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 700; color: #059669; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2);">Actif</span>
+                </td>
+                <td class="actions-cell">
+                  <div class="action-buttons" style="display: flex; gap: 0.5rem; justify-content: flex-end;">
+                    <button class="glass-icon-btn edit" title="Modifier" [routerLink]="['/users', user.id, 'edit']">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                      </svg>
+                    </button>
+                    <button class="glass-icon-btn action-btn delete" title="Supprimer" (click)="delete(user.id)">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="9" y1="9" x2="15" y2="15"></line>
+                        <line x1="15" y1="9" x2="9" y2="15"></line>
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>

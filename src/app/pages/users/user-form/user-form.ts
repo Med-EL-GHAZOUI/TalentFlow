@@ -1,15 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { RouterLink, ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-form',
   standalone: true,
-  imports: [FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './user-form.html',
   styleUrl: './user-form.scss'
 })
-export class UserFormComponent {
+export class UserFormComponent implements OnInit {
+
+  isEditMode = false;
 
   user = {
     firstname: '',
@@ -18,8 +21,27 @@ export class UserFormComponent {
     role: 'EMPLOYEE'
   };
 
+  constructor(private route: ActivatedRoute, private router: Router) {}
+
+  ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      if (id) {
+        this.isEditMode = true;
+        // Mock data
+        this.user = {
+          firstname: 'Admin',
+          lastname: 'System',
+          email: 'admin@copag.ma',
+          role: 'ADMIN'
+        };
+      }
+    });
+  }
+
   save(): void {
     console.log(this.user);
+    setTimeout(() => this.router.navigate(['/users']), 400);
   }
 
 }

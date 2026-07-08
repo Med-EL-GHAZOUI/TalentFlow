@@ -1,149 +1,177 @@
-<div class="page-header animate-fade-in">
-  <div>
-    <h1 class="page-title">Dashboard GPEC</h1>
-    <p class="page-subtitle">Aperçu général des ressources et compétences de l'entreprise</p>
-  </div>
-  <button class="btn btn-primary" routerLink="/gpec-dashboard">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
-      <line x1="12" y1="5" x2="12" y2="19"></line>
-      <line x1="5" y1="12" x2="19" y2="12"></line>
-    </svg>
-    Nouveau Rapport
-  </button>
-</div>
+<div class="pro-max-dashboard-wrapper">
+  
+  <!-- Premium Background Blobs -->
+  <div class="blob-bg blob-1"></div>
+  <div class="blob-bg blob-2"></div>
+  <div class="blob-bg blob-3"></div>
 
-<div class="kpi-grid animate-slide-up">
-  <!-- Employés Card -->
-  <div class="kpi-card kpi-employees">
-    <div class="kpi-icon-wrapper">
-      <svg class="kpi-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-        <circle cx="9" cy="7" r="4"></circle>
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-      </svg>
-    </div>
-    <div class="kpi-content">
-      <span class="kpi-label">Employés</span>
-      <h3 class="kpi-value">{{ totalEmployees }}</h3>
-    </div>
-    <div class="kpi-trend positive">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
-      <span>+12%</span>
-    </div>
-  </div>
-
-  <!-- Départements Card -->
-  <div class="kpi-card kpi-departments">
-    <div class="kpi-icon-wrapper">
-      <svg class="kpi-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
-        <rect x="9" y="9" width="6" height="6"></rect>
-        <line x1="9" y1="1" x2="9" y2="4"></line>
-        <line x1="15" y1="1" x2="15" y2="4"></line>
-        <line x1="9" y1="20" x2="9" y2="23"></line>
-        <line x1="15" y1="20" x2="15" y2="23"></line>
-        <line x1="20" y1="9" x2="23" y2="9"></line>
-        <line x1="20" y1="14" x2="23" y2="14"></line>
-        <line x1="1" y1="9" x2="4" y2="9"></line>
-        <line x1="1" y1="14" x2="4" y2="14"></line>
-      </svg>
-    </div>
-    <div class="kpi-content">
-      <span class="kpi-label">Départements</span>
-      <h3 class="kpi-value">{{ totalDepartments }}</h3>
-    </div>
-  </div>
-
-  <!-- Postes Card -->
-  <div class="kpi-card kpi-jobs">
-    <div class="kpi-icon-wrapper">
-      <svg class="kpi-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-      </svg>
-    </div>
-    <div class="kpi-content">
-      <span class="kpi-label">Postes Ouverts</span>
-      <h3 class="kpi-value">{{ totalJobs }}</h3>
-    </div>
-    <div class="kpi-trend positive">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
-      <span>+3</span>
-    </div>
-  </div>
-
-  <!-- Formations Card -->
-  <div class="kpi-card kpi-training">
-    <div class="kpi-icon-wrapper">
-      <svg class="kpi-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-      </svg>
-    </div>
-    <div class="kpi-content">
-      <span class="kpi-label">Formations en cours</span>
-      <h3 class="kpi-value">{{ totalTrainings }}</h3>
-    </div>
-    <div class="kpi-trend neutral">
-      <span>Actives</span>
-    </div>
-  </div>
-</div>
-
-<div class="dashboard-widgets animate-slide-up" style="animation-delay: 0.1s;">
-  <div class="card widget-chart">
-    <div class="widget-header">
-      <h3>Évolution des Effectifs</h3>
-      <button class="icon-btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+  <div class="dashboard-content">
+    <div class="page-header animate-fade-in-down">
+      <div>
+        <h1 class="page-title gradient-text">Dashboard GPEC</h1>
+        <p class="page-subtitle">Aperçu stratégique des ressources et compétences de l'entreprise</p>
+      </div>
+      <button class="btn-premium" routerLink="/gpec-dashboard">
+        <span class="btn-glow"></span>
+        <span class="btn-content">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          Nouveau Rapport
+        </span>
       </button>
     </div>
-    <div class="chart-placeholder">
-      <!-- Placeholder for a real chart library like Chart.js or ECharts -->
-      <svg viewBox="0 0 400 200" class="placeholder-svg">
-        <path d="M0 150 Q 50 120 100 140 T 200 100 T 300 80 T 400 50" fill="none" stroke="var(--primary-500)" stroke-width="4" stroke-linecap="round"></path>
-        <path d="M0 150 Q 50 120 100 140 T 200 100 T 300 80 T 400 50 L 400 200 L 0 200 Z" fill="url(#gradient)" opacity="0.2"></path>
-        <defs>
-          <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="var(--primary-500)"></stop>
-            <stop offset="100%" stop-color="transparent"></stop>
-          </linearGradient>
-        </defs>
-      </svg>
-    </div>
-  </div>
 
-  <div class="card widget-list">
-    <div class="widget-header">
-      <h3>Recrutements Récents</h3>
-      <a routerLink="/employees" class="widget-link">Voir tout</a>
+    <!-- Quick Actions -->
+    <div class="quick-actions-bar animate-fade-in-up" style="animation-delay: 0.1s;">
+      <button class="glass-btn" routerLink="/employees/new">
+        <div class="icon-ring blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
+        Ajouter Employé
+      </button>
+      <button class="glass-btn" routerLink="/training/new">
+        <div class="icon-ring purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg></div>
+        Nouvelle Formation
+      </button>
+      <button class="glass-btn" routerLink="/skills/new">
+        <div class="icon-ring cyan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
+        Évaluer Compétence
+      </button>
     </div>
-    <div class="list-items">
-      <div class="list-item">
-        <div class="avatar bg-indigo">ME</div>
-        <div class="item-info">
-          <h4>Mohamed EL GHAZOUI</h4>
-          <p>Développeur Fullstack • IT</p>
+
+    <!-- KPI Grid -->
+    <div class="kpi-grid animate-fade-in-up" style="animation-delay: 0.2s;">
+      <!-- Employés Card -->
+      <div class="glass-card kpi-card">
+        <div class="kpi-top">
+          <div class="icon-glass bg-blue-glass">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          <div class="trend-pill positive">+12%</div>
         </div>
-        <span class="badge badge-success">Nouveau</span>
-      </div>
-      <div class="list-item">
-        <div class="avatar bg-emerald">AA</div>
-        <div class="item-info">
-          <h4>Ahmed Alaoui</h4>
-          <p>Manager RH • HR</p>
+        <div class="kpi-bottom">
+          <h3 class="kpi-val">{{ totalEmployees }}</h3>
+          <span class="kpi-name">Employés</span>
         </div>
-        <span class="badge badge-success">Nouveau</span>
       </div>
-      <div class="list-item">
-        <div class="avatar bg-rose">SB</div>
-        <div class="item-info">
-          <h4>Sara Benali</h4>
-          <p>Data Analyst • Data</p>
+
+      <!-- Départements Card -->
+      <div class="glass-card kpi-card">
+        <div class="kpi-top">
+          <div class="icon-glass bg-cyan-glass">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+          </div>
         </div>
-        <span class="badge badge-success">Nouveau</span>
+        <div class="kpi-bottom">
+          <h3 class="kpi-val">{{ totalDepartments }}</h3>
+          <span class="kpi-name">Domaines</span>
+        </div>
       </div>
+
+      <!-- Postes Card -->
+      <div class="glass-card kpi-card">
+        <div class="kpi-top">
+          <div class="icon-glass bg-amber-glass">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+          </div>
+          <div class="trend-pill positive">+3</div>
+        </div>
+        <div class="kpi-bottom">
+          <h3 class="kpi-val">{{ totalJobs }}</h3>
+          <span class="kpi-name">Postes Ouverts</span>
+        </div>
+      </div>
+
+      <!-- Formations Card -->
+      <div class="glass-card kpi-card">
+        <div class="kpi-top">
+          <div class="icon-glass bg-purple-glass">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          </div>
+          <div class="trend-pill neutral">En cours</div>
+        </div>
+        <div class="kpi-bottom">
+          <h3 class="kpi-val">{{ totalTrainings }}</h3>
+          <span class="kpi-name">Formations Actives</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="dashboard-main-grid animate-fade-in-up" style="animation-delay: 0.3s;">
+      
+      <!-- Chart -->
+      <div class="glass-card widget-chart-premium">
+        <div class="glass-header">
+          <h2>Évolution des Effectifs</h2>
+          <button class="glass-icon-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg></button>
+        </div>
+        <div class="premium-chart-container">
+          <svg viewBox="0 0 500 250" class="neon-chart-svg" preserveAspectRatio="none">
+            <!-- Grid -->
+            <g class="chart-grid-pro">
+              <line x1="0" y1="50" x2="500" y2="50" />
+              <line x1="0" y1="100" x2="500" y2="100" />
+              <line x1="0" y1="150" x2="500" y2="150" />
+              <line x1="0" y1="200" x2="500" y2="200" />
+              <line x1="0" y1="250" x2="500" y2="250" />
+            </g>
+            
+            <!-- Glow Area Fill -->
+            <path d="M0 200 C 100 180, 200 220, 300 150 S 400 100, 500 80 L 500 250 L 0 250 Z" fill="url(#chartGlowGrad)"></path>
+            
+            <!-- Neon Line -->
+            <path d="M0 200 C 100 180, 200 220, 300 150 S 400 100, 500 80" fill="none" class="neon-path"></path>
+            
+            <!-- Points -->
+            <circle cx="300" cy="150" r="5" class="neon-point" />
+            <circle cx="410" cy="100" r="5" class="neon-point" />
+            <circle cx="500" cy="80" r="6" class="neon-point active-point" />
+            
+            <defs>
+              <linearGradient id="chartGlowGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.6"></stop>
+                <stop offset="100%" stop-color="#0284c7" stop-opacity="0.0"></stop>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Recrutements -->
+      <div class="glass-card widget-list-premium">
+        <div class="glass-header">
+          <h2>Recrutements Récents</h2>
+          <a routerLink="/employees" class="glass-link">Voir tout</a>
+        </div>
+        <div class="premium-list">
+          <div class="premium-list-item">
+            <div class="avatar-glow bg-blue-glow">ME</div>
+            <div class="item-text">
+              <h4>Mohamed EL GHAZOUI</h4>
+              <p>Responsable Qualité</p>
+            </div>
+            <div class="status-dot new"></div>
+          </div>
+          <div class="premium-list-item">
+            <div class="avatar-glow bg-cyan-glow">AA</div>
+            <div class="item-text">
+              <h4>Ahmed Alaoui</h4>
+              <p>Ingénieur Agronome</p>
+            </div>
+            <div class="status-dot"></div>
+          </div>
+          <div class="premium-list-item">
+            <div class="avatar-glow bg-purple-glow">SB</div>
+            <div class="item-text">
+              <h4>Sara Benali</h4>
+              <p>Tech. Frigoriste</p>
+            </div>
+            <div class="status-dot"></div>
+          </div>
+        </div>
+      </div>
+      
     </div>
   </div>
 </div>

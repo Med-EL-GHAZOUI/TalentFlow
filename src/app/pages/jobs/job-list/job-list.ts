@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
 })
 export class JobListComponent {
 
-  jobs = [
+  allJobs = [
     {
       id: 1,
       title: 'Développeur Full Stack',
@@ -22,5 +22,26 @@ export class JobListComponent {
       department: 'Ressources Humaines'
     }
   ];
+
+  jobs = [...this.allJobs];
+
+  delete(id: number) {
+    if (confirm('Voulez-vous vraiment supprimer ce poste ?')) {
+      this.allJobs = this.allJobs.filter(j => j.id !== id);
+      this.jobs = this.jobs.filter(j => j.id !== id);
+    }
+  }
+
+  filter(event: any) {
+    const searchTerm = event.target.value.toLowerCase();
+    if (!searchTerm) {
+      this.jobs = [...this.allJobs];
+      return;
+    }
+    this.jobs = this.allJobs.filter(j => 
+      j.title.toLowerCase().includes(searchTerm) || 
+      j.department.toLowerCase().includes(searchTerm)
+    );
+  }
 
 }

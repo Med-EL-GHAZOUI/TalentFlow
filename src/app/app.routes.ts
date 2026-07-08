@@ -69,6 +69,13 @@ export const routes: Routes = [
       },
 
       {
+        path: 'employees/:id/edit',
+        loadComponent: () =>
+          import('./pages/employees/employee-form/employee-form')
+            .then(m => m.EmployeeFormComponent)
+      },
+
+      {
         path: 'employees/:id',
         loadComponent: () =>
           import('./pages/employees/employee-details/employee-details')
@@ -90,6 +97,13 @@ export const routes: Routes = [
       },
 
       {
+        path: 'departments/:id/edit',
+        loadComponent: () =>
+          import('./pages/departments/department-form/department-form')
+            .then(m => m.DepartmentFormComponent)
+      },
+
+      {
         path: 'skills',
         loadComponent: () =>
           import('./pages/skills/skill-list/skill-list')
@@ -98,6 +112,13 @@ export const routes: Routes = [
 
       {
         path: 'skills/new',
+        loadComponent: () =>
+          import('./pages/skills/skill-form/skill-form')
+            .then(m => m.SkillFormComponent)
+      },
+
+      {
+        path: 'skills/:id/edit',
         loadComponent: () =>
           import('./pages/skills/skill-form/skill-form')
             .then(m => m.SkillFormComponent)
@@ -118,6 +139,13 @@ export const routes: Routes = [
       },
 
       {
+        path: 'jobs/:id/edit',
+        loadComponent: () =>
+          import('./pages/jobs/job-form/job-form')
+            .then(m => m.JobFormComponent)
+      },
+
+      {
         path: 'training',
         loadComponent: () =>
           import('./pages/training/training-list/training-list')
@@ -126,6 +154,13 @@ export const routes: Routes = [
 
       {
         path: 'training/new',
+        loadComponent: () =>
+          import('./pages/training/training-form/training-form')
+            .then(m => m.TrainingFormComponent)
+      },
+
+      {
+        path: 'training/:id/edit',
         loadComponent: () =>
           import('./pages/training/training-form/training-form')
             .then(m => m.TrainingFormComponent)
@@ -154,6 +189,13 @@ export const routes: Routes = [
 
       {
         path: 'users/new',
+        loadComponent: () =>
+          import('./pages/users/user-form/user-form')
+            .then(m => m.UserFormComponent)
+      },
+
+      {
+        path: 'users/:id/edit',
         loadComponent: () =>
           import('./pages/users/user-form/user-form')
             .then(m => m.UserFormComponent)

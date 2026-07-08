@@ -1,65 +1,74 @@
-<div class="page-header animate-fade-in">
-  <div>
-    <h1 class="page-title">Mon Profil</h1>
-    <p class="page-subtitle">Gérez vos informations personnelles et vos préférences</p>
-  </div>
-</div>
+<div class="pro-max-page-wrapper">
+  
+  <!-- Premium Background Blobs -->
+  <div class="blob-bg blob-1"></div>
+  <div class="blob-bg blob-2"></div>
+  <div class="blob-bg blob-3"></div>
 
-<div class="profile-container animate-slide-up">
-  <div class="profile-card card">
-    <div class="profile-header">
-      <div class="avatar-xl bg-primary">
-        {{ profile.firstname.charAt(0) }}{{ profile.lastname.charAt(0) }}
-        <button class="avatar-edit-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
-            <circle cx="12" cy="13" r="4"></circle>
-          </svg>
+  <div class="page-content" style="max-width: 800px; margin: 0 auto;">
+    <div class="page-header animate-fade-in-down" style="text-align: center; margin-bottom: 3rem;">
+      <h1 class="page-title gradient-text" style="justify-content: center;">Mon Profil</h1>
+      <p class="page-subtitle">Gérez vos informations personnelles et vos préférences</p>
+    </div>
+
+    <div class="glass-card animate-fade-in-up" style="animation-delay: 0.1s; padding: 3rem;">
+      <div class="profile-header" style="display: flex; flex-direction: column; align-items: center; margin-bottom: 2.5rem; text-align: center;">
+        <div class="avatar-glow bg-blue-glow" style="width: 100px; height: 100px; font-size: 2rem; border-radius: 24px; margin-bottom: 1.5rem; position: relative;">
+          {{ profile.firstname.charAt(0) }}{{ profile.lastname.charAt(0) }}
+          <button class="glass-icon-btn" style="position: absolute; bottom: -10px; right: -10px; border-radius: 50%; background: white;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+              <circle cx="12" cy="13" r="4"></circle>
+            </svg>
+          </button>
+        </div>
+        <div class="profile-title">
+          <h2 style="font-weight: 800; font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--slate-800);">{{ profile.firstname }} {{ profile.lastname }}</h2>
+          <span class="badge badge-primary" style="padding: 0.4rem 1rem; font-size: 0.85rem;">{{ profile.role }}</span>
+        </div>
+      </div>
+      
+      <hr style="border: none; border-top: 1px solid rgba(0,0,0,0.05); margin-bottom: 2.5rem;">
+      
+      <div class="profile-info-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem;">
+        <div class="info-group">
+          <label style="display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--slate-400); margin-bottom: 0.4rem; font-weight: 600;">Prénom</label>
+          <p style="font-weight: 600; color: var(--slate-800); font-size: 1.1rem; margin: 0;">{{ profile.firstname }}</p>
+        </div>
+        
+        <div class="info-group">
+          <label style="display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--slate-400); margin-bottom: 0.4rem; font-weight: 600;">Nom</label>
+          <p style="font-weight: 600; color: var(--slate-800); font-size: 1.1rem; margin: 0;">{{ profile.lastname }}</p>
+        </div>
+        
+        <div class="info-group">
+          <label style="display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--slate-400); margin-bottom: 0.4rem; font-weight: 600;">Adresse Email</label>
+          <p style="font-weight: 600; color: var(--primary-600); font-size: 1.1rem; margin: 0;">{{ profile.email }}</p>
+        </div>
+        
+        <div class="info-group">
+          <label style="display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--slate-400); margin-bottom: 0.4rem; font-weight: 600;">Téléphone</label>
+          <p style="font-weight: 600; color: var(--slate-800); font-size: 1.1rem; margin: 0;">{{ profile.phone }}</p>
+        </div>
+        
+        <div class="info-group">
+          <label style="display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--slate-400); margin-bottom: 0.4rem; font-weight: 600;">Statut du compte</label>
+          <p style="margin: 0;"><span class="trend-pill positive" style="padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 700; color: #059669; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2);">Actif</span></p>
+        </div>
+        
+        <div class="info-group">
+          <label style="display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--slate-400); margin-bottom: 0.4rem; font-weight: 600;">Dernière connexion</label>
+          <p style="font-weight: 500; color: var(--slate-600); font-size: 1rem; margin: 0;">Aujourd'hui, 09:41</p>
+        </div>
+      </div>
+      
+      <div class="profile-actions" style="display: flex; gap: 1rem; justify-content: center;">
+        <button class="glass-icon-btn" style="width: auto; padding: 0 1.5rem; font-weight: 600;" (click)="changePassword()">Changer le mot de passe</button>
+        <button class="btn-premium" (click)="editInfo()">
+          <span class="btn-glow"></span>
+          <span class="btn-content">Modifier les informations</span>
         </button>
       </div>
-      <div class="profile-title">
-        <h2>{{ profile.firstname }} {{ profile.lastname }}</h2>
-        <span class="badge badge-primary">{{ profile.role }}</span>
-      </div>
-    </div>
-    
-    <hr class="divider">
-    
-    <div class="profile-info-grid">
-      <div class="info-group">
-        <label>Prénom</label>
-        <p>{{ profile.firstname }}</p>
-      </div>
-      
-      <div class="info-group">
-        <label>Nom</label>
-        <p>{{ profile.lastname }}</p>
-      </div>
-      
-      <div class="info-group">
-        <label>Adresse Email</label>
-        <p class="text-primary">{{ profile.email }}</p>
-      </div>
-      
-      <div class="info-group">
-        <label>Téléphone</label>
-        <p>{{ profile.phone }}</p>
-      </div>
-      
-      <div class="info-group">
-        <label>Statut du compte</label>
-        <p><span class="badge badge-success">Actif</span></p>
-      </div>
-      
-      <div class="info-group">
-        <label>Dernière connexion</label>
-        <p>Aujourd'hui, 09:41</p>
-      </div>
-    </div>
-    
-    <div class="profile-actions">
-      <button class="btn btn-outline">Changer le mot de passe</button>
-      <button class="btn btn-primary">Modifier les informations</button>
     </div>
   </div>
 </div>

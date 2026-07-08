@@ -10,8 +10,7 @@ import { RouterLink } from '@angular/router';
 })
 export class EmployeeListComponent {
 
-  employees = [
-
+  allEmployees = [
     {
       id:1,
       firstname:'Mohamed',
@@ -20,7 +19,6 @@ export class EmployeeListComponent {
       department:'IT',
       job:'Developer'
     },
-
     {
       id:2,
       firstname:'Ahmed',
@@ -29,7 +27,29 @@ export class EmployeeListComponent {
       department:'HR',
       job:'Manager'
     }
-
   ];
+
+  employees = [...this.allEmployees];
+
+  delete(id: number) {
+    if (confirm('Voulez-vous vraiment supprimer cet employé ?')) {
+      this.allEmployees = this.allEmployees.filter(e => e.id !== id);
+      this.employees = this.employees.filter(e => e.id !== id);
+    }
+  }
+
+  filter(event: any) {
+    const searchTerm = event.target.value.toLowerCase();
+    if (!searchTerm) {
+      this.employees = [...this.allEmployees];
+      return;
+    }
+    this.employees = this.allEmployees.filter(e => 
+      e.firstname.toLowerCase().includes(searchTerm) || 
+      e.lastname.toLowerCase().includes(searchTerm) ||
+      e.department.toLowerCase().includes(searchTerm) ||
+      e.job.toLowerCase().includes(searchTerm)
+    );
+  }
 
 }

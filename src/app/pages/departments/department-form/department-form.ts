@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { RouterLink, ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-department-form',
@@ -9,7 +9,9 @@ import { RouterLink } from '@angular/router';
   templateUrl: './department-form.html',
   styleUrl: './department-form.scss'
 })
-export class DepartmentFormComponent {
+export class DepartmentFormComponent implements OnInit {
+
+  isEditMode = false;
 
   department = {
     name: '',
@@ -17,8 +19,26 @@ export class DepartmentFormComponent {
     manager: ''
   };
 
+  constructor(private route: ActivatedRoute, private router: Router) {}
+
+  ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      if (id) {
+        this.isEditMode = true;
+        // Mock data loading
+        this.department = {
+          name: 'Domaine Mock',
+          description: 'Description du domaine...',
+          manager: 'Responsable'
+        };
+      }
+    });
+  }
+
   save() {
-    console.log(this.department);
+    console.log('Saved:', this.department);
+    setTimeout(() => this.router.navigate(['/departments']), 400);
   }
 
 }

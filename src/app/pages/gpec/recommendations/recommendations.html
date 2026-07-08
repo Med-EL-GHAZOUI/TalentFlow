@@ -1,72 +1,89 @@
-<div class="page-header animate-fade-in">
-  <div>
-    <h1 class="page-title">Recommandations</h1>
-    <p class="page-subtitle">Suggestions de formations basées sur l'analyse des compétences</p>
-  </div>
-  <div class="header-actions">
-    <button class="btn btn-outline">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
-        <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
-      </svg>
-      Filtrer
-    </button>
-  </div>
-</div>
+<div class="pro-max-page-wrapper">
+  
+  <!-- Premium Background Blobs -->
+  <div class="blob-bg blob-1"></div>
+  <div class="blob-bg blob-2"></div>
+  <div class="blob-bg blob-3"></div>
 
-<div class="card table-card animate-slide-up">
-  <div class="table-responsive">
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>Employé</th>
-          <th>Formation Recommandée</th>
-          <th>Score d'affinité</th>
-          <th>Priorité</th>
-          <th class="actions-col">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for(item of recommendations; track item.employee){
-          <tr>
-            <td>
-              <div class="item-cell">
-                <div class="avatar-xs bg-slate">
-                  {{ item.employee.charAt(0) }}
-                </div>
-                <span class="font-medium">{{ item.employee }}</span>
-              </div>
-            </td>
-            <td>
-              <div class="training-cell">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="text-indigo-500">
-                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                  <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-                </svg>
-                <span>{{ item.training }}</span>
-              </div>
-            </td>
-            <td>
-              <div class="score-cell">
-                <div class="score-bar-bg">
-                  <div class="score-bar-fill bg-success" style="width: 92%"></div>
-                </div>
-                <span class="score-text">92%</span>
-              </div>
-            </td>
-            <td>
-              <span class="badge" 
-                    [class.badge-error]="item.priority === 'Haute'"
-                    [class.badge-warning]="item.priority === 'Moyenne'"
-                    [class.badge-info]="item.priority === 'Basse'">
-                {{ item.priority }}
-              </span>
-            </td>
-            <td class="actions-cell">
-              <button class="btn btn-sm btn-primary">Planifier</button>
-            </td>
-          </tr>
-        }
-      </tbody>
-    </table>
+  <div class="page-content">
+    <div class="page-header animate-fade-in-down">
+      <div>
+        <h1 class="page-title gradient-text">Recommandations</h1>
+        <p class="page-subtitle">Suggestions de formations basées sur l'analyse des compétences</p>
+      </div>
+      <div class="header-actions">
+        <button class="glass-icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+          </svg>
+          Filtrer
+        </button>
+      </div>
+    </div>
+
+    <div class="glass-card animate-slide-up" style="animation-delay: 0.1s;">
+      <div class="table-responsive">
+        <table class="data-table pro-max-table">
+          <thead>
+            <tr>
+              <th>Employé</th>
+              <th>Formation Recommandée</th>
+              <th>Score d'affinité</th>
+              <th>Priorité</th>
+              <th class="actions-col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for(item of recommendations; track item.employee){
+              <tr class="glass-tr">
+                <td>
+                  <div class="item-cell">
+                    <div class="avatar-glow">
+                      <div class="avatar-xs" style="background: var(--indigo-500); color: white; display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%;">
+                        {{ item.employee.charAt(0) }}
+                      </div>
+                    </div>
+                    <span style="font-weight: 600; color: var(--slate-800); margin-left: 0.75rem;">{{ item.employee }}</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="training-cell" style="display: flex; align-items: center; gap: 0.5rem;">
+                    <div class="icon-sm bg-purple-glow">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                        <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                      </svg>
+                    </div>
+                    <span style="font-weight: 500; color: var(--slate-700);">{{ item.training }}</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="progress-wrapper">
+                    <div class="progress-bar-bg glass-progress-bg">
+                      <div class="progress-bar-fill glass-progress-fill" style="width: 92%; background: var(--emerald-500);"></div>
+                    </div>
+                    <span class="progress-text">92%</span>
+                  </div>
+                </td>
+                <td>
+                  <span class="trend-pill" 
+                        [class.negative]="item.priority === 'Haute'"
+                        [class.warning]="item.priority === 'Moyenne'"
+                        [class.neutral]="item.priority === 'Basse'">
+                    {{ item.priority }}
+                  </span>
+                </td>
+                <td class="actions-cell">
+                  <button class="btn-premium" style="padding: 0.4rem 1rem; font-size: 0.8rem;" routerLink="/training/new">
+                    <span class="btn-glow"></span>
+                    <span class="btn-content">Planifier</span>
+                  </button>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>

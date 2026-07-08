@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
 })
 export class UserListComponent {
 
-  users = [
+  allUsers = [
     {
       id: 1,
       firstname: 'Mohamed',
@@ -33,5 +33,28 @@ export class UserListComponent {
       role: 'MANAGER'
     }
   ];
+
+  users = [...this.allUsers];
+
+  delete(id: number) {
+    if (confirm('Voulez-vous vraiment supprimer cet utilisateur ?')) {
+      this.allUsers = this.allUsers.filter(u => u.id !== id);
+      this.users = this.users.filter(u => u.id !== id);
+    }
+  }
+
+  filter(event: any) {
+    const searchTerm = event.target.value.toLowerCase();
+    if (!searchTerm) {
+      this.users = [...this.allUsers];
+      return;
+    }
+    this.users = this.allUsers.filter(u => 
+      u.firstname.toLowerCase().includes(searchTerm) || 
+      u.lastname.toLowerCase().includes(searchTerm) ||
+      u.email.toLowerCase().includes(searchTerm) ||
+      u.role.toLowerCase().includes(searchTerm)
+    );
+  }
 
 }

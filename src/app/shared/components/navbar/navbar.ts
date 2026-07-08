@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -12,4 +12,13 @@ export class NavbarComponent {
 
   username = 'Mohamed EL GHAZOUI';
 
+  constructor(private router: Router) {}
+
+  showNotifications() {
+    alert('Vous avez 3 nouvelles notifications !');
+  }
+
+  logout() {
+    this.router.navigate(['/login']);
+  }
 }

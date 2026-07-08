@@ -1,70 +1,92 @@
-<div class="login-container">
-  <!-- Decorative background elements -->
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  
-  <div class="login-card animate-slide-up">
-    <div class="login-header">
-      <div class="logo">
-        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-          <path d="M2 17l10 5 10-5"></path>
-          <path d="M2 12l10 5 10-5"></path>
-        </svg>
+<div class="landing-container">
+  <!-- Left Side: Branding Showcase -->
+  <div class="landing-showcase">
+    <div class="showcase-overlay"></div>
+    <div class="showcase-content animate-slide-up">
+      <div class="css-copag-logo-large" style="background: none; border: none; box-shadow: none; display: flex; justify-content: center; margin-bottom: 2rem;">
+        <img src="/assets/logo-copag.png" alt="COPAG Logo" style="max-height: 180px; width: auto; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15));" />
       </div>
-      <h2>Bienvenue</h2>
-      <p>Connectez-vous à TalentFlow GPEC</p>
+      
+      <h1 class="showcase-title">TalentFlow GPEC</h1>
+      <p class="showcase-subtitle">
+        Plateforme d'excellence pour le pilotage stratégique des ressources humaines et le développement des compétences au sein de nos domaines agricoles.
+      </p>
+      
+      <div class="showcase-features">
+        <div class="feature-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Gestion centralisée
+        </div>
+        <div class="feature-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Suivi des performances
+        </div>
+        <div class="feature-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Plan de carrière
+        </div>
+      </div>
     </div>
+  </div>
 
-    <form (ngSubmit)="login()" class="login-form">
-      <div class="form-group">
-        <label class="form-label">Email</label>
-        <div class="input-icon-wrapper">
-          <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-            <polyline points="22,6 12,13 2,6"></polyline>
-          </svg>
-          <input 
-            type="email" 
-            class="form-control with-icon" 
-            placeholder="votre@email.com" 
-            [(ngModel)]="credentials.email" 
-            name="email"
-            required>
-        </div>
+  <!-- Right Side: Login Form -->
+  <div class="landing-auth">
+    <div class="auth-card animate-fade-in">
+      <div class="auth-header">
+        <h2>Bienvenue</h2>
+        <p>Veuillez vous identifier pour accéder à votre espace de gestion.</p>
       </div>
 
-      <div class="form-group">
-        <div class="label-row">
-          <label class="form-label">Mot de passe</label>
-          <a href="#" class="forgot-link">Mot de passe oublié ?</a>
+      <form (ngSubmit)="login()" class="login-form">
+        <div class="form-group">
+          <label class="form-label">Email professionnel</label>
+          <div class="input-icon-wrapper">
+            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <input 
+              type="email" 
+              class="form-control with-icon" 
+              placeholder="prenom.nom@copag.ma" 
+              [(ngModel)]="credentials.email" 
+              name="email"
+              required>
+          </div>
         </div>
-        <div class="input-icon-wrapper">
-          <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-          </svg>
-          <input 
-            type="password" 
-            class="form-control with-icon" 
-            placeholder="••••••••" 
-            [(ngModel)]="credentials.password" 
-            name="password"
-            required>
-        </div>
-      </div>
 
-      <button type="submit" class="btn btn-primary login-btn">
-        <span>Se connecter</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-          <polyline points="12 5 19 12 12 19"></polyline>
-        </svg>
-      </button>
-    </form>
-    
-    <div class="login-footer">
-      <p>Pas encore de compte ? <a href="#">Contacter l'administrateur</a></p>
+        <div class="form-group">
+          <div class="label-row">
+            <label class="form-label">Mot de passe</label>
+            <a href="#" class="forgot-link" (click)="forgotPassword($event)">Oublié ?</a>
+          </div>
+          <div class="input-icon-wrapper">
+            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <input 
+              type="password" 
+              class="form-control with-icon" 
+              placeholder="••••••••" 
+              [(ngModel)]="credentials.password" 
+              name="password"
+              required>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary login-btn">
+          <span>Se connecter</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </form>
+      
+      <div class="auth-footer">
+        <p>Problème de connexion ? <br><a href="#" (click)="support($event)">Contacter le support IT</a></p>
+      </div>
     </div>
   </div>
 </div>

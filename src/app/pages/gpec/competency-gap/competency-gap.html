@@ -1,87 +1,103 @@
-<div class="page-header animate-fade-in">
-  <div>
-    <h1 class="page-title">Écarts de Compétences</h1>
-    <p class="page-subtitle">Analyse des écarts entre les compétences actuelles et requises (Gap Analysis)</p>
-  </div>
-  <div class="header-actions">
-    <button class="btn btn-outline">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-        <polyline points="7 10 12 15 17 10"></polyline>
-        <line x1="12" y1="15" x2="12" y2="3"></line>
-      </svg>
-      Exporter
-    </button>
-  </div>
-</div>
+<div class="pro-max-page-wrapper">
+  
+  <!-- Premium Background Blobs -->
+  <div class="blob-bg blob-1"></div>
+  <div class="blob-bg blob-2"></div>
+  <div class="blob-bg blob-3"></div>
 
-<div class="card table-card animate-slide-up">
-  <div class="table-responsive">
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>Employé</th>
-          <th>Compétence Cible</th>
-          <th>Niveau Actuel</th>
-          <th>Niveau Requis</th>
-          <th>Écart (Gap)</th>
-          <th class="actions-col">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for(gap of gaps; track gap.employee){
-          <tr>
-            <td>
-              <div class="item-cell">
-                <div class="avatar-xs bg-slate">
-                  {{ gap.employee.charAt(0) }}
-                </div>
-                <span class="font-medium">{{ gap.employee }}</span>
-              </div>
-            </td>
-            <td>
-              <div class="skill-cell">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="text-violet-500">
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                </svg>
-                <span>{{ gap.skill }}</span>
-              </div>
-            </td>
-            <td>
-              <div class="level-indicator">
-                <div class="dots">
-                  <span class="dot active"></span>
-                  <span class="dot active"></span>
-                  <span class="dot inactive"></span>
-                  <span class="dot inactive"></span>
-                  <span class="dot inactive"></span>
-                </div>
-                <span class="level-text">{{ gap.current }}</span>
-              </div>
-            </td>
-            <td>
-              <div class="level-indicator">
-                <div class="dots required">
-                  <span class="dot active"></span>
-                  <span class="dot active"></span>
-                  <span class="dot active"></span>
-                  <span class="dot active"></span>
-                  <span class="dot inactive"></span>
-                </div>
-                <span class="level-text">{{ gap.required }}</span>
-              </div>
-            </td>
-            <td>
-              <span class="gap-badge" [class.critical]="gap.required - gap.current >= 2">
-                -{{ gap.required - gap.current }}
-              </span>
-            </td>
-            <td class="actions-cell">
-              <button class="btn btn-sm btn-outline">Proposer formation</button>
-            </td>
-          </tr>
-        }
-      </tbody>
-    </table>
+  <div class="page-content">
+    <div class="page-header animate-fade-in-down">
+      <div>
+        <h1 class="page-title gradient-text">Écarts de Compétences</h1>
+        <p class="page-subtitle">Analyse des écarts entre les compétences actuelles et requises (Gap Analysis)</p>
+      </div>
+      <div class="header-actions">
+        <button class="glass-icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Exporter
+        </button>
+      </div>
+    </div>
+
+    <div class="glass-card animate-slide-up" style="animation-delay: 0.1s;">
+      <div class="table-responsive">
+        <table class="data-table pro-max-table">
+          <thead>
+            <tr>
+              <th>Employé</th>
+              <th>Compétence Cible</th>
+              <th>Niveau Actuel</th>
+              <th>Niveau Requis</th>
+              <th>Écart (Gap)</th>
+              <th class="actions-col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for(gap of gaps; track gap.employee){
+              <tr class="glass-tr">
+                <td>
+                  <div class="item-cell">
+                    <div class="avatar-glow">
+                      <div class="avatar-xs" style="background: var(--slate-600); color: white; display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%;">
+                        {{ gap.employee.charAt(0) }}
+                      </div>
+                    </div>
+                    <span style="font-weight: 600; color: var(--slate-800); margin-left: 0.75rem;">{{ gap.employee }}</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="skill-cell" style="display: flex; align-items: center; gap: 0.5rem;">
+                    <div class="icon-sm bg-blue-glow">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                      </svg>
+                    </div>
+                    <span style="font-weight: 500; color: var(--slate-700);">{{ gap.skill }}</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="level-indicator">
+                    <div class="dots" style="display: flex; gap: 4px;">
+                      <span class="dot active" style="width: 8px; height: 8px; border-radius: 50%; background: var(--primary-500);"></span>
+                      <span class="dot active" style="width: 8px; height: 8px; border-radius: 50%; background: var(--primary-500);"></span>
+                      <span class="dot inactive" style="width: 8px; height: 8px; border-radius: 50%; background: var(--slate-300);"></span>
+                      <span class="dot inactive" style="width: 8px; height: 8px; border-radius: 50%; background: var(--slate-300);"></span>
+                      <span class="dot inactive" style="width: 8px; height: 8px; border-radius: 50%; background: var(--slate-300);"></span>
+                    </div>
+                    <span class="level-text" style="font-size: 0.8rem; color: var(--slate-600); margin-top: 4px; display: block;">{{ gap.current }}</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="level-indicator">
+                    <div class="dots required" style="display: flex; gap: 4px;">
+                      <span class="dot active" style="width: 8px; height: 8px; border-radius: 50%; background: var(--emerald-500);"></span>
+                      <span class="dot active" style="width: 8px; height: 8px; border-radius: 50%; background: var(--emerald-500);"></span>
+                      <span class="dot active" style="width: 8px; height: 8px; border-radius: 50%; background: var(--emerald-500);"></span>
+                      <span class="dot active" style="width: 8px; height: 8px; border-radius: 50%; background: var(--emerald-500);"></span>
+                      <span class="dot inactive" style="width: 8px; height: 8px; border-radius: 50%; background: var(--slate-300);"></span>
+                    </div>
+                    <span class="level-text" style="font-size: 0.8rem; color: var(--slate-600); margin-top: 4px; display: block;">{{ gap.required }}</span>
+                  </div>
+                </td>
+                <td>
+                  <span class="trend-pill" 
+                        [class.negative]="gap.required - gap.current >= 2"
+                        [class.warning]="gap.required - gap.current === 1">
+                    -{{ gap.required - gap.current }}
+                  </span>
+                </td>
+                <td class="actions-cell">
+                  <button class="glass-icon-btn" style="width: auto; padding: 0.4rem 1rem; border-radius: 8px; font-size: 0.8rem; font-weight: 500;" routerLink="/training/new">Proposer formation</button>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>

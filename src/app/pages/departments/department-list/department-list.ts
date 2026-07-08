@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
 })
 export class DepartmentListComponent {
 
-  departments = [
+  allDepartments = [
     {
       id:1,
       name:'Informatique',
@@ -27,5 +27,26 @@ export class DepartmentListComponent {
       manager:'Fatima'
     }
   ];
+
+  departments = [...this.allDepartments];
+
+  delete(id: number) {
+    if (confirm('Voulez-vous vraiment supprimer ce département ?')) {
+      this.allDepartments = this.allDepartments.filter(d => d.id !== id);
+      this.departments = this.departments.filter(d => d.id !== id);
+    }
+  }
+
+  filter(event: any) {
+    const searchTerm = event.target.value.toLowerCase();
+    if (!searchTerm) {
+      this.departments = [...this.allDepartments];
+      return;
+    }
+    this.departments = this.allDepartments.filter(d => 
+      d.name.toLowerCase().includes(searchTerm) || 
+      d.manager.toLowerCase().includes(searchTerm)
+    );
+  }
 
 }
