@@ -18,4 +18,19 @@ export class UsersService {
     const newUser = this.usersRepository.create(user);
     return this.usersRepository.save(newUser);
   }
+
+  async findAll(): Promise<any[]> {
+    const users = await this.usersRepository.find({ relations: { employee: true } });
+    return users.map(u => ({
+      id: u.id,
+      email: u.email,
+      role: u.role,
+      firstName: u.employee ? u.employee.firstName : 'Admin',
+      lastName: u.employee ? u.employee.lastName : 'User'
+    }));
+  }
+
+  async remove(id: number): Promise<void> {
+    await this.usersRepository.delete(id);
+  }
 }
