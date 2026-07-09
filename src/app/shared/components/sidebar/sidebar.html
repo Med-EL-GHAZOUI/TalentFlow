@@ -23,115 +23,151 @@
 
   <div class="sidebar-content">
     <ul class="nav-menu">
-      <li class="nav-label" *ngIf="!isCollapsed">Principal</li>
-      <li class="nav-item">
-        <a routerLink="/dashboard" routerLinkActive="active" class="nav-link">
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="3" y="3" width="7" height="9"></rect>
-            <rect x="14" y="3" width="7" height="5"></rect>
-            <rect x="14" y="12" width="7" height="9"></rect>
-            <rect x="3" y="16" width="7" height="5"></rect>
-          </svg>
-          <span class="nav-text">Dashboard</span>
-        </a>
-      </li>
+      
+      <!-- ============================================== -->
+      <!-- MENUS ADMIN -->
+      <!-- ============================================== -->
+      <ng-container *ngIf="currentRole === 'ADMIN'">
+        <li class="nav-label" *ngIf="!isCollapsed">Principal</li>
+        <li class="nav-item">
+          <a routerLink="/dashboard" routerLinkActive="active" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="9"></rect>
+              <rect x="14" y="3" width="7" height="5"></rect>
+              <rect x="14" y="12" width="7" height="9"></rect>
+              <rect x="3" y="16" width="7" height="5"></rect>
+            </svg>
+            <span class="nav-text">Tableau de Bord</span>
+          </a>
+        </li>
 
-      <li class="nav-label" *ngIf="!isCollapsed">Ressources Humaines</li>
-      <li class="nav-item">
-        <a routerLink="/employees" routerLinkActive="active" class="nav-link">
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-            <circle cx="9" cy="7" r="4"></circle>
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-          </svg>
-          <span class="nav-text">Collaborateurs</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="/departments" routerLinkActive="active" class="nav-link">
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
-            <rect x="9" y="9" width="6" height="6"></rect>
-            <line x1="9" y1="1" x2="9" y2="4"></line>
-            <line x1="15" y1="1" x2="15" y2="4"></line>
-            <line x1="9" y1="20" x2="9" y2="23"></line>
-            <line x1="15" y1="20" x2="15" y2="23"></line>
-            <line x1="20" y1="9" x2="23" y2="9"></line>
-            <line x1="20" y1="14" x2="23" y2="14"></line>
-            <line x1="1" y1="9" x2="4" y2="9"></line>
-            <line x1="1" y1="14" x2="4" y2="14"></line>
-          </svg>
-          <span class="nav-text">Domaines / Sites</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="/jobs" routerLinkActive="active" class="nav-link">
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-          </svg>
-          <span class="nav-text">Postes</span>
-        </a>
-      </li>
+        <li class="nav-label" *ngIf="!isCollapsed">Administration Système</li>
+        <li class="nav-item">
+          <a routerLink="/users" routerLinkActive="active" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <span class="nav-text">Utilisateurs</span>
+          </a>
+        </li>
+      </ng-container>
 
-      <li class="nav-label" *ngIf="!isCollapsed">Développement</li>
-      <li class="nav-item">
-        <a routerLink="/skills" routerLinkActive="active" class="nav-link">
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-          </svg>
-          <span class="nav-text">Compétences</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="/training" routerLinkActive="active" class="nav-link">
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-          </svg>
-          <span class="nav-text">Formations</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="/gpec-dashboard" routerLinkActive="active" class="nav-link">
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"></circle>
-            <polyline points="12 6 12 12 16 14"></polyline>
-          </svg>
-          <span class="nav-text">GPEC</span>
-        </a>
-      </li>
+      <!-- ============================================== -->
+      <!-- MENUS RH -->
+      <!-- ============================================== -->
+      <ng-container *ngIf="currentRole === 'RH'">
+        <li class="nav-label" *ngIf="!isCollapsed">Ressources Humaines</li>
+        <li class="nav-item">
+          <a routerLink="/gpec-dashboard" routerLinkActive="active" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <span class="nav-text">Vue d'ensemble GPEC</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/employees" routerLinkActive="active" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <span class="nav-text">Collaborateurs</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/departments" routerLinkActive="active" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+            <span class="nav-text">Domaines / Sites</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/jobs" routerLinkActive="active" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+            <span class="nav-text">Postes</span>
+          </a>
+        </li>
 
-      <li class="nav-label" *ngIf="!isCollapsed">Administration</li>
-      <li class="nav-item">
-        <a routerLink="/users" routerLinkActive="active" class="nav-link">
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-          </svg>
-          <span class="nav-text">Utilisateurs</span>
-        </a>
-      </li>
+        <li class="nav-label" *ngIf="!isCollapsed">Développement</li>
+        <li class="nav-item">
+          <a routerLink="/skills" routerLinkActive="active" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <span class="nav-text">Compétences</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/training" routerLinkActive="active" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            <span class="nav-text">Formations</span>
+          </a>
+        </li>
+      </ng-container>
+
+
+      <!-- ============================================== -->
+      <!-- MENUS MANAGER -->
+      <!-- ============================================== -->
+      <ng-container *ngIf="currentRole === 'MANAGER'">
+        <li class="nav-label" *ngIf="!isCollapsed">Management</li>
+        <li class="nav-item">
+          <a routerLink="/team-space" routerLinkActive="active" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            <span class="nav-text">Mon Équipe</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/competency-gap" routerLinkActive="active" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+            <span class="nav-text">Évaluation des écarts</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/recommendations" routerLinkActive="active" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            <span class="nav-text">Recommandations</span>
+          </a>
+        </li>
+      </ng-container>
+
+      
+      <!-- ============================================== -->
+      <!-- MENUS EMPLOYEE -->
+      <!-- ============================================== -->
+      <ng-container *ngIf="currentRole === 'EMPLOYEE'">
+        <li class="nav-label" *ngIf="!isCollapsed">Personnel</li>
+        <li class="nav-item">
+          <a routerLink="/my-space" routerLinkActive="active" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span class="nav-text">Mon Parcours</span>
+          </a>
+        </li>
+      </ng-container>
+
+
+      <!-- Commun à tous -->
+      <li class="nav-label" *ngIf="!isCollapsed">Préférences</li>
       <li class="nav-item">
         <a routerLink="/settings" routerLinkActive="active" class="nav-link">
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="3"></circle>
-            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-          </svg>
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
           <span class="nav-text">Paramètres</span>
         </a>
       </li>
+
     </ul>
   </div>
 
   <div class="sidebar-footer">
     <div class="user-profile" routerLink="/profile">
-      <div class="avatar">
-        <span>ME</span>
+      <div class="avatar" [ngStyle]="{'background': currentRole === 'ADMIN' ? 'var(--indigo-500)' : currentRole === 'RH' ? 'var(--rose-500)' : currentRole === 'MANAGER' ? 'var(--cyan-500)' : 'var(--emerald-500)'}">
+        <span>{{ currentRole === 'ADMIN' ? 'AD' : currentRole === 'RH' ? 'RH' : currentRole === 'MANAGER' ? 'MG' : 'EM' }}</span>
       </div>
       <div class="user-info" *ngIf="!isCollapsed">
-        <span class="user-name">Mohamed EL GHAZOUI</span>
-        <span class="user-role">Administrateur</span>
+        <span class="user-name">{{ authService.currentUserFullName() || '...' }}</span>
+        <span class="user-role">{{ currentRole === 'ADMIN' ? 'Administrateur' : currentRole === 'RH' ? 'Resp. RH' : currentRole === 'MANAGER' ? 'Manager' : 'Employé' }}</span>
       </div>
       <svg *ngIf="!isCollapsed" class="more-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <circle cx="12" cy="12" r="1"></circle>

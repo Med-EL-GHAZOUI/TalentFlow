@@ -10,6 +10,10 @@ export class DepartmentService extends ApiService {
     return this.http.get(`${this.api}/departments`);
   }
 
+  getById(id: number) {
+    return this.http.get(`${this.api}/departments/${id}`);
+  }
+
   create(data: any) {
     return this.http.post(`${this.api}/departments`, data);
   }

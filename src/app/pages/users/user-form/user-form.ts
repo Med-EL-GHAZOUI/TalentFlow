@@ -15,8 +15,8 @@ export class UserFormComponent implements OnInit {
   isEditMode = false;
 
   user = {
-    firstname: '',
-    lastname: '',
+    firstName: '',
+    lastName: '',
     email: '',
     role: 'EMPLOYEE'
   };
@@ -30,8 +30,8 @@ export class UserFormComponent implements OnInit {
         this.isEditMode = true;
         // Mock data
         this.user = {
-          firstname: 'Admin',
-          lastname: 'System',
+          firstName: 'Admin',
+          lastName: 'System',
           email: 'admin@copag.ma',
           role: 'ADMIN'
         };

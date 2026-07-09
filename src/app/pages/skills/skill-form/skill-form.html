@@ -64,21 +64,6 @@
           </div>
           
           <div class="form-group glass-input-wrapper" style="margin-top: 1.5rem;">
-            <label class="form-label" style="font-weight: 600; color: var(--slate-700); margin-bottom: 0.5rem; display: block;">Niveau d'expertise cible</label>
-            <div class="level-selector" style="display: flex; align-items: center; gap: 1.5rem;">
-              <div class="range-wrapper" style="flex: 1;">
-                <input type="range" min="1" max="5" [(ngModel)]="skill.level" name="level" style="width: 100%;">
-                <div class="range-labels" style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--slate-500); margin-top: 0.5rem; font-weight: 600;">
-                  <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
-                </div>
-              </div>
-              <div class="level-display glass-card" style="padding: 0.5rem 1rem; background: rgba(255,255,255,0.8); font-weight: 600; color: var(--slate-700);">
-                Niveau <strong style="color: var(--primary-600); font-size: 1.2rem;">{{ skill.level }}</strong>
-              </div>
-            </div>
-          </div>
-          
-          <div class="form-group glass-input-wrapper" style="margin-top: 1.5rem;">
             <label class="form-label" style="font-weight: 600; color: var(--slate-700); margin-bottom: 0.5rem; display: block;">Description et critères d'évaluation</label>
             <textarea class="glass-form-control" rows="4" [(ngModel)]="skill.description" name="description" placeholder="Détaillez ce qui est attendu pour cette compétence..."></textarea>
           </div>

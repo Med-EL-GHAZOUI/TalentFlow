@@ -60,9 +60,9 @@
                 <td>
                   <div class="progress-wrapper">
                     <div class="progress-bar-bg glass-progress-bg">
-                      <div class="progress-bar-fill glass-progress-fill" style="width: 92%; background: var(--emerald-500);"></div>
+                      <div class="progress-bar-fill glass-progress-fill" [style.width.%]="item.affinity" style="background: var(--emerald-500);"></div>
                     </div>
-                    <span class="progress-text">92%</span>
+                    <span class="progress-text">{{ item.affinity }}%</span>
                   </div>
                 </td>
                 <td>

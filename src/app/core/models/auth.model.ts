@@ -13,8 +13,8 @@ export interface LoginResponse {
 
 export interface UserAuth {
   id: number;
-  firstname: string;
-  lastname: string;
+  firstName: string;
+  lastName: string;
   email: string;
   role: string;
 }

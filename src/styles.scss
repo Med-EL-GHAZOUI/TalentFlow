@@ -382,6 +382,47 @@ p { margin-bottom: 1rem; line-height: 1.5; color: var(--slate-600); }
   }
 }
 
+/* Glass Buttons */
+.glass-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-xl);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  
+  &.primary {
+    background: linear-gradient(135deg, #10b981, #059669); /* Emerald Gradient */
+    color: white;
+    border: none;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+      background: linear-gradient(135deg, #34d399, #10b981);
+    }
+  }
+
+  &.secondary {
+    background: rgba(255, 255, 255, 0.6);
+    color: var(--slate-700);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(12px);
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.9);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+  }
+}
+
 /* Glass Inputs */
 .glass-input-wrapper {
   position: relative;
@@ -584,3 +625,64 @@ p { margin-bottom: 1rem; line-height: 1.5; color: var(--slate-600); }
     min-width: 2.5rem;
   }
 }
+
+
+/* ========================================================= */
+/* THEME & SETTINGS OVERRIDES                                */
+/* ========================================================= */
+
+.dark-theme {
+  --slate-50: #0f172a;
+  --slate-100: #1e293b; /* Dark Background */
+  --slate-200: #334155;
+  --slate-300: #475569;
+  --slate-400: #64748b;
+  --slate-500: #94a3b8;
+  --slate-600: #cbd5e1;
+  --slate-700: #e2e8f0;
+  --slate-800: #f1f5f9;
+  --slate-900: #f8fafc;
+  
+  --primary-50: #1e3a8a;
+  --primary-100: #1e40af;
+  
+  .glass-card, .pro-max-page-wrapper, .form-control {
+    background-color: var(--slate-100);
+    color: var(--slate-800);
+    border-color: var(--slate-200);
+  }
+  
+  .blob-bg {
+    opacity: 0.2;
+  }
+}
+
+.disable-animations * {
+  animation: none !important;
+  transition: none !important;
+}
+
+.compact-density {
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  
+  .pro-max-page-wrapper {
+    padding: 1rem 1.5rem;
+  }
+  
+  .glass-card, .card {
+    padding: 1rem;
+  }
+  
+  .form-group {
+    margin-bottom: 0.75rem;
+  }
+  
+  .kpi-card-premium {
+    height: 120px;
+    padding: 1rem;
+    
+    .kpi-value { font-size: 1.4rem; }
+  }
+}
+

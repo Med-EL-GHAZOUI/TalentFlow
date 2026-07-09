@@ -14,31 +14,18 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
       switch (error.status) {
 
         case 401:
-
           localStorage.clear();
-
           window.location.href = '/login';
-
           break;
-
         case 403:
-
-          alert('Access denied');
-
+          console.warn('Access denied');
           break;
-
         case 404:
-
-          alert('Resource not found');
-
+          console.warn('Resource not found');
           break;
-
         case 500:
-
-          alert('Internal server error');
-
+          console.error('Internal server error');
           break;
-
       }
 
       return throwError(() => error);

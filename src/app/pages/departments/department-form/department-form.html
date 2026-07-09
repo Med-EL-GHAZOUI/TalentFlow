@@ -37,14 +37,13 @@
           </h3>
           
           <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
-            <div class="form-group glass-input-wrapper" style="grid-column: span 2;">
+            <div class="form-group glass-input-wrapper">
               <label class="form-label" style="font-weight: 600; color: var(--slate-700); margin-bottom: 0.5rem; display: block;">Nom du domaine / site</label>
               <input type="text" class="glass-form-control" [(ngModel)]="department.name" name="name" placeholder="Ex: Marketing & Communication">
             </div>
-            
-            <div class="form-group glass-input-wrapper" style="grid-column: span 2;">
-              <label class="form-label" style="font-weight: 600; color: var(--slate-700); margin-bottom: 0.5rem; display: block;">Responsable (Manager)</label>
-              <input type="text" class="glass-form-control" [(ngModel)]="department.manager" name="manager" placeholder="Ex: Ahmed Alaoui">
+            <div class="form-group glass-input-wrapper">
+              <label class="form-label" style="font-weight: 600; color: var(--slate-700); margin-bottom: 0.5rem; display: block;">Responsable du domaine</label>
+              <input type="text" class="glass-form-control" [(ngModel)]="department.manager" name="manager" placeholder="Ex: Mohamed El Ghazoui">
             </div>
           </div>
           

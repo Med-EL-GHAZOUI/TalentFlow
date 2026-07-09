@@ -54,28 +54,28 @@
                   <div class="item-cell">
                     <div class="avatar-glow"
                          [class.bg-purple-glow]="user.role === 'ADMIN'"
-                         [class.bg-cyan-glow]="user.role === 'HR'"
-                         [class.bg-blue-glow]="user.role !== 'ADMIN' && user.role !== 'HR'">
-                      {{ user.firstname.charAt(0) }}{{ user.lastname.charAt(0) }}
+                         [class.bg-cyan-glow]="user.role === 'RH'"
+                         [class.bg-blue-glow]="user.role !== 'ADMIN' && user.role !== 'RH'">
+                      {{ (user.firstName || 'U').charAt(0).toUpperCase() }}{{ (user.lastName || 'U').charAt(0).toUpperCase() }}
                     </div>
                     <div class="item-info">
-                      <span class="item-name">{{ user.firstname }} {{ user.lastname }}</span>
-                      <span class="item-desc">ID: USR-{{ user.id.toString().padStart(3, '0') }}</span>
+                      <span class="item-name">{{ user.firstName || 'Nom' }} {{ user.lastName || 'Inconnu' }}</span>
+                      <span class="item-desc">ID: USR-{{ user.id ? user.id.toString().padStart(3, '0') : 'XXX' }}</span>
                     </div>
                   </div>
                 </td>
                 <td>
                   <div class="email-cell" style="font-weight: 500; color: var(--slate-600);">
-                    <span>{{ user.email }}</span>
+                    <span>{{ user.email || 'Email manquant' }}</span>
                   </div>
                 </td>
                 <td>
                   <span class="badge"
                         [class.badge-primary]="user.role === 'ADMIN'"
-                        [class.badge-success]="user.role === 'HR'"
+                        [class.badge-success]="user.role === 'RH'"
                         [class.badge-info]="user.role === 'MANAGER'"
                         [class.badge-warning]="user.role === 'EMPLOYEE'">
-                    {{ user.role }}
+                    {{ user.role || 'EMPLOYEE' }}
                   </span>
                 </td>
                 <td>

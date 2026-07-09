@@ -12,8 +12,8 @@ export class EmployeeDetailsComponent{
 
   employee={
     id:1,
-    firstname:'Mohamed',
-    lastname:'EL GHAZOUI',
+    firstName:'Mohamed',
+    lastName:'EL GHAZOUI',
     email:'mohamed@gmail.com',
     phone:'0600000000',
     department:'IT',

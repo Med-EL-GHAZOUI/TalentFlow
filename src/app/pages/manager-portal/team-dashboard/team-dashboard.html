@@ -1,0 +1,182 @@
+<div class="dashboard-container">
+  <div class="dashboard-content">
+    
+    <!-- Hero Banner -->
+    <div class="glass-card hero-banner animate-fade-in-up" style="animation-delay: 0.1s;">
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="hero-badge manager-badge">Espace Management</div>
+          <h1 class="hero-title">Vue d'ensemble de l'<span>Équipe</span></h1>
+          <p class="hero-subtitle">Gérez les compétences, suivez les évolutions et anticipez les besoins en formation de vos collaborateurs.</p>
+        </div>
+        <div class="hero-actions">
+          <button class="glass-btn primary icon-left" routerLink="/competency-gap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+            Évaluer les écarts
+          </button>
+          <button class="glass-btn secondary icon-left" routerLink="/recommendations">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            Recommandations
+          </button>
+        </div>
+      </div>
+      <div class="hero-background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+      </div>
+    </div>
+
+    <!-- KPIs -->
+    <div class="kpi-grid">
+      <!-- KPI 1 -->
+      <div class="glass-card kpi-card premium-card animate-fade-in-up" style="animation-delay: 0.2s;">
+        <div class="card-glow glow-indigo"></div>
+        <div class="kpi-icon-wrapper bg-indigo-glow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+        <div class="kpi-info">
+          <h3 class="kpi-title">Mon Équipe</h3>
+          <div class="kpi-value">
+            <span *ngIf="isLoading" class="skeleton-text" style="width: 40px; height: 30px; display: inline-block;"></span>
+            <ng-container *ngIf="!isLoading">{{ totalMembers }}</ng-container>
+            <span class="text-sm font-normal text-slate-500">Membres</span>
+          </div>
+          <div class="trend-pill neutral">
+            Collaborateurs actifs
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI 2 -->
+      <div class="glass-card kpi-card premium-card animate-fade-in-up" style="animation-delay: 0.3s;">
+        <div class="card-glow glow-emerald"></div>
+        <div class="kpi-icon-wrapper bg-emerald-glow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+        </div>
+        <div class="kpi-info">
+          <h3 class="kpi-title">Couverture Compétences</h3>
+          <div class="kpi-value">
+            <span *ngIf="isLoading" class="skeleton-text" style="width: 40px; height: 30px; display: inline-block;"></span>
+            <ng-container *ngIf="!isLoading">{{ averageSkillCoverage }}%</ng-container>
+            <span class="text-sm font-normal text-slate-500">Moyenne</span>
+          </div>
+          <div class="trend-pill" [ngClass]="getCoverageColor(averageSkillCoverage)">
+            Vue d'ensemble
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI 3 -->
+      <div class="glass-card kpi-card premium-card animate-fade-in-up" style="animation-delay: 0.4s;">
+        <div class="card-glow glow-amber"></div>
+        <div class="kpi-icon-wrapper bg-amber-glow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+        </div>
+        <div class="kpi-info">
+          <h3 class="kpi-title">Demandes de formation</h3>
+          <div class="kpi-value">3 <span class="text-sm font-normal text-slate-500">En attente</span></div>
+          <div class="trend-pill warning">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            Action requise
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Table -->
+    <div class="glass-card table-widget animate-fade-in-up" style="animation-delay: 0.5s;">
+      <div class="widget-header">
+        <h2 class="widget-title">
+          <div class="title-icon bg-indigo-glow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          Tableau des Collaborateurs
+        </h2>
+        <div class="widget-actions">
+          <div class="search-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" placeholder="Rechercher un membre...">
+          </div>
+        </div>
+      </div>
+      
+      <div class="table-responsive" *ngIf="!isLoading">
+        <table class="pro-max-table modern-table">
+          <thead>
+            <tr>
+              <th>Employé</th>
+              <th>Poste</th>
+              <th>Département</th>
+              <th>Niveau Moyen</th>
+              <th class="text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="table-row hover-lift" *ngFor="let member of teamMembers; let i = index">
+              <td>
+                <div class="user-cell">
+                  <div class="avatar" [ngClass]="i % 2 === 0 ? 'bg-indigo-glow' : 'bg-emerald-glow'">{{ getInitials(member.firstName, member.lastName) }}</div>
+                  <div class="user-details">
+                    <span class="user-name">{{ member.firstName }} {{ member.lastName }}</span>
+                    <span class="user-email">{{ member.user?.email || (member.firstName.toLowerCase() + '@copag.ma') }}</span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <span class="role-text">{{ member.job?.title || 'Non assigné' }}</span>
+              </td>
+              <td>
+                <span class="role-text">{{ member.department?.name || '-' }}</span>
+              </td>
+              <td>
+                <div class="progress-cell">
+                  <div class="progress-info">
+                    <span class="progress-score">{{ getAverageLevel(member.employeeSkills) | number:'1.1-1' }}/5</span>
+                  </div>
+                  <div class="progress-track">
+                    <div class="progress-fill" [ngClass]="'fill-' + getCoverageColor(getAverageLevel(member.employeeSkills) * 20)" [style.width.%]="getAverageLevel(member.employeeSkills) * 20"></div>
+                  </div>
+                </div>
+              </td>
+              <td class="text-right">
+                <div class="action-buttons">
+                  <button class="glass-icon-btn tooltip" data-tooltip="Évaluer" routerLink="/competency-gap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                  </button>
+                  <button class="glass-icon-btn tooltip" data-tooltip="Profil" [routerLink]="['/employees', member.id]">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr *ngIf="teamMembers.length === 0">
+              <td colspan="5" style="text-align: center; padding: 3rem;">
+                <p style="color: var(--slate-500);">Aucun collaborateur trouvé.</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <!-- Loading state -->
+      <div *ngIf="isLoading" style="padding: 4rem; text-align: center; color: var(--slate-500);">
+         <svg width="40" height="40" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" fill="none" style="margin: 0 auto;">
+          <circle cx="12" cy="12" r="10" stroke-width="2" stroke-dasharray="32" stroke-linecap="round">
+            <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" values="0 12 12;360 12 12"/>
+          </circle>
+        </svg>
+        <p style="margin-top: 1rem;">Chargement de l'équipe...</p>
+      </div>
+    </div>
+
+  </div>
+</div>

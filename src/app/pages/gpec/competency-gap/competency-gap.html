@@ -62,25 +62,29 @@
                 <td>
                   <div class="level-indicator">
                     <div class="dots" style="display: flex; gap: 4px;">
-                      <span class="dot active" style="width: 8px; height: 8px; border-radius: 50%; background: var(--primary-500);"></span>
-                      <span class="dot active" style="width: 8px; height: 8px; border-radius: 50%; background: var(--primary-500);"></span>
-                      <span class="dot inactive" style="width: 8px; height: 8px; border-radius: 50%; background: var(--slate-300);"></span>
-                      <span class="dot inactive" style="width: 8px; height: 8px; border-radius: 50%; background: var(--slate-300);"></span>
-                      <span class="dot inactive" style="width: 8px; height: 8px; border-radius: 50%; background: var(--slate-300);"></span>
+                      <ng-container *ngFor="let i of [1,2,3,4,5]">
+                        <span class="dot" 
+                              [class.active]="i <= gap.current" 
+                              [class.inactive]="i > gap.current"
+                              [style.background]="i <= gap.current ? 'var(--primary-500)' : 'var(--slate-300)'"
+                              style="width: 8px; height: 8px; border-radius: 50%;"></span>
+                      </ng-container>
                     </div>
-                    <span class="level-text" style="font-size: 0.8rem; color: var(--slate-600); margin-top: 4px; display: block;">{{ gap.current }}</span>
+                    <span class="level-text" style="font-size: 0.8rem; color: var(--slate-600); margin-top: 4px; display: block;">Niveau {{ gap.current }}</span>
                   </div>
                 </td>
                 <td>
                   <div class="level-indicator">
                     <div class="dots required" style="display: flex; gap: 4px;">
-                      <span class="dot active" style="width: 8px; height: 8px; border-radius: 50%; background: var(--emerald-500);"></span>
-                      <span class="dot active" style="width: 8px; height: 8px; border-radius: 50%; background: var(--emerald-500);"></span>
-                      <span class="dot active" style="width: 8px; height: 8px; border-radius: 50%; background: var(--emerald-500);"></span>
-                      <span class="dot active" style="width: 8px; height: 8px; border-radius: 50%; background: var(--emerald-500);"></span>
-                      <span class="dot inactive" style="width: 8px; height: 8px; border-radius: 50%; background: var(--slate-300);"></span>
+                      <ng-container *ngFor="let i of [1,2,3,4,5]">
+                        <span class="dot" 
+                              [class.active]="i <= gap.required" 
+                              [class.inactive]="i > gap.required"
+                              [style.background]="i <= gap.required ? 'var(--emerald-500)' : 'var(--slate-300)'"
+                              style="width: 8px; height: 8px; border-radius: 50%;"></span>
+                      </ng-container>
                     </div>
-                    <span class="level-text" style="font-size: 0.8rem; color: var(--slate-600); margin-top: 4px; display: block;">{{ gap.required }}</span>
+                    <span class="level-text" style="font-size: 0.8rem; color: var(--slate-600); margin-top: 4px; display: block;">Niveau {{ gap.required }}</span>
                   </div>
                 </td>
                 <td>

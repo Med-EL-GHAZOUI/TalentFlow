@@ -4,17 +4,17 @@ import { Skill } from './skill.model';
 
 export interface Employee {
   id: number;
-  firstname: string;
-  lastname: string;
+  firstName: string;
+  lastName: string;
   email: string;
   phone: string;
   birthDate: Date;
   hireDate: Date;
 
-  department: Department;
-  job: Job;
+  department?: Department;
+  job?: Job;
 
-  skills: Skill[];
+  skills?: Skill[];
 
   status: string;
 

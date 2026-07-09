@@ -10,6 +10,10 @@ export class UserService extends ApiService {
     return this.http.get(`${this.api}/users`);
   }
 
+  delete(id: number) {
+    return this.http.delete(`${this.api}/users/${id}`);
+  }
+
 }
 
 export class User {

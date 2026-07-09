@@ -23,7 +23,7 @@
     </div>
 
     <div class="glass-card animate-slide-up" style="padding: 2.5rem;">
-      <form (ngSubmit)="save()" class="form-layout">
+      <form (ngSubmit)="save()" ngNativeValidate class="form-layout">
         
         <div class="form-section" style="margin-bottom: 2rem;">
           <h3 class="section-title" style="font-size: 1.2rem; font-weight: 800; color: var(--slate-800); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
@@ -39,17 +39,17 @@
           <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
             <div class="form-group glass-input-wrapper">
               <label class="form-label" style="font-weight: 600; color: var(--slate-700); margin-bottom: 0.5rem; display: block;">Prénom</label>
-              <input type="text" class="glass-form-control" [(ngModel)]="user.firstname" name="firstname" placeholder="Ex: Jean">
+              <input type="text" class="glass-form-control" [(ngModel)]="user.firstName" name="firstName" placeholder="Ex: Jean" required>
             </div>
             
             <div class="form-group glass-input-wrapper">
               <label class="form-label" style="font-weight: 600; color: var(--slate-700); margin-bottom: 0.5rem; display: block;">Nom</label>
-              <input type="text" class="glass-form-control" [(ngModel)]="user.lastname" name="lastname" placeholder="Ex: Dupont">
+              <input type="text" class="glass-form-control" [(ngModel)]="user.lastName" name="lastName" placeholder="Ex: Dupont" required>
             </div>
             
             <div class="form-group glass-input-wrapper" style="grid-column: span 2;">
               <label class="form-label" style="font-weight: 600; color: var(--slate-700); margin-bottom: 0.5rem; display: block;">Email professionnel</label>
-              <input type="email" class="glass-form-control" [(ngModel)]="user.email" name="email" placeholder="jean.dupont@entreprise.com">
+              <input type="email" class="glass-form-control" [(ngModel)]="user.email" name="email" placeholder="jean.dupont@entreprise.com" required>
             </div>
           </div>
         </div>

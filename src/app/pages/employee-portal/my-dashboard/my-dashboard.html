@@ -1,0 +1,205 @@
+<ng-container *ngIf="isLoading">
+  <div style="padding: 3rem; text-align: center; color: var(--slate-500);">
+    <svg width="40" height="40" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" fill="none">
+      <circle cx="12" cy="12" r="10" stroke-width="2" stroke-dasharray="32" stroke-linecap="round">
+        <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" values="0 12 12;360 12 12"/>
+      </circle>
+    </svg>
+    <p style="margin-top: 1rem;">Chargement de votre tableau de bord...</p>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="!isLoading && errorMessage">
+  <div style="padding: 3rem; text-align: center; color: var(--danger);">
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-bottom: 1rem;">
+      <circle cx="12" cy="12" r="10"></circle>
+      <line x1="12" y1="8" x2="12" y2="12"></line>
+      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+    </svg>
+    <h2>Oups !</h2>
+    <p>{{ errorMessage }}</p>
+  </div>
+</ng-container>
+
+<div class="dashboard-container" *ngIf="!isLoading && dashboardData">
+  <div class="dashboard-content">
+    
+    <!-- Hero Banner -->
+    <div class="glass-card hero-banner animate-fade-in-up" style="animation-delay: 0.1s;">
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="hero-badge">Mon Parcours Professionnel</div>
+          <h1 class="hero-title">Bonjour, <span>{{ dashboardData.profile.firstName }}</span></h1>
+          <p class="hero-subtitle">Voici un résumé de vos compétences, formations et objectifs pour propulser votre carrière au sein de COPAG.</p>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <span>Ancienneté: {{ getSeniority(dashboardData.profile.hireDate) }} an(s)</span>
+          </div>
+          <div class="stat-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            <span>Département: {{ dashboardData.profile.department?.name || 'N/A' }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+      </div>
+    </div>
+
+    <!-- KPIs -->
+    <div class="kpi-grid">
+      <!-- KPI 1 -->
+      <div class="glass-card kpi-card premium-card animate-fade-in-up" style="animation-delay: 0.2s;">
+        <div class="card-glow glow-emerald"></div>
+        <div class="kpi-icon-wrapper bg-emerald-glow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+        </div>
+        <div class="kpi-info">
+          <h3 class="kpi-title">Poste</h3>
+          <div class="kpi-value" style="font-size: 1.1rem; line-height: 1.2; margin-bottom: 0.5rem; word-break: break-word;">{{ dashboardData.profile.job?.title || 'Non assigné' }}</div>
+          <div class="trend-pill positive">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+            Actif
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI 2 -->
+      <div class="glass-card kpi-card premium-card animate-fade-in-up" style="animation-delay: 0.3s;">
+        <div class="card-glow glow-indigo"></div>
+        <div class="kpi-icon-wrapper bg-indigo-glow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+        </div>
+        <div class="kpi-info">
+          <h3 class="kpi-title">Compétences</h3>
+          <div class="kpi-value">{{ dashboardData.profile.employeeSkills?.length || 0 }} Validées</div>
+          <div class="trend-pill warning" *ngIf="dashboardData.recommendations.length > 0">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            {{ dashboardData.recommendations.length }} à développer
+          </div>
+          <div class="trend-pill positive" *ngIf="dashboardData.recommendations.length === 0">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+            Objectifs atteints
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI 3 -->
+      <div class="glass-card kpi-card premium-card animate-fade-in-up" style="animation-delay: 0.4s;">
+        <div class="card-glow glow-cyan"></div>
+        <div class="kpi-icon-wrapper bg-cyan-glow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+        </div>
+        <div class="kpi-info">
+          <h3 class="kpi-title">Formations</h3>
+          <div class="kpi-value">{{ dashboardData.profile.trainings?.length || 0 }} Suivies</div>
+          <div class="trend-pill neutral">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            Planifiées
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="main-grid">
+      
+      <!-- Mes compétences clés -->
+      <div class="glass-card widget-card animate-fade-in-up" style="animation-delay: 0.5s;">
+        <div class="widget-header">
+          <h2 class="widget-title">
+            <div class="title-icon bg-indigo-glow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            </div>
+            Mes compétences clés
+          </h2>
+          <button class="glass-icon-btn text-btn">Voir l'évaluation</button>
+        </div>
+        
+        <div class="skills-showcase" *ngIf="dashboardData.profile.employeeSkills?.length">
+          <!-- Skill Item -->
+          <div class="skill-row" *ngFor="let empSkill of dashboardData.profile.employeeSkills">
+            <div class="skill-info">
+              <div class="skill-name">{{ empSkill.skill?.name }}</div>
+              <span class="trend-pill" [ngClass]="getSkillColor(empSkill.acquiredLevel)">{{ getSkillLabel(empSkill.acquiredLevel) }} ({{ getSkillPercentage(empSkill.acquiredLevel) }}%)</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" [ngClass]="'fill-' + getSkillColor(empSkill.acquiredLevel)" [style.width.%]="getSkillPercentage(empSkill.acquiredLevel)"></div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="!dashboardData.profile.employeeSkills?.length" style="padding: 2rem; text-align: center; color: var(--slate-500);">
+          Aucune compétence évaluée pour le moment.
+        </div>
+      </div>
+
+      <!-- Mes formations -->
+      <div class="glass-card widget-card animate-fade-in-up" style="animation-delay: 0.6s;">
+        <div class="widget-header">
+          <h2 class="widget-title">
+            <div class="title-icon bg-cyan-glow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            </div>
+            Mes formations
+          </h2>
+        </div>
+        
+        <div class="training-timeline">
+          <!-- Recommended Trainings -->
+          <ng-container *ngIf="dashboardData.recommendations?.length">
+            <div class="timeline-item active" *ngFor="let rec of dashboardData.recommendations">
+              <div class="timeline-marker">
+                <div class="marker-core" style="background: var(--amber-500);"></div>
+                <div class="marker-pulse" style="border-color: var(--amber-500);"></div>
+              </div>
+              <div class="timeline-content premium-box" style="border-color: rgba(245, 158, 11, 0.3);">
+                <div class="training-meta">
+                  <span class="trend-pill warning">Recommandée</span>
+                  <span class="training-date">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                    Priorité: {{ rec.priority }}
+                  </span>
+                </div>
+                <h4 class="training-title">{{ rec.training }}</h4>
+                <p class="training-desc">Formation recommandée pour combler l'écart sur la compétence : <strong>{{ rec.skill }}</strong>.</p>
+                <button class="glass-btn primary outline sm mt-2" style="border-color: var(--amber-500); color: var(--amber-600);">Demander l'inscription</button>
+              </div>
+            </div>
+          </ng-container>
+
+          <!-- Enrolled Trainings -->
+          <ng-container *ngIf="dashboardData.profile.trainings?.length">
+            <div class="timeline-item past" *ngFor="let training of dashboardData.profile.trainings">
+              <div class="timeline-marker">
+                <div class="marker-core"></div>
+              </div>
+              <div class="timeline-content past-box">
+                <div class="training-meta">
+                  <span class="trend-pill primary-pill">Inscrit</span>
+                  <span class="training-date">{{ training.startDate | date:'dd MMM yyyy' }}</span>
+                </div>
+                <h4 class="training-title">{{ training.title }}</h4>
+                <p class="training-desc" style="font-size: 0.85rem; color: var(--slate-500); margin-top: 0.5rem;">Organisme: {{ training.provider }} ({{ training.duration }}h)</p>
+              </div>
+            </div>
+          </ng-container>
+          
+          <div *ngIf="!dashboardData.profile.trainings?.length && !dashboardData.recommendations?.length" style="padding: 2rem; text-align: center; color: var(--slate-500);">
+            Aucune formation planifiée ou recommandée.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

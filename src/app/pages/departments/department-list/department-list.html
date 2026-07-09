@@ -36,10 +36,10 @@
     </div>
 
     <div class="domaines-card-grid animate-fade-in-up" style="animation-delay: 0.2s;">
-      @for (department of departments; track department.id) {
-        <div class="glass-card domaine-premium-card">
+      @for (department of departments; track department.id; let i = $index) {
+        <div class="glass-card domaine-premium-card hover-lift-card">
           <div class="domaine-card-header">
-            <div class="icon-glass bg-cyan-glass">
+            <div class="icon-glass" [ngClass]="['bg-cyan-glass', 'bg-indigo-glass', 'bg-emerald-glass', 'bg-amber-glass'][i % 4]">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M3 21h18"></path>
                 <path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"></path>
@@ -51,21 +51,36 @@
             </div>
           </div>
           <div class="domaine-card-body">
-            <h3>{{ department.name }}</h3>
-            <p class="domaine-id">ID: DPT-{{ department.id.toString().padStart(3, '0') }}</p>
+            <div class="domaine-title-row">
+              <h3>{{ department.name || 'Nouveau Département' }}</h3>
+              <span class="domaine-id">ID: DPT-{{ department.id ? department.id.toString().padStart(3, '0') : 'XXX' }}</span>
+            </div>
+            <p class="domaine-desc">{{ department.description || 'Pôle d\'excellence stratégique de la coopérative COPAG.' }}</p>
           </div>
           <div class="domaine-card-footer">
             <div class="manager-info">
               <div class="avatar-glow bg-blue-glow">
-                {{ department.manager.charAt(0) }}
+                {{ department.manager ? department.manager.charAt(0).toUpperCase() : 'N' }}
               </div>
               <div class="manager-details">
                 <span class="label">Responsable</span>
-                <span class="name">{{ department.manager }}</span>
+                <span class="name">{{ department.manager || 'Non assigné' }}</span>
               </div>
             </div>
             <span class="trend-pill positive">Actif</span>
           </div>
+        </div>
+      } @empty {
+        <div class="empty-state">
+          <div class="empty-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"></path><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"></path></svg>
+          </div>
+          <h3>Aucun domaine trouvé</h3>
+          <p>Vous n'avez pas encore configuré de départements ou votre recherche ne donne aucun résultat.</p>
+          <button class="btn-premium" routerLink="/departments/new" style="margin-top: 1rem;">
+            <span class="btn-glow"></span>
+            <span class="btn-content">Créer un domaine</span>
+          </button>
         </div>
       }
     </div>

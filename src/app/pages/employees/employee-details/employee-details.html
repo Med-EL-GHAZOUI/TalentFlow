@@ -16,7 +16,7 @@
         </button>
         <div>
           <h1 class="page-title gradient-text" style="font-size: 2rem;">Profil Employé</h1>
-          <p class="page-subtitle">Détails et informations de {{ employee.firstname }}</p>
+          <p class="page-subtitle">Détails et informations de {{ employee.firstName }}</p>
         </div>
       </div>
       <div class="header-actions" style="display: flex; gap: 1rem;">
@@ -45,9 +45,9 @@
       <div class="profile-sidebar">
         <div class="glass-card" style="padding: 2.5rem 1.5rem; text-align: center; display: flex; flex-direction: column; align-items: center;">
           <div class="avatar-glow bg-indigo-glow" style="width: 100px; height: 100px; font-size: 2.5rem; margin-bottom: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--indigo-600); box-shadow: 0 10px 25px rgba(99, 102, 241, 0.2);">
-            {{ employee.firstname.charAt(0) }}{{ employee.lastname.charAt(0) }}
+            {{ employee.firstName.charAt(0) }}{{ employee.lastName.charAt(0) }}
           </div>
-          <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--slate-800); margin-bottom: 0.25rem;">{{ employee.firstname }} {{ employee.lastname }}</h2>
+          <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--slate-800); margin-bottom: 0.25rem;">{{ employee.firstName }} {{ employee.lastName }}</h2>
           <p style="color: var(--slate-500); font-weight: 500; margin-bottom: 1.5rem;">{{ employee.job }}</p>
           
           <div class="user-badges" style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 2rem;">

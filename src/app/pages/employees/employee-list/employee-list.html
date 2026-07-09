@@ -59,19 +59,19 @@
                 <td>
                   <div class="item-cell">
                     <div class="icon-sm bg-blue-glow avatar-glow">
-                      {{ employee.firstname.charAt(0) }}{{ employee.lastname.charAt(0) }}
+                      {{ employee.firstName.charAt(0) }}{{ employee.lastName.charAt(0) }}
                     </div>
                     <div class="item-info">
-                      <span class="item-name">{{ employee.firstname }} {{ employee.lastname }}</span>
+                      <span class="item-name">{{ employee.firstName }} {{ employee.lastName }}</span>
                       <span class="item-desc">{{ employee.email }}</span>
                     </div>
                   </div>
                 </td>
                 <td>
-                  <span class="badge badge-info">{{ employee.department }}</span>
+                  <span class="badge badge-info">{{ employee.department?.name || 'Non défini' }}</span>
                 </td>
                 <td>
-                  <span class="job-title-pill">{{ employee.job }}</span>
+                  <span class="job-title-pill">{{ employee.job?.title || 'Non défini' }}</span>
                 </td>
                 <td>
                   <span class="trend-pill positive">Actif</span>

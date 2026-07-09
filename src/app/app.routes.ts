@@ -24,220 +24,219 @@ import {UserFormComponent} from './pages/users/user-form/user-form';
 
 // @ts-ignore
 // @ts-ignore
+import { authGuard, publicGuard } from './core/guards/auth.guard';
+
 export const routes: Routes = [
 
-  // Layout
+  // Landing Page
   {
     path: '',
+    pathMatch: 'full',
+    loadComponent: () =>
+      import('./pages/landing/landing')
+        .then(m => m.LandingComponent)
+  },
+
+  // Admin Layout
+  {
+    path: '',
+    canActivate: [authGuard],
     loadComponent: () =>
       import('./layouts/admin-layout/admin-layout')
         .then(m => m.AdminLayoutComponent),
     children: [
-
-      {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'dashboard'
-      },
-
       {
         path: 'dashboard',
         loadComponent: () =>
           import('./pages/dashboard/dashboard')
             .then(m => m.DashboardComponent)
       },
-
       {
         path: 'gpec-dashboard',
         loadComponent: () =>
           import('./pages/gpec/gpec-dashboard/gpec-dashboard')
             .then(m => m.GpecDashboardComponent)
       },
-
       {
         path: 'employees',
         loadComponent: () =>
           import('./pages/employees/employee-list/employee-list')
             .then(m => m.EmployeeListComponent)
       },
-
       {
         path: 'employees/new',
         loadComponent: () =>
           import('./pages/employees/employee-form/employee-form')
             .then(m => m.EmployeeFormComponent)
       },
-
       {
         path: 'employees/:id/edit',
         loadComponent: () =>
           import('./pages/employees/employee-form/employee-form')
             .then(m => m.EmployeeFormComponent)
       },
-
       {
         path: 'employees/:id',
         loadComponent: () =>
           import('./pages/employees/employee-details/employee-details')
             .then(m => m.EmployeeDetailsComponent)
       },
-
       {
         path: 'departments',
         loadComponent: () =>
           import('./pages/departments/department-list/department-list')
             .then(m => m.DepartmentListComponent)
       },
-
       {
         path: 'departments/new',
         loadComponent: () =>
           import('./pages/departments/department-form/department-form')
             .then(m => m.DepartmentFormComponent)
       },
-
       {
         path: 'departments/:id/edit',
         loadComponent: () =>
           import('./pages/departments/department-form/department-form')
             .then(m => m.DepartmentFormComponent)
       },
-
       {
         path: 'skills',
         loadComponent: () =>
           import('./pages/skills/skill-list/skill-list')
             .then(m => m.SkillListComponent)
       },
-
       {
         path: 'skills/new',
         loadComponent: () =>
           import('./pages/skills/skill-form/skill-form')
             .then(m => m.SkillFormComponent)
       },
-
       {
         path: 'skills/:id/edit',
         loadComponent: () =>
           import('./pages/skills/skill-form/skill-form')
             .then(m => m.SkillFormComponent)
       },
-
       {
         path: 'jobs',
         loadComponent: () =>
           import('./pages/jobs/job-list/job-list')
             .then(m => m.JobListComponent)
       },
-
       {
         path: 'jobs/new',
         loadComponent: () =>
           import('./pages/jobs/job-form/job-form')
             .then(m => m.JobFormComponent)
       },
-
       {
         path: 'jobs/:id/edit',
         loadComponent: () =>
           import('./pages/jobs/job-form/job-form')
             .then(m => m.JobFormComponent)
       },
-
       {
         path: 'training',
         loadComponent: () =>
           import('./pages/training/training-list/training-list')
             .then(m => m.TrainingListComponent)
       },
-
       {
         path: 'training/new',
         loadComponent: () =>
           import('./pages/training/training-form/training-form')
             .then(m => m.TrainingFormComponent)
       },
-
       {
         path: 'training/:id/edit',
         loadComponent: () =>
           import('./pages/training/training-form/training-form')
             .then(m => m.TrainingFormComponent)
       },
-
       {
         path: 'recommendations',
         loadComponent: () =>
           import('./pages/gpec/recommendations/recommendations')
             .then(m => m.RecommendationsComponent)
       },
-
       {
         path: 'competency-gap',
         loadComponent: () =>
           import('./pages/gpec/competency-gap/competency-gap')
             .then(m => m.CompetencyGapComponent)
       },
-
       {
         path: 'users',
         loadComponent: () =>
           import('./pages/users/user-list/user-list')
             .then(m => m.UserListComponent)
       },
-
       {
         path: 'users/new',
         loadComponent: () =>
           import('./pages/users/user-form/user-form')
             .then(m => m.UserFormComponent)
       },
-
       {
         path: 'users/:id/edit',
         loadComponent: () =>
           import('./pages/users/user-form/user-form')
             .then(m => m.UserFormComponent)
       },
-
+      {
+        path: 'my-space',
+        loadComponent: () =>
+          import('./pages/employee-portal/my-dashboard/my-dashboard')
+            .then(m => m.MyDashboard)
+      },
+      {
+        path: 'team-space',
+        loadComponent: () =>
+          import('./pages/manager-portal/team-dashboard/team-dashboard')
+            .then(m => m.TeamDashboard)
+      },
       {
         path: 'profile',
         loadComponent: () =>
           import('./pages/profile/profile')
             .then(m => m.ProfileComponent)
       },
-
       {
         path: 'settings',
         loadComponent: () =>
           import('./pages/settings/settings')
             .then(m => m.SettingsComponent)
       }
-
     ]
   },
 
+  // Auth Layout
   {
     path: '',
     loadComponent: () =>
       import('./layouts/auth-layout/auth-layout')
         .then(m => m.AuthLayoutComponent),
     children: [
-
       {
         path: 'login',
+        canActivate: [publicGuard],
         loadComponent: () =>
-          import('./pages/login/login')
+          import('./pages/auth/login/login.component')
             .then(m => m.LoginComponent)
+      },
+      {
+        path: 'register',
+        canActivate: [publicGuard],
+        loadComponent: () =>
+          import('./pages/auth/register/register.component')
+            .then(m => m.RegisterComponent)
       }
-
     ]
   },
 
   {
     path: '**',
-    redirectTo: 'dashboard'
+    redirectTo: ''
   }
 
 ];

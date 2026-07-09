@@ -1,55 +1,47 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { DatePipe } from '@angular/common';
+import { DatePipe, CommonModule } from '@angular/common';
+import { TrainingService } from '../../../core/services/training';
 
 @Component({
   selector: 'app-training-list',
   standalone: true,
-  imports: [RouterLink, DatePipe],
+  imports: [RouterLink, DatePipe, CommonModule],
   templateUrl: './training-list.html',
   styleUrl: './training-list.scss'
 })
-export class TrainingListComponent {
+export class TrainingListComponent implements OnInit {
+  private trainingService = inject(TrainingService);
 
-  allTrainings = [
-    {
-      id: 1,
-      title: 'Management Agile',
-      provider: 'HEC Executive',
-      duration: 40,
-      startDate: '2026-06-15',
-      progress: 75,
-      status: 'En cours',
-      statusClass: 'badge-primary'
-    },
-    {
-      id: 2,
-      title: 'Sécurité au travail (HSE)',
-      provider: 'COPAG Internal',
-      duration: 12,
-      startDate: '2026-07-01',
-      progress: 100,
-      status: 'Terminé',
-      statusClass: 'badge-success'
-    },
-    {
-      id: 3,
-      title: 'Nouvelles normes qualité',
-      provider: 'AFNOR',
-      duration: 24,
-      startDate: '2026-08-10',
-      progress: 0,
-      status: 'Planifiée',
-      statusClass: 'badge-warning'
-    }
-  ];
+  allTrainings: any[] = [];
+  trainings: any[] = [];
 
-  trainings = [...this.allTrainings];
+  ngOnInit() {
+    this.loadTrainings();
+  }
+
+  loadTrainings() {
+    this.trainingService.getAll().subscribe({
+      next: (res: any) => {
+        // Compute pseudo progress and status if not in DB
+        this.allTrainings = res.map((t: any) => ({
+          ...t,
+          progress: t.progress || 0,
+          status: t.status || 'Planifiée',
+          statusClass: 'badge-warning'
+        }));
+        this.trainings = [...this.allTrainings];
+      },
+      error: (err) => console.error(err)
+    });
+  }
 
   delete(id: number) {
     if (confirm('Voulez-vous vraiment supprimer cette formation ?')) {
-      this.allTrainings = this.allTrainings.filter(t => t.id !== id);
-      this.trainings = this.trainings.filter(t => t.id !== id);
+      this.trainingService.delete(id).subscribe({
+        next: () => this.loadTrainings(),
+        error: (err) => console.error(err)
+      });
     }
   }
 
@@ -60,10 +52,9 @@ export class TrainingListComponent {
       return;
     }
     this.trainings = this.allTrainings.filter(t => 
-      t.title.toLowerCase().includes(searchTerm) || 
-      t.provider.toLowerCase().includes(searchTerm) ||
-      t.status.toLowerCase().includes(searchTerm)
+      t.title?.toLowerCase().includes(searchTerm) || 
+      t.provider?.toLowerCase().includes(searchTerm) ||
+      t.status?.toLowerCase().includes(searchTerm)
     );
   }
-
 }

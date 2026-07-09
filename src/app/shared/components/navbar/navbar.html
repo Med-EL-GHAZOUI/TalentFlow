@@ -11,6 +11,7 @@
   </div>
 
   <div class="navbar-right">
+
     <!-- Notifications -->
     <button class="icon-btn notification-btn" (click)="showNotifications()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -32,10 +33,12 @@
 
     <!-- User Menu -->
     <div class="user-menu" routerLink="/profile" style="cursor: pointer;">
-      <div class="avatar">ME</div>
+      <div class="avatar" [ngStyle]="{'background': currentRole === 'ADMIN' ? 'var(--indigo-500)' : currentRole === 'MANAGER' ? 'var(--cyan-500)' : 'var(--emerald-500)'}">
+        {{ getInitials() }}
+      </div>
       <div class="user-greeting">
         <span class="greeting-text">Bonjour,</span>
-        <span class="username">{{ username }}</span>
+        <span class="username">{{ authService.currentUserFullName() || '...' }}</span>
       </div>
     </div>
 

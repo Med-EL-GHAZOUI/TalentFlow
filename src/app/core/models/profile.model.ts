@@ -2,9 +2,9 @@ export interface Profile {
 
   id: number;
 
-  firstname: string;
+  firstName: string;
 
-  lastname: string;
+  lastName: string;
 
   email: string;
 

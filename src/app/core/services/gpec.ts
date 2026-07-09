@@ -6,8 +6,12 @@ import { ApiService } from './api';
 })
 export class GpecService extends ApiService {
 
-  analyze() {
-    return this.http.get(`${this.api}/gpec/analyze`);
+  getCompetencyGaps() {
+    return this.http.get(`${this.api}/gpec/gaps`);
+  }
+
+  getRecommendations() {
+    return this.http.get(`${this.api}/gpec/recommendations`);
   }
 
 }

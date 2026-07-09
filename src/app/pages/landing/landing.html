@@ -1,0 +1,380 @@
+<div class="landing-wrapper">
+  <!-- Dynamic Gradient Background -->
+  <div class="blob-bg blob-1"></div>
+  <div class="blob-bg blob-2"></div>
+  <div class="blob-bg blob-3"></div>
+  <div class="grid-overlay"></div>
+
+  <!-- Professional Header -->
+  <header class="landing-header animate-slide-up">
+    <div class="logo-container">
+      <img src="assets/logo-copag.png" alt="COPAG" class="header-logo" />
+      <div class="logo-text">
+        <span class="brand-name">TalentFlow</span>
+        <span class="brand-sub">GPEC</span>
+      </div>
+    </div>
+    
+    <nav class="desktop-nav">
+      <a href="#accueil" class="nav-link">Accueil</a>
+      <a href="#univers" class="nav-link">L'Univers COPAG</a>
+      <a href="#features" class="nav-link">Fonctionnalités</a>
+      <a href="#solutions" class="nav-link">Solutions RH</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="login-link" routerLink="/login">Se connecter</a>
+      <button class="btn-premium btn-small" routerLink="/login">
+        <span class="btn-glow"></span>
+        <span class="btn-content">Essai Gratuit</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ACCUEIL (Hero Section) -->
+  <main class="landing-main" id="accueil">
+    <div class="hero-container">
+      
+      <!-- Left Column (Text & CTAs) -->
+      <div class="hero-text-content">
+        <div class="hero-badge reveal-up" #animatedElement>
+          <span class="badge-new">Nouveau</span>
+          <span class="badge-text">La digitalisation RH au service de l'humain</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </div>
+        
+        <h1 class="hero-title reveal-up" #animatedElement style="transition-delay: 0.1s;">
+          Libérez le plein potentiel <br/>
+          de vos <span class="gradient-text">Collaborateurs</span>
+        </h1>
+        
+        <p class="hero-subtitle reveal-up" #animatedElement style="transition-delay: 0.2s;">
+          TalentFlow est la plateforme de Gestion Prévisionnelle des Emplois et Compétences (GPEC) exclusive de COPAG. Alignez vos talents sur vos objectifs stratégiques, identifiez les potentiels et développez les carrières de demain.
+        </p>
+        
+        <div class="hero-buttons reveal-up" #animatedElement style="transition-delay: 0.3s;">
+          <button class="btn-premium hero-btn-primary" routerLink="/login">
+            <span class="btn-glow"></span>
+            <span class="btn-content">
+              Accéder à mon espace
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+          </button>
+          <a href="#univers" class="btn-secondary hero-btn-secondary" style="text-decoration: none;">
+            Découvrir COPAG
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column (Mockup/Illustration) -->
+      <div class="hero-visual animate-slide-up" style="animation-delay: 0.4s;">
+        <div class="mockup-container glass-card">
+          
+          <div class="mockup-header">
+            <div class="window-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="window-title">TalentFlow Dashboard</div>
+          </div>
+          
+          <div class="mockup-body">
+            <div class="mockup-sidebar">
+              <div class="mockup-line" style="width: 80%"></div>
+              <div class="mockup-line" style="width: 60%"></div>
+              <div class="mockup-line" style="width: 70%"></div>
+              <div class="mockup-line" style="width: 50%"></div>
+            </div>
+            <div class="mockup-content">
+              <div class="mockup-kpis">
+                <div class="mockup-kpi-card bg-indigo-glow">
+                  <div class="mockup-circle"></div>
+                  <div class="mockup-line" style="width: 40px; margin-top: 8px;"></div>
+                </div>
+                <div class="mockup-kpi-card bg-emerald-glow">
+                  <div class="mockup-circle"></div>
+                  <div class="mockup-line" style="width: 40px; margin-top: 8px;"></div>
+                </div>
+              </div>
+              <div class="mockup-chart">
+                <div class="bar" style="height: 40%"></div>
+                <div class="bar" style="height: 70%"></div>
+                <div class="bar" style="height: 50%"></div>
+                <div class="bar" style="height: 90%"></div>
+                <div class="bar" style="height: 60%"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="floating-badge badge-1">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2" width="16" height="16"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+            Match Compétences 98%
+          </div>
+          
+          <div class="floating-badge badge-2">
+            <div class="avatar" style="width: 24px; height: 24px; background: rgba(46, 125, 50, 0.1); color: #2e7d32; font-size: 10px; font-weight: 900;">GPEC</div>
+            Plan de formation
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- MARQUES & INFRASTRUCTURES SECTION -->
+  <section class="page-section alternate-bg" id="univers">
+    <div class="section-container">
+      <div class="section-header text-center reveal-up" #animatedElement>
+        <span class="section-eyebrow">La Force de Notre Coopérative</span>
+        <h2 class="section-title">Découvrez l'univers COPAG</h2>
+        <p class="section-subtitle">De la production laitière à l'innovation continue, nos collaborateurs s'engagent chaque jour pour l'excellence de nos produits.</p>
+      </div>
+
+      <div class="copag-gallery">
+        <div class="gallery-item large reveal-scale" #animatedElement>
+          <img src="assets/images/copag-factory.jpg" alt="Usine COPAG et Silos Jaouda" />
+          <div class="gallery-overlay">
+            <h3 class="gallery-title">Infrastructures de Pointe</h3>
+            <p class="gallery-desc">Des usines modernes pour garantir une qualité irréprochable.</p>
+          </div>
+        </div>
+        <div class="gallery-item reveal-scale" #animatedElement style="transition-delay: 0.1s; background: white;">
+          <img src="assets/images/jaouda-splash.png" alt="Produits Jaouda Lait et Yaourt" style="object-fit: contain; padding: 1rem;" />
+          <div class="gallery-overlay">
+            <h3 class="gallery-title">La Qualité Jaouda</h3>
+            <p class="gallery-desc">Des produits laitiers frais et délicieux.</p>
+          </div>
+        </div>
+        <div class="gallery-item reveal-scale" #animatedElement style="transition-delay: 0.2s;">
+          <img src="assets/images/copag-stand.jpg" alt="Stand COPAG Événement" />
+          <div class="gallery-overlay">
+            <h3 class="gallery-title">Proximité</h3>
+            <p class="gallery-desc">Toujours plus proches de nos consommateurs.</p>
+          </div>
+        </div>
+        <div class="gallery-item quote-item reveal-scale" #animatedElement style="transition-delay: 0.3s; grid-column: span 2;">
+          <img src="assets/images/copag-president.jpg" alt="Mot du Président Moulay M'hamed Loultiti" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FONCTIONNALITÉS SECTION -->
+  <section class="page-section" id="features">
+    <div class="section-container">
+      <div class="section-header text-center reveal-up" #animatedElement>
+        <span class="section-eyebrow">Fonctionnalités Clés</span>
+        <h2 class="section-title">Tout ce dont vous avez besoin pour exceller</h2>
+        <p class="section-subtitle">Découvrez une suite d'outils puissants conçus pour simplifier la gestion RH et maximiser le potentiel de vos équipes.</p>
+      </div>
+      
+      <div class="features-grid-advanced">
+        
+        <div class="feature-card-pro reveal-up" #animatedElement>
+          <div class="fc-icon bg-indigo-glow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+          </div>
+          <h3>Vue 360° Collaborateurs</h3>
+          <p>Un dossier numérique unique pour chaque employé, regroupant parcours, évaluations, compétences et aspirations professionnelles. Analysez les talents en un clin d'œil.</p>
+        </div>
+
+        <div class="feature-card-pro reveal-up" #animatedElement style="transition-delay: 0.1s;">
+          <div class="fc-icon bg-emerald-glow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          </div>
+          <h3>Analyse Automatique des Écarts</h3>
+          <p>Notre moteur intelligent compare le profil de chaque collaborateur avec les exigences de son poste et met en évidence les compétences à acquérir de manière automatique.</p>
+        </div>
+
+        <div class="feature-card-pro reveal-up" #animatedElement style="transition-delay: 0.2s;">
+          <div class="fc-icon bg-cyan-glow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+          </div>
+          <h3>Référentiel Dynamique</h3>
+          <p>Maintenez à jour vos fiches de postes et votre bibliothèque de compétences (Savoir, Savoir-faire, Savoir-être) avec une interface fluide et intuitive.</p>
+        </div>
+
+        <div class="feature-card-pro reveal-up" #animatedElement style="transition-delay: 0.3s;">
+          <div class="fc-icon bg-amber-glow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          </div>
+          <h3>Recommandation de Formations</h3>
+          <p>Au lieu de chercher manuellement, le système propose des plans de formation adaptés pour combler les lacunes et préparer les évolutions de carrière.</p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTIONS SECTION -->
+  <section class="page-section alternate-bg" id="solutions">
+    <div class="section-container">
+      <div class="section-header text-center reveal-up" #animatedElement>
+        <span class="section-eyebrow">Solutions par Profil</span>
+        <h2 class="section-title">Une plateforme, trois expériences</h2>
+        <p class="section-subtitle">Des espaces de travail personnalisés selon le rôle de l'utilisateur pour une efficacité maximale.</p>
+      </div>
+
+      <div class="solutions-showcase">
+        <!-- Tab 1 -->
+        <div class="solution-row reveal-up" #animatedElement>
+          <div class="solution-text">
+            <div class="role-badge role-rh">Portail Administrateur & RH</div>
+            <h3>Prenez des décisions stratégiques éclairées</h3>
+            <p>Pilotez l'ensemble de la politique de l'entreprise. Accédez à des tableaux de bord globaux, gérez les référentiels de métiers et anticipez les mouvements de personnel avec précision.</p>
+            <ul class="solution-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="#2e7d32"><polyline points="20 6 9 17 4 12"></polyline></svg> Tableaux de bord macro et analytique RH</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="#2e7d32"><polyline points="20 6 9 17 4 12"></polyline></svg> Gestion du référentiel (Fiches de poste, Compétences)</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="#2e7d32"><polyline points="20 6 9 17 4 12"></polyline></svg> Pilotage du plan de formation global</li>
+            </ul>
+          </div>
+          <div class="solution-image">
+            <div class="glass-mockup">
+               <img src="assets/images/hr-dashboard.png" alt="Tableau de Bord HR" class="solution-mockup-img" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2 -->
+        <div class="solution-row reverse reveal-up" #animatedElement>
+          <div class="solution-text">
+            <div class="role-badge role-manager">Portail Manager</div>
+            <h3>Pilotez votre équipe de près</h3>
+            <p>Accompagnez vos collaborateurs au quotidien. Évaluez leurs compétences, suivez leur montée en puissance et participez à l'élaboration de leurs objectifs opérationnels.</p>
+            <ul class="solution-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="#f57c00"><polyline points="20 6 9 17 4 12"></polyline></svg> Vue détaillée sur l'équipe (Team Space)</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="#f57c00"><polyline points="20 6 9 17 4 12"></polyline></svg> Cartographie continue des compétences</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="#f57c00"><polyline points="20 6 9 17 4 12"></polyline></svg> Alertes d'écarts et recommandations automatiques</li>
+            </ul>
+          </div>
+          <div class="solution-image">
+            <div class="glass-mockup">
+               <img src="assets/images/manager-dashboard.png" alt="Portail Manager" class="solution-mockup-img" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3 -->
+        <div class="solution-row reveal-up" #animatedElement>
+          <div class="solution-text">
+            <div class="role-badge role-employee">Portail Collaborateur</div>
+            <h3>Soyez acteur de votre carrière</h3>
+            <p>Un espace personnel dédié où l'employé peut consulter ses évaluations, formuler des souhaits d'évolution et suivre ses formations en toute autonomie.</p>
+            <ul class="solution-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="#fbc02d"><polyline points="20 6 9 17 4 12"></polyline></svg> Auto-évaluation et bilan de compétences complet</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="#fbc02d"><polyline points="20 6 9 17 4 12"></polyline></svg> Visibilité transparente sur le plan de carrière</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="#fbc02d"><polyline points="20 6 9 17 4 12"></polyline></svg> Suivi des formations (My Space)</li>
+            </ul>
+          </div>
+          <div class="solution-image">
+            <div class="glass-mockup">
+               <img src="assets/images/employee-dashboard.png" alt="Espace Collaborateur" class="solution-mockup-img" />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- À PROPOS SECTION -->
+  <section class="page-section" id="about">
+    <div class="section-container">
+      <div class="about-card">
+        <div class="about-content">
+          <h2 class="about-title">Pourquoi TalentFlow par COPAG ?</h2>
+          <p class="about-desc">
+            En tant que leader de la coopérative agricole au Maroc, <strong>COPAG</strong> place l'humain au cœur de sa stratégie. 
+            Avec TalentFlow, nous digitalisons la Gestion Prévisionnelle des Emplois et des Compétences pour garantir que nos talents sont toujours alignés avec nos ambitions d'excellence.
+          </p>
+          <div class="about-stats">
+            <div class="a-stat">
+              <span class="a-stat-val">+5000</span>
+              <span class="a-stat-lbl">Collaborateurs</span>
+            </div>
+            <div class="a-stat">
+              <span class="a-stat-val">Innovation</span>
+              <span class="a-stat-lbl">Technologique</span>
+            </div>
+            <div class="a-stat">
+              <span class="a-stat-val">100%</span>
+              <span class="a-stat-lbl">Développement HR</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-logo">
+          <img src="assets/logo-copag.png" alt="COPAG" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="landing-footer pro-footer">
+    <div class="footer-cta reveal-scale" #animatedElement>
+      <h2>Prêt à transformer votre gestion RH ?</h2>
+      <p>Rejoignez TalentFlow et propulsez vos équipes vers l'excellence.</p>
+      <button class="btn-premium" routerLink="/login">
+        <span class="btn-glow"></span>
+        <span class="btn-content">Accéder à la plateforme</span>
+      </button>
+    </div>
+    
+    <div class="footer-main">
+      <div class="footer-col-brand">
+        <img src="assets/logo-copag.png" alt="COPAG" class="footer-logo" />
+        <p class="footer-brand-desc">Le leader de la coopérative agricole au Maroc, engagé pour l'excellence, l'innovation et le développement de ses talents.</p>
+        <div class="social-links">
+          <a href="#" class="social-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+          <a href="#" class="social-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+          <a href="#" class="social-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+        </div>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Plateforme</h4>
+        <ul>
+          <li><a href="#features">Fonctionnalités</a></li>
+          <li><a href="#solutions">Portails RH</a></li>
+          <li><a href="#">Sécurité des données</a></li>
+          <li><a href="#">Mises à jour</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>COPAG</h4>
+        <ul>
+          <li><a href="#univers">L'Univers COPAG</a></li>
+          <li><a href="#">Carrières</a></li>
+          <li><a href="#">Actualités</a></li>
+          <li><a href="#">Contactez-nous</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Centre d'aide</a></li>
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">Contact RH</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="f-brand">
+        <span>TalentFlow GPEC © 2026 COPAG. Tous droits réservés.</span>
+      </div>
+      <div class="f-links">
+        <a href="#">Politique de Confidentialité</a>
+        <a href="#">Conditions Générales</a>
+        <a href="#">Mentions Légales</a>
+      </div>
+    </div>
+  </footer>
+
+</div>

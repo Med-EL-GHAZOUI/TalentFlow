@@ -145,30 +145,21 @@
           <a routerLink="/employees" class="glass-link">Voir tout</a>
         </div>
         <div class="premium-list">
-          <div class="premium-list-item">
-            <div class="avatar-glow bg-blue-glow">ME</div>
-            <div class="item-text">
-              <h4>Mohamed EL GHAZOUI</h4>
-              <p>Responsable Qualité</p>
+          @for (emp of recentHires; track emp.id; let i = $index) {
+            <div class="premium-list-item">
+              <div class="avatar-glow" 
+                   [ngClass]="['bg-blue-glow', 'bg-cyan-glow', 'bg-purple-glow', 'bg-emerald-glow'][i % 4]">
+                {{ (emp.firstName || 'U').charAt(0).toUpperCase() }}{{ (emp.lastName || 'U').charAt(0).toUpperCase() }}
+              </div>
+              <div class="item-text">
+                <h4>{{ emp.firstName }} {{ emp.lastName }}</h4>
+                <p>{{ emp.job?.title || 'Non assigné' }}</p>
+              </div>
+              <div class="status-dot new"></div>
             </div>
-            <div class="status-dot new"></div>
-          </div>
-          <div class="premium-list-item">
-            <div class="avatar-glow bg-cyan-glow">AA</div>
-            <div class="item-text">
-              <h4>Ahmed Alaoui</h4>
-              <p>Ingénieur Agronome</p>
-            </div>
-            <div class="status-dot"></div>
-          </div>
-          <div class="premium-list-item">
-            <div class="avatar-glow bg-purple-glow">SB</div>
-            <div class="item-text">
-              <h4>Sara Benali</h4>
-              <p>Tech. Frigoriste</p>
-            </div>
-            <div class="status-dot"></div>
-          </div>
+          } @empty {
+            <p style="color: var(--slate-500); padding: 1rem;">Aucun recrutement récent.</p>
+          }
         </div>
       </div>
       

@@ -13,15 +13,19 @@ export class EmployeeService extends ApiService {
     return this.http.get<Employee[]>(`${this.api}/employees`);
   }
 
+  getMyDashboard(): Observable<any> {
+    return this.http.get(`${this.api}/employees/me/dashboard`);
+  }
+
   getById(id: number) {
     return this.http.get<Employee>(`${this.api}/employees/${id}`);
   }
 
-  create(employee: Employee) {
+  create(employee: any) {
     return this.http.post(`${this.api}/employees`, employee);
   }
 
-  update(id: number, employee: Employee) {
+  update(id: number, employee: any) {
     return this.http.put(`${this.api}/employees/${id}`, employee);
   }
 

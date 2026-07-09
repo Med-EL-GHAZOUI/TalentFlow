@@ -110,7 +110,7 @@
               <div class="setting-action">
                 <label class="toggle-switch">
                   <input type="checkbox" name="animations" [(ngModel)]="settings.animations" style="display:none;">
-                  <span class="trend-pill positive" style="cursor:pointer;">Activé</span>
+                  <span class="trend-pill" [ngClass]="settings.animations ? 'positive' : 'neutral'" style="cursor:pointer;">{{ settings.animations ? 'Activé' : 'Désactivé' }}</span>
                 </label>
               </div>
             </div>
@@ -123,7 +123,7 @@
               <div class="setting-action">
                 <label class="toggle-switch">
                   <input type="checkbox" name="density" [(ngModel)]="settings.density" style="display:none;">
-                  <span class="trend-pill neutral" style="cursor:pointer;">Désactivé</span>
+                  <span class="trend-pill" [ngClass]="settings.density ? 'positive' : 'neutral'" style="cursor:pointer;">{{ settings.density ? 'Activé' : 'Désactivé' }}</span>
                 </label>
               </div>
             </div>

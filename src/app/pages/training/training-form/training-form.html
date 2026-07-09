@@ -48,6 +48,14 @@
               <label class="form-label" style="font-weight: 600; color: var(--slate-700); margin-bottom: 0.5rem; display: block;">Organisme de formation</label>
               <input type="text" class="glass-form-control" [(ngModel)]="training.provider" name="provider" placeholder="Ex: Coursera, Interne...">
             </div>
+            
+            <div class="form-group glass-input-wrapper" style="grid-column: 1 / -1;">
+              <label class="form-label" style="font-weight: 600; color: var(--slate-700); margin-bottom: 0.5rem; display: block;">Compétence Ciblée (GPEC)</label>
+              <select class="glass-form-control" [(ngModel)]="training.targetSkillId" name="targetSkillId">
+                <option [ngValue]="null">Aucune compétence spécifique</option>
+                <option *ngFor="let skill of skills" [ngValue]="skill.id">{{ skill.name }}</option>
+              </select>
+            </div>
           </div>
         </div>
         

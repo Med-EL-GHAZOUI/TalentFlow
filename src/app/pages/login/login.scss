@@ -177,6 +177,25 @@
     }
   }
 
+  .login-subtitle {
+    color: var(--slate-500);
+    margin-bottom: 2rem;
+  }
+
+  .error-message {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    color: var(--red-600);
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
   .login-form {
     display: flex;
     flex-direction: column;
