@@ -10,6 +10,6 @@ import { GpecModule } from '../gpec/gpec.module';
   imports: [TypeOrmModule.forFeature([Employee, EmployeeSkill]), GpecModule],
   controllers: [EmployeesController],
   providers: [EmployeesService],
-  exports: [TypeOrmModule]
+  exports: [TypeOrmModule, EmployeesService]
 })
 export class EmployeesModule {}

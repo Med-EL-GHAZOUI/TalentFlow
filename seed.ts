@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { DataSource } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { User } from './src/users/user.entity';
@@ -28,80 +29,134 @@ async function seed() {
   await AppDataSource.synchronize(true);
   console.log('Database cleared and synchronized.');
 
-  // 1. Create Skills
   const skillRepo = AppDataSource.getRepository(Skill);
-  const skillAgri = await skillRepo.save(skillRepo.create({ name: 'Techniques Agricoles', category: 'Hard Skill', description: 'Maîtrise des techniques de culture' } as any));
-  const skillMngt = await skillRepo.save(skillRepo.create({ name: 'Management d\'équipe', category: 'Soft Skill', description: 'Gestion des collaborateurs' } as any));
-  const skillRH = await skillRepo.save(skillRepo.create({ name: 'Outils Digitaux RH', category: 'Hard Skill', description: 'Utilisation des SIRH' } as any));
-  const skillTech = await skillRepo.save(skillRepo.create({ name: 'Maintenance Industrielle', category: 'Hard Skill', description: 'Réparation des machines' } as any));
-
-  // 2. Create Departments
   const deptRepo = AppDataSource.getRepository(Department);
-  const deptAgri = await deptRepo.save(deptRepo.create({ name: 'Production Agricole', managerId: 1 } as any));
-  const deptRH = await deptRepo.save(deptRepo.create({ name: 'Ressources Humaines', managerId: 2 } as any));
-
-  // 3. Create Jobs & JobSkills (Required levels)
   const jobRepo = AppDataSource.getRepository(Job);
   const jobSkillRepo = AppDataSource.getRepository(JobSkill);
-  
-  const jobManager = await jobRepo.save(jobRepo.create({ title: 'Chef d\'exploitation', description: 'Gère la production', department: deptAgri } as any));
-  await jobSkillRepo.save(jobSkillRepo.create({ job: jobManager, skill: skillAgri, requiredLevel: 5 } as any));
-  await jobSkillRepo.save(jobSkillRepo.create({ job: jobManager, skill: skillMngt, requiredLevel: 4 } as any));
-
-  const jobRH = await jobRepo.save(jobRepo.create({ title: 'Responsable RH', description: 'Gère les RH', department: deptRH } as any));
-  await jobSkillRepo.save(jobSkillRepo.create({ job: jobRH, skill: skillRH, requiredLevel: 5 } as any));
-  await jobSkillRepo.save(jobSkillRepo.create({ job: jobRH, skill: skillMngt, requiredLevel: 3 } as any));
-
-  // 4. Create Users (with bcrypt password 'password')
   const userRepo = AppDataSource.getRepository(User);
-  const hashedPassword = await bcrypt.hash('password', 10);
-  
-  const user1 = await userRepo.save(userRepo.create({ email: 'mohamed@copag.ma', password: hashedPassword, role: 'admin' } as any));
-  const user2 = await userRepo.save(userRepo.create({ email: 'ahmed@copag.ma', password: hashedPassword, role: 'user' } as any));
-
-  // 5. Create Employees
   const empRepo = AppDataSource.getRepository(Employee);
   const empSkillRepo = AppDataSource.getRepository(EmployeeSkill);
-
-  const emp1 = await empRepo.save(empRepo.create({ 
-    firstName: 'Mohamed', lastName: 'EL GHAZOUI', 
-    email: 'mohamed@copag.ma', phone: '0600000000', 
-    hireDate: '2023-01-15', status: 'Actif', 
-    department: deptAgri, job: jobManager, user: user1 
-  } as any));
-  
-  // Mohamed has missing skills to trigger recommendations
-  await empSkillRepo.save(empSkillRepo.create({ employee: emp1, skill: skillAgri, acquiredLevel: 5 } as any)); // Expert
-  await empSkillRepo.save(empSkillRepo.create({ employee: emp1, skill: skillMngt, acquiredLevel: 2 } as any)); // Missing 2 levels (requires 4)
-
-  const emp2 = await empRepo.save(empRepo.create({ 
-    firstName: 'Ahmed', lastName: 'Alaoui', 
-    email: 'ahmed@copag.ma', phone: '0611111111', 
-    hireDate: '2020-05-10', status: 'Actif', 
-    department: deptRH, job: jobRH, user: user2 
-  } as any));
-
-  await empSkillRepo.save(empSkillRepo.create({ employee: emp2, skill: skillRH, acquiredLevel: 4 } as any)); // Missing 1 level (requires 5)
-  await empSkillRepo.save(empSkillRepo.create({ employee: emp2, skill: skillMngt, acquiredLevel: 4 } as any)); // Exceeds (requires 3)
-
-  // 6. Create Trainings
   const trainRepo = AppDataSource.getRepository(Training);
-  await trainRepo.save(trainRepo.create({ 
-    title: 'Leadership & Management Avancé', 
-    provider: 'Coursera', 
-    startDate: '2024-10-15', endDate: '2024-10-17', duration: 20, 
-    targetSkill: skillMngt,
-    employees: [emp1] // Mohamed is already enrolled in this one!
-  } as any));
 
-  await trainRepo.save(trainRepo.create({ 
-    title: 'Maîtrise des SIRH Modernes', 
-    provider: 'Interne COPAG', 
-    startDate: '2024-11-01', endDate: '2024-11-05', duration: 35, 
-    targetSkill: skillRH 
-  } as any));
+  // 1. Create Skills
+  const skillsData = [
+    { name: 'Techniques Agricoles', category: 'Hard Skill', description: 'Techniques de culture et récolte' },
+    { name: 'Contrôle Qualité ISO 9001', category: 'Hard Skill', description: 'Normes de qualité' },
+    { name: 'Maintenance Industrielle', category: 'Hard Skill', description: 'Entretien des machines' },
+    { name: 'Outils Digitaux RH', category: 'Hard Skill', description: 'SIRH et paie' },
+    { name: 'Logistique et Transport', category: 'Hard Skill', description: 'Gestion de flotte' },
+    { name: 'Management d\'équipe', category: 'Soft Skill', description: 'Leadership et gestion' },
+    { name: 'Négociation Commerciale', category: 'Hard Skill', description: 'Ventes et achats' },
+    { name: 'Analyse Financière', category: 'Hard Skill', description: 'Audit et finance' },
+    { name: 'Communication', category: 'Soft Skill', description: 'Communication interne et externe' },
+    { name: 'Résolution de conflits', category: 'Soft Skill', description: 'Gestion de crise' }
+  ];
+  const skills = await Promise.all(skillsData.map(s => skillRepo.save(skillRepo.create(s as any))));
 
-  console.log('Database seeded successfully!');
+  // 2. Create Departments
+  const deptsData = [
+    { name: 'Production Agricole' },
+    { name: 'Qualité & Sécurité' },
+    { name: 'Ressources Humaines' },
+    { name: 'Logistique' },
+    { name: 'Commercial & Ventes' },
+    { name: 'Finance' },
+    { name: 'Maintenance' }
+  ];
+  const depts = await Promise.all(deptsData.map(d => deptRepo.save(deptRepo.create(d as any))));
+
+  // 3. Create Jobs & Required Skills
+  const jobsData = [
+    { title: 'Chef d\'exploitation', dept: depts[0], reqSkills: [{ skill: skills[0], level: 5 }, { skill: skills[5], level: 4 }] },
+    { title: 'Ouvrier Agricole', dept: depts[0], reqSkills: [{ skill: skills[0], level: 3 }] },
+    { title: 'Responsable Qualité', dept: depts[1], reqSkills: [{ skill: skills[1], level: 5 }, { skill: skills[5], level: 3 }] },
+    { title: 'Technicien Qualité', dept: depts[1], reqSkills: [{ skill: skills[1], level: 3 }] },
+    { title: 'Directeur RH', dept: depts[2], reqSkills: [{ skill: skills[3], level: 5 }, { skill: skills[5], level: 5 }, { skill: skills[9], level: 4 }] },
+    { title: 'Chargé de Recrutement', dept: depts[2], reqSkills: [{ skill: skills[3], level: 3 }, { skill: skills[8], level: 4 }] },
+    { title: 'Responsable Logistique', dept: depts[3], reqSkills: [{ skill: skills[4], level: 5 }, { skill: skills[5], level: 4 }] },
+    { title: 'Chauffeur Poids Lourd', dept: depts[3], reqSkills: [{ skill: skills[4], level: 3 }] },
+    { title: 'Directeur Commercial', dept: depts[4], reqSkills: [{ skill: skills[6], level: 5 }, { skill: skills[5], level: 5 }] },
+    { title: 'Technicien de Maintenance', dept: depts[6], reqSkills: [{ skill: skills[2], level: 4 }] }
+  ];
+
+  const jobs: Job[] = [];
+  for (const j of jobsData) {
+    const job = await jobRepo.save(jobRepo.create({ title: j.title, department: j.dept } as any));
+    for (const rs of j.reqSkills) {
+      await jobSkillRepo.save(jobSkillRepo.create({ job, skill: rs.skill, requiredLevel: rs.level } as any));
+    }
+    jobs.push(job);
+  }
+
+  // 4. Create Trainings
+  const trainingsData = [
+    { title: 'Masterclass Management', targetSkill: skills[5], duration: 40, provider: 'HEM' },
+    { title: 'Certification ISO 9001', targetSkill: skills[1], duration: 25, provider: 'Bureau Veritas' },
+    { title: 'Perfectionnement SIRH', targetSkill: skills[3], duration: 15, provider: 'Interne COPAG' },
+    { title: 'Techniques de Négociation', targetSkill: skills[6], duration: 20, provider: 'CCI' },
+    { title: 'Gestion de flotte avancée', targetSkill: skills[4], duration: 10, provider: 'Interne COPAG' }
+  ];
+  const trainings = await Promise.all(trainingsData.map(t => trainRepo.save(trainRepo.create(t as any))));
+
+  // 5. Create 20 Users and Employees
+  const hashedPassword = await bcrypt.hash('password', 10);
+  const firstNames = ['Mohamed', 'Ahmed', 'Youssef', 'Karim', 'Omar', 'Hassan', 'Rachid', 'Ali', 'Said', 'Brahim', 'Fatima', 'Khadija', 'Meryem', 'Nadia', 'Samira', 'Amina', 'Sara', 'Zineb', 'Leila', 'Houda'];
+  const lastNames = ['EL GHAZOUI', 'Alaoui', 'Tazi', 'Bennis', 'Chraibi', 'Daoudi', 'Farah', 'Guessous', 'Haddad', 'Idrissi', 'Jalil', 'Kabbaj', 'Lahlou', 'Mennani', 'Naciri', 'Ouazzani', 'Qadiri', 'Rami', 'Zahiri', 'Bourkia'];
+  
+  for (let i = 0; i < 20; i++) {
+    const role = i === 0 ? 'ADMIN' : (i < 3 ? 'RH' : (i < 8 ? 'MANAGER' : 'EMPLOYEE'));
+    const job = jobs[Math.floor(Math.random() * jobs.length)];
+    const dept = job.department;
+    
+    // Create User
+    const userPayload = {
+      email: `${firstNames[i].toLowerCase()}.${lastNames[i].toLowerCase().replace(' ', '')}@copag.ma`,
+      password: hashedPassword,
+      role: role
+    };
+    const user: User = await userRepo.save(userRepo.create(userPayload as any)) as any;
+
+    // Create Employee
+    const empPayload = {
+      firstName: firstNames[i],
+      lastName: lastNames[i],
+      email: user.email,
+      phone: `06${Math.floor(Math.random() * 90000000 + 10000000)}`,
+      hireDate: `202${Math.floor(Math.random() * 4)}-0${Math.floor(Math.random() * 9 + 1)}-15`,
+      status: Math.random() > 0.1 ? 'Actif' : 'En congé',
+      department: dept,
+      job: job,
+      user: user
+    };
+    const emp = await empRepo.save(empRepo.create(empPayload as any));
+
+    // Assign skills based on Job required skills, with random variations (creating gaps or expert levels)
+    const requiredSkills = await jobSkillRepo.find({ where: { job: { id: job.id } }, relations: { skill: true } });
+    
+    for (const rs of requiredSkills) {
+      // Level between 1 and 5
+      const actualLevel = Math.max(1, Math.min(5, rs.requiredLevel + Math.floor(Math.random() * 3) - 1)); 
+      await empSkillRepo.save(empSkillRepo.create({
+        employee: emp,
+        skill: rs.skill,
+        acquiredLevel: actualLevel
+      } as any));
+    }
+    
+    // Random extra skill
+    if (Math.random() > 0.5) {
+      const randomSkill = skills[Math.floor(Math.random() * skills.length)];
+      if (!requiredSkills.find(rs => rs.skill?.id === randomSkill.id)) {
+        await empSkillRepo.save(empSkillRepo.create({
+          employee: emp,
+          skill: randomSkill,
+          acquiredLevel: Math.floor(Math.random() * 4) + 1
+        } as any));
+      }
+    }
+  }
+
+  console.log('20 Employees seeded successfully!');
   await AppDataSource.destroy();
 }
 

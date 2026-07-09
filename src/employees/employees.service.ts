@@ -18,6 +18,7 @@ export class EmployeesService {
     const employee = await this.employeesRepository.findOne({
       where: { user: { id: userId } },
       relations: {
+        user: true,
         department: true,
         job: { jobSkills: { skill: true } },
         employeeSkills: { skill: true },
